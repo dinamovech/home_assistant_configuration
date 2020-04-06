@@ -1,0 +1,85 @@
+# https://github.com/dmitry-k/yandex_smart_home
+
+# TODO: температура отпления / теплого пола
+# TODO: датчики температуры в комнатах
+
+filter:
+  include_entities:
+    # Коридор
+    - switch.security_system
+    - light.hallway
+    - light.gateway
+    # Спальня
+    - light.bedroom
+    - media_player.desktop_pc
+    # Зал
+    - light.lounge_first
+    - light.lounge_second
+    - media_player.lounge_tv
+    # Лоджия
+    - light.loggia
+    # Кухня
+    - light.kitchen
+    - fan.kitchen
+    - climate.gas_boiler
+    - climate.warm_floor
+    - media_player.kitchen_tv
+    # Ванная
+    - light.bathroom
+    - fan.bathroom
+
+entity_config:
+  # Коридор
+  switch.security_system:
+    name: "Охрана"
+    room: "Коридор"
+  light.hallway:
+    name: "Свет"
+    room: "Коридор"
+  light.gateway:
+    name: "Подсветка"
+    room: "Коридор"
+  # Спальня
+  light.bedroom:
+    name: "Свет"
+    room: "Спальня"
+  media_player.desktop_pc:
+    name: "Компьютер"
+    room: "Спальня"
+  # Зал
+  light.lounge_first:
+    name: "Свет"
+    room: "Зал"
+  light.lounge_second:
+    name: "Второй свет"
+    room: "Зал"
+  media_player.lounge_tv:
+    name: "Телевизор"
+    room: "Зал"
+  # Лоджия
+  light.loggia:
+    name: "Свет"
+    room: "Лоджия"
+  # Кухня
+  light.kitchen:
+    name: "Свет"
+    room: "Кухня"
+  fan.kitchen:
+    name: "Вытяжка"
+    room: "Кухня"
+  climate.gas_boiler:
+    name: "Отопление"
+    room: "Кухня"
+  climate.warm_floor:
+    name: "Теплый пол"
+    room: "Кухня"
+  media_player.kitchen_tv:
+    name: "Телевизор"
+    room: "Кухня"
+  # Ванная
+  light.bathroom:
+    name: "Свет"
+    room: "Ванная"
+  fan.bathroom:
+    name: "Вентиляция"
+    room: "Ванная"

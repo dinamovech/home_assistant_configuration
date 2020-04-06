@@ -1,0 +1,452 @@
+title: Моя квартира
+views:
+  # Общая информация
+  - title: "Общая информация"
+    path: default
+    icon: mdi:information
+    panel: true
+    width: 1
+    cards:
+      - type: picture-elements
+        image: /local/home_map.png
+        elements:
+          # Коридор
+          - type: state-icon # Освещение
+            tap_action:
+              action: toggle
+            entity: light.hallway
+            style:
+              top: 53.5%
+              left: 35.3%
+          - type: state-icon # Подсветка шлюза
+            entity: light.gateway
+            style:
+              top: 51%
+              left: 41.3%
+          - type: state-label # Температура
+            entity: sensor.hallway_temperature
+            prefix: "Температура: "
+            style:
+              top: 55%
+              left: 42.5%
+          - type: state-label # Влажность
+            entity: sensor.hallway_humidity
+            prefix: "Влажность: "
+            style:
+              top: 57%
+              left: 42.5%
+          - type: state-icon # Датчик движения
+            entity: binary_sensor.hallway_motion
+            style:
+              top: 53.5%
+              left: 30%
+          # Спальня
+          - type: state-icon # Освещение
+            tap_action:
+              action: toggle
+            entity: light.bedroom
+            style:
+              top: 35%
+              left: 34.5%
+          - type: state-icon # Настольный компьютер
+            entity: media_player.desktop_pc
+            style:
+              top: 28%
+              left: 39%
+          - type: state-label # Температура
+            entity: sensor.bedroom_temperature
+            prefix: "Температура: "
+            style:
+              top: 40%
+              left: 34.5%
+          - type: state-label # Влажность
+            entity: sensor.bedroom_humidity
+            prefix: "Влажность: "
+            style:
+              top: 42%
+              left: 34.5%
+          # Зал
+          - type: state-icon # Основное освещение
+            tap_action:
+              action: toggle
+            entity: light.lounge_first
+            style:
+              top: 37%
+              left: 52%
+          - type: state-icon # Дополнительное освещение
+            tap_action:
+              action: toggle
+            entity: light.lounge_second
+            style:
+              top: 37%
+              left: 56%
+          - type: state-icon # Телевизор
+            entity: media_player.lounge_tv
+            icon: mdi:television
+            style:
+              top: 37%
+              left: 63%
+          - type: state-label # Температура
+            entity: sensor.lounge_temperature
+            prefix: "Температура: "
+            style:
+              top: 45%
+              left: 57%
+          - type: state-label # Влажность
+            entity: sensor.lounge_humidity
+            prefix: "Влажность: "
+            style:
+              top: 47%
+              left: 57%
+          # Кухня
+          - type: state-icon # Освещение
+            tap_action:
+              action: toggle
+            entity: light.kitchen
+            style:
+              top: 61.5%
+              left: 58%
+          - type: state-icon # Вытяжка
+            entity: climate.kitchen
+            style:
+              top: 69.5%
+              left: 61%
+          - type: state-icon # Газовый котел
+            entity: climate.gas_boiler
+            style:
+              top: 69.5%
+              left: 52%
+          - type: state-icon # Теплый пол
+            entity: climate.warm_floor
+            style:
+              top: 69.5%
+              left: 54%
+          - type: state-icon # Датчик протечки
+            entity: binary_sensor.kitchen_leak
+            style:
+              top: 69.5%
+              left: 56%
+          - type: state-icon # Телевизор
+            entity: media_player.kitchen_tv
+            style:
+              top: 56%
+              left: 52%
+          - type: state-label # Температура
+            entity: sensor.kitchen_temperature
+            prefix: "Температура: "
+            style:
+              top: 55%
+              left: 59%
+          - type: state-label # Влажность
+            entity: sensor.kitchen_humidity
+            prefix: "Влажность: "
+            style:
+              top: 57%
+              left: 59%
+          - type: state-label # Температура (теплый пол)
+            entity: sensor.floor_pump_temperature
+            prefix: "T = "
+            style:
+              top: 66.5%
+              left: 54%
+          # Лоджия
+          - type: state-icon # Освещение
+            tap_action:
+              action: toggle
+            entity: light.loggia
+            style:
+              top: 57%
+              left: 67.7%
+          - type: state-label # Температура
+            entity: sensor.loggia_temperature
+            prefix: "T = "
+            style:
+              top: 59.5%
+              left: 67.7%
+          - type: state-label # Влажность
+            entity: sensor.loggia_humidity
+            prefix: "H = "
+            style:
+              top: 61.5%
+              left: 67.7%
+          - type: state-label # Давление
+            entity: sensor.loggia_pressure
+            prefix: "P = "
+            style:
+              top: 63.5%
+              left: 67.7%
+          # Ванная
+          - type: state-icon # Освещение
+            tap_action:
+              action: toggle
+            entity: light.bathroom
+            style:
+              top: 69.5%
+              left: 41%
+          - type: state-icon # Вентиляция
+            entity: climate.bathroom
+            style:
+              top: 69.5%
+              left: 48%
+          - type: state-label # Температура
+            entity: sensor.bathroom_temperature
+            prefix: "Температура: "
+            style:
+              top: 64.5%
+              left: 43.5%
+          - type: state-label # Влажность
+            entity: sensor.bathroom_humidity
+            prefix: "Влажность: "
+            style:
+              top: 66.5%
+              left: 43.5%
+          - type: state-icon # Датчик протечки №1
+            entity: binary_sensor.bathroom_leak_1
+            style:
+              top: 69.5%
+              left: 43%
+          - type: state-icon # Датчик протечки №2
+            entity: binary_sensor.bathroom_leak_2
+            style:
+              top: 69.5%
+              left: 46%
+          - type: state-icon # Водоснабжение
+            entity: switch.water_valve
+            style:
+              top: 69.5%
+              left: 39%
+
+  # Обзор комнат
+  - title: "Обзор комнат"
+    path: rooms
+    icon: mdi:home
+    cards:
+      - type: alarm-panel
+        #name: "Охранная система"
+        entity: alarm_control_panel.home
+        states:
+          - arm_away
+          - arm_night
+      - type: entities
+        title: "Коридор"
+        show_header_toggle: false
+        entities:
+          - light.hallway
+          - light.gateway
+          - sensor.hallway_temperature
+          - sensor.hallway_humidity
+          - entity: binary_sensor.hallway_motion
+            secondary_info: last-changed
+            state_color: true
+      - type: entities
+        title: "Спальня"
+        show_header_toggle: false
+        entities:
+          - light.bedroom
+          - entity: media_player.desktop_pc
+            state_color: true
+          - sensor.bedroom_temperature
+          - sensor.bedroom_humidity
+      - type: entities
+        title: "Зал"
+        show_header_toggle: false
+        entities:
+          - light.lounge_first
+          - light.lounge_second
+          - entity: media_player.lounge_tv
+            icon: mdi:television
+            state_color: true
+          - sensor.lounge_temperature
+          - sensor.lounge_humidity
+      - type: entities
+        title: "Кухня"
+        show_header_toggle: false
+        entities:
+          - light.kitchen
+          - entity: media_player.kitchen_tv
+            state_color: true
+          - entity: climate.kitchen
+            state_color: true
+          - entity: climate.gas_boiler
+            state_color: true
+          - entity: climate.warm_floor
+            state_color: true
+          - sensor.kitchen_temperature
+          - entity: binary_sensor.kitchen_leak
+            secondary_info: last-changed
+            state_color: true
+      - type: entities
+        title: "Лоджия"
+        show_header_toggle: false
+        entities:
+          - light.loggia
+          - sensor.loggia_temperature
+          - sensor.loggia_humidity
+          - sensor.loggia_pressure
+      - type: entities
+        title: "Ванная"
+        show_header_toggle: false
+        entities:
+          - light.bathroom
+          - entity: climate.bathroom
+            state_color: true
+          - sensor.bathroom_temperature
+          - entity: binary_sensor.bathroom_leak_1
+            secondary_info: last-changed
+            state_color: true
+          - entity: binary_sensor.bathroom_leak_2
+            secondary_info: last-changed
+            state_color: true
+          - entity: switch.water_valve
+            state_color: true
+
+  # Энергоснабжение
+  - title: "Энергоснабжение"
+    path: electric
+    icon: mdi:flash
+    cards:
+      - type: gauge
+        entity: sensor.energy_line_voltage
+        min: 180
+        max: 280
+        severity:
+          green: 215
+          yellow: 0
+          red: 245
+      - type: history-graph
+        title: "Сетевое напряжение"
+        hours_to_show: 24
+        refresh_interval: 30
+        entities:
+          - entity: sensor.energy_line_voltage
+      - type: gauge
+        entity: sensor.energy_line_frequency
+        min: 49
+        max: 51
+        severity:
+          green: 49.95
+          yellow: 0
+          red: 50.06
+      - type: history-graph
+        title: "Коэффициент мощности"
+        hours_to_show: 24
+        refresh_interval: 30
+        entities:
+          - entity: sensor.energy_line_coefficient
+      - type: gauge
+        entity: sensor.energy_line_current
+        min: 0
+        max: 40
+        severity:
+          green: 0
+          yellow: 12
+          red: 24
+      - type: history-graph
+        title: "Нагрузка на сеть"
+        hours_to_show: 24
+        refresh_interval: 30
+        entities:
+          - entity: sensor.energy_line_current
+      - type: entities
+        title: "Потребление за час"
+        entities:
+          - entity: sensor.energy_line_hourly_kwh
+          - entity: sensor.energy_line_hourly_rub
+      - type: entities
+        title: "Потребление за день"
+        entities:
+          - entity: sensor.energy_line_daily_kwh
+          - entity: sensor.energy_line_daily_rub
+      - type: entities
+        title: "Потребление за месяц"
+        entities:
+          - entity: sensor.energy_line_monthly_kwh
+          - entity: sensor.energy_line_monthly_rub
+
+  # Погодные условия
+  - title: "Погодные условия"
+    path: weather
+    icon: mdi:cloud
+    cards:
+      - type: custom:weather-card-chart
+        title: "Прогноз погоды"
+        weather: weather.dark_sky
+      - type: history-graph
+        title: "Атмосферное давление"
+        hours_to_show: 24
+        refresh_interval: 30
+        entities:
+          - entity: sensor.loggia_pressure
+      - type: history-graph
+        title: "Уровень радиации"
+        hours_to_show: 24
+        refresh_interval: 30
+        entities:
+          - entity: sensor.radiation_level_filtered
+
+  # Мультимедиа
+  - title: "Мультимедиа"
+    path: multimedia
+    icon: mdi:youtube
+    cards:
+      - type: media-control
+        entity: media_player.desktop_pc
+      - type: media-control
+        entity: media_player.lounge_tv
+      - type: media-control
+        entity: media_player.kitchen_tv
+  # Элементы питания
+  - title: "Элементы питания"
+    path: batteries
+    icon: mdi:battery-charging
+    cards:
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: "Состояние батареек"
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: "sensor.*_battery"
+        sort:
+          method: state
+          numeric: true
+
+  # Сервис
+  - title: "Сервис"
+    path: service
+    icon: mdi:settings
+    cards:
+      - type: entities
+        title: "Сеть"
+        show_header_toggle: false
+        entities:
+          - sensor.ipv4_address_eth0
+          - sensor.speedtest_ping
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.network_in_last_hour
+          - sensor.network_out_last_hour
+      - type: entities
+        title: "Система"
+        show_header_toggle: false
+        entities:
+          - sensor.gateway_uptime
+          - sensor.last_boot
+          - sensor.home_assistant_v2_db
+          - sensor.memory_use_percent
+          - sensor.swap_use_percent
+          - sensor.disk_use_percent
+          - sensor.processor_use
+          - sensor.cpu_temperature
+      - type: entities
+        title: "Управление"
+        show_header_toggle: false
+        entities:
+          - entity: switch.gateway_join
+            state_color: true
+          - script.reboot_gateway
+          - script.create_system_backup
+          - script.restart_homeassistant
+          - script.reboot_server
+          - script.shutdown_server

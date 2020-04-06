@@ -1,0 +1,16 @@
+# Время работы шлюза
+- platform: mqtt
+  name: gateway_uptime
+  icon: mdi:timeline-clock
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bridge/config"
+  value_template: "{{ value_json.UptimeStr }}"
+
+# Карта ZigBee сети
+- platform: mqtt
+  name: gateway_map
+  state_topic: "/zigbee-ble/bridge/networkmap/raw"
+  value_template: >-
+    {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+  json_attributes_topic: "/zigbee-ble/bridge/networkmap/raw"

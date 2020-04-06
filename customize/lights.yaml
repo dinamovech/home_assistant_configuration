@@ -1,0 +1,20 @@
+# MegaD-2561
+light.hallway: # Прихожия
+  friendly_name: "Освещение"
+light.bedroom: # Спальная
+  friendly_name: "Освещение"
+light.lounge_first: # Зал
+  friendly_name: "Освещение (основное)"
+light.lounge_second:
+  friendly_name: "Освещение (дополнительное)"
+light.kitchen: # Кухня
+  friendly_name: "Освещение"
+light.loggia: # Лоджия
+  friendly_name: "Освещение"
+light.bathroom: # Ванная
+  friendly_name: "Освещение"
+
+# Подсветка ZigBee/Bluetooth шлюза
+light.gateway:
+  friendly_name: "Подсветка шлюза"
+  assumed_state: false

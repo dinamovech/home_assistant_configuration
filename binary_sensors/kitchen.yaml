@@ -1,0 +1,11 @@
+# Датчик протечки
+- platform: mqtt
+  name: kitchen_leak
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/kitchen_leak"
+  value_template: >-
+    {% if value_json.water_leak == true %}
+      {{'ON'}}
+    {% else %}
+      {{'OFF'}}
+    {% endif %}

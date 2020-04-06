@@ -1,0 +1,75 @@
+##############################################################
+# УВЕДОМЛЕНИЯ ПРИ ВЫХОДЕ ПАРАМЕТРОВ СЕРВЕРА ЗА ПРЕДЕЛЫ НОРМЫ #
+##############################################################
+
+# Слишком большой размер базы данных
+- alias: big_history_db_file
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.home_assistant_v2_db
+      above: 1024
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "База данных умного дома стала слишком большой! Ее размер составляет {{ trigger.to_state | int }} Мб."
+
+# Оперативная память переполнена
+- alias: full_ram_memory
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.memory_use_percent
+      above: 90
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "На сервере умного дома осталось слишком мало свободной оперативной памяти! На данный момент занято {{ trigger.to_state | int }}%."
+
+# Файл подкачки переполнен
+- alias: full_swap_file
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.swap_use_percent
+      above: 90
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "На сервере умного дома осталось слишком мало свободного места в файле подкачки! На данный момент он заполнен на {{ trigger.to_state | int }}%."
+
+# Жесткий диск переполнен
+- alias: full_hdd_disk
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.disk_use_percent
+      above: 90
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "На сервере умного дома осталось слишком мало свободного места на жестком диске! На данный момент он заполнен на {{ trigger.to_state | int }}%."
+
+# Высокая нагрузка на процессор
+- alias: high_cpu_load
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.processor_use
+      above: 90
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Сервер умного дома испытывает слишком большую нагрузку на центральный процессор! На данный момент она составляет {{ trigger.to_state | int }}%."
+
+# Высокая температура процессора
+- alias: high_cpu_temperature
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.cpu_temperature
+      above: 65
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Температура центрального процессора на сервере умного дома вышла за пределы нормы и составляет {{ trigger.to_state | int }}°C."

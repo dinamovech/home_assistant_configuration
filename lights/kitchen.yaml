@@ -1,0 +1,16 @@
+######################
+# ОСВЕЩЕНИЕ НА КУХНЕ #
+######################
+
+- platform: mqtt
+  name: kitchen
+  command_topic: "megad/cmd"
+  payload_on: '{"port":4,"value":"ON"}'
+  payload_off: '{"port":4,"value":"OFF"}'
+  state_topic: "megad/4"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":4,"value":"ON"}
+    {% else %}
+      {"port":4,"value":"OFF"}
+    {% endif %}

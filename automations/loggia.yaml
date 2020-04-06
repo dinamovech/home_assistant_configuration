@@ -1,0 +1,15 @@
+# Повышенный уровень радиации
+- alias: high_radiation_notify
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.radiation_level_filtered
+      above: 30
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.radiation_accuracy
+      above: 100
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Радиационный фон превысил норму и составляет {{ trigger.to_state | int }} микрорентген в час!"

@@ -1,0 +1,50 @@
+# Датчик температуры/влажности
+- platform: mqtt # Температура
+  name: bathroom_temperature
+  icon: mdi:thermometer
+  unit_of_measurement: "°C"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_sensor"
+  value_template: "{{ value_json.temperature | round(2) }}"
+- platform: mqtt # Влажность
+  name: bathroom_humidity
+  icon: mdi:water-percent
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_sensor"
+  value_template: "{{ value_json.humidity | round(2) }}"
+  force_update: true
+- platform: mqtt # Уровень заряда
+  name: bathroom_sensor_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_sensor"
+  value_template: "{{ value_json.battery }}"
+
+# Датчик протечки №1 (уровень заряда)
+- platform: mqtt
+  name: bathroom_leak_1_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_leak_1"
+  value_template: "{{ value_json.battery }}"
+
+# Датчик протечки №2 (уровень заряда)
+- platform: mqtt
+  name: bathroom_leak_2_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_leak_2"
+  value_template: "{{ value_json.battery }}"
+
+# Кнопка включения вентиляции (уровень заряда)
+- platform: mqtt
+  name: bathroom_button_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bathroom_button"
+  value_template: "{{ value_json.battery }}"

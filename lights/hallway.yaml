@@ -1,0 +1,31 @@
+########################
+# ОСВЕЩЕНИЕ В КОРИДОРЕ #
+########################
+
+# Основное освещение
+- platform: mqtt
+  name: hallway
+  command_topic: "megad/cmd"
+  payload_on: '{"port":0,"value":"ON"}'
+  payload_off: '{"port":0,"value":"OFF"}'
+  state_topic: "megad/0"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":0,"value":"ON"}
+    {% else %}
+      {"port":0,"value":"OFF"}
+    {% endif %}
+
+# Подсветка шлюза
+- platform: mqtt
+  name: gateway
+  availability_topic: "/zigbee-ble/bridge/state"
+  command_topic: "/zigbee-ble/led"
+  rgb_command_topic: "/zigbee-ble/led"
+  rgb_command_template: >-
+    {
+      "mode": "manual",
+      "hex": "#{{ '%02x%02x%02x' | format(red, green, blue) }}"
+    }
+  on_command_type: "brightness"
+  payload_off: '{"mode": "auto"}'

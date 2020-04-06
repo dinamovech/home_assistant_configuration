@@ -1,0 +1,17 @@
+########################
+# ВЕНТИЛЯТОРЫ В ВАННОЙ #
+########################
+
+- platform: mqtt
+  name: bathroom
+  command_topic: "megad/cmd"
+  payload_on: '{"port":7,"value":"ON"}'
+  payload_off: '{"port":7,"value":"OFF"}'
+  state_topic: "megad/7"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":7,"value":"ON"}
+    {% else %}
+      {"port":7,"value":"OFF"}
+    {% endif %}
+  speeds: []

@@ -1,0 +1,23 @@
+# ИБП
+# https://www.home-assistant.io/integrations/telnet/
+- platform: telnet
+  switches:
+    pc_ups:
+      resource: "192.168.1.201"
+      port: 23
+      command_on: "C"
+      command_off: "S00R0000"
+      command_state: "Q1"
+      value_template: '{{ value != "" }}'
+
+# Компьютер
+# https://www.home-assistant.io/integrations/wake_on_lan/
+- platform: wake_on_lan
+  name: desktop_pc
+  mac: "48:5B:39:AA:52:2A"
+  host: "192.168.1.200"
+  turn_off:
+    service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown 
+      input: desktop_pc

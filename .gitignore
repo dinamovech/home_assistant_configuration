@@ -1,0 +1,22 @@
+# Ignore folders
+/.cloud/
+/.git/
+/.ssh/
+/.storage/
+/custom_components/
+/deps/
+/tts/
+/www/community/
+__pycache__/
+
+# Ignore files
+/.gitattributes
+/.HA_VERSION
+/home-assistant.log
+/home-assistant_v2.db
+/home-assistant_v2.db-shm
+/home-assistant_v2.db-wal
+/ip_bans.yaml
+/known_devices.yaml
+/secrets.yaml
+*.pyc

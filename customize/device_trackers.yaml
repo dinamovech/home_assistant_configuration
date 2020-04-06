@@ -1,0 +1,5 @@
+# Отслеживаемые устройства
+device_tracker.9c_99_a0_af_ff_39:
+  friendly_name: "Xiaomi RedMi 2 (Wi-Fi подключение)"
+device_tracker.mobile_ha_client:
+  friendly_name: "Xiaomi RedMi 2 (HA Client)"

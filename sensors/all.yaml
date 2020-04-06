@@ -1,0 +1,25 @@
+# Средняя температура в квартире (для отопления)
+- platform: template
+  sensors:
+    home_temperature:
+      unit_of_measurement: "°C"
+      value_template: >-
+        {% set rooms_temperatures = 
+          [
+            states("sensor.hallway_temperature"),
+            states("sensor.bedroom_temperature"),
+            states("sensor.lounge_temperature"),
+            states("sensor.kitchen_temperature"),
+            states("sensor.loggia_temperature"),
+            states("sensor.bathroom_temperature"),
+          ]
+        %}
+        {% set avg_temperatere = namespace(summ = 0, count = 0) %}
+        {% for current_temperature in rooms_temperatures %}
+          {% set current_temperature = (current_temperature | float) %}
+          {% if current_temperature %}
+            {% set avg_temperatere.summ = (avg_temperatere.summ + current_temperature) %}
+            {% set avg_temperatere.count = (avg_temperatere.count + 1) %}
+          {% endif %}
+        {% endfor %}
+        {{ (avg_temperatere.summ / avg_temperatere.count) | float | round(2) }}

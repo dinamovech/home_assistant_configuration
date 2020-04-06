@@ -1,0 +1,35 @@
+# Управление подсветкой шлюза в ночном режиме
+- alias: turnon_gateway_light_when_hallway_motion_detected # Обнаружено движение в комнате
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion
+      to: "on"
+  condition:
+    - condition: state # Ночной режим включен
+      entity_id: alarm_control_panel.home
+      state: "armed_night"
+    - condition: numeric_state # И в комнате темно
+      entity_id: sensor.hallway_illuminance
+      below: 5
+  action: # Включаем подсветку
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway
+        rgb_color: [255, 127, 0]
+        brightness: 127
+- alias: turnoff_gateway_light_when_hallway_motion_lost # Движение закончено или включили свет
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion
+      to: "off"
+    - platform: state
+      entity_id: light.hallway
+      to: "on"
+  condition:
+    - condition: state # Ночной режим включен
+      entity_id: alarm_control_panel.home
+      state: "armed_night"
+  action: # Выключаем подсветку
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway

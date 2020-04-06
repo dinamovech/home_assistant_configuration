@@ -1,0 +1,114 @@
+# SDM-220
+# https://www.home-assistant.io/integrations/sensor.modbus/
+# https://www.aggsoft.ru/serial-data-logger/tutorials/modbus-data-logging/eastron-sdm220.htm
+- platform: modbus
+  scan_interval: 30
+  registers:
+    - name: energy_line_voltage # Напряжение
+      hub: elfin
+      register: 0
+      register_type: input
+      count: 2
+      data_type: float
+      precision: 2
+    - name: energy_line_current # Ток
+      hub: elfin
+      register: 6
+      register_type: input
+      count: 2
+      data_type: float
+      precision: 2
+    #- name: energy_line_active_power # Активная мощность
+    #  hub: elfin
+    #  register: 12
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_apparent_power # Кажущаяся мощность
+    #  hub: elfin
+    #  register: 18
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_reactive_power # Реактивная мощность
+    #  hub: elfin
+    #  register: 24
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    - name: energy_line_coefficient # Коэффициент преобразования мощности
+      hub: elfin
+      register: 30
+      register_type: input
+      count: 2
+      data_type: float
+      precision: 2
+    #- name: energy_line_phase_angle # Фазовый угол
+    #  hub: elfin
+    #  register: 36
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    - name: energy_line_frequency # Частота
+      hub: elfin
+      register: 70
+      register_type: input
+      count: 2
+      data_type: float
+      precision: 2
+    - name: energy_line_reverse_active_energy # Обратная активная энергия
+      hub: elfin
+      register: 72
+      register_type: input
+      count: 2
+      data_type: float
+      precision: 2
+    #- name: energy_line_direct_active_energy # Прямая активная энергия
+    #  hub: elfin
+    #  register: 74
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_reverse_reactive_energy # Обратная реактивная энергия
+    #  hub: elfin
+    #  register: 76
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_direct_reactive_energy # Прямая реактивная энергия
+    #  hub: elfin
+    #  register: 78
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_total_active_energy # Суммарная активная энергия
+    #  hub: elfin
+    #  register: 342
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+    #- name: energy_line_total_reactive_energy # Суммарная реактивная энергия
+    #  hub: elfin
+    #  register: 344
+    #  register_type: input
+    #  count: 2
+    #  data_type: float
+    #  precision: 2
+
+# Стоимость потребленной электроэнергии
+- platform: template
+  sensors:
+    energy_line_hourly_rub: # За час
+      value_template: "{{ (states.sensor.energy_line_hourly_kwh.state | float * 2.57)|round(2) }}"
+    energy_line_daily_rub: # За день
+      value_template: "{{ (states.sensor.energy_line_daily_kwh.state | float * 2.57)|round(2) }}"
+    energy_line_monthly_rub: # За месяц
+      value_template: "{{ (states.sensor.energy_line_monthly_kwh.state | float * 2.57)|round(2) }}"

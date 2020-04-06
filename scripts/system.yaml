@@ -1,0 +1,17 @@
+# Обновление SSL сертификата
+update_ssl_certificate:
+  sequence:
+    - service: hassio.addon_restart
+      data:
+        addon: core_letsencrypt
+
+# Перезагрузка ZigBee/Bluetooth шлюза
+reboot_gateway:
+  sequence:
+    - service: browser_mod.toast
+      data:
+        message: "Выполняется перезагрузка ZigBee/BLE шлюза..."
+    - service: mqtt.publish
+      data:
+        topic: "/zigbee-ble/reboot"
+        payload: "true"

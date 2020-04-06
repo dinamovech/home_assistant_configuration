@@ -1,0 +1,30 @@
+#####################################
+# КЛИМАТИЧЕСКИЕ УСТРОЙСТВА НА КУХНЕ #
+#####################################
+# https://www.home-assistant.io/integrations/generic_thermostat/
+
+# Газовый котел
+- platform: generic_thermostat
+  name: gas_boiler
+  heater: switch.gas_boiler
+  target_sensor: sensor.home_temperature
+  cold_tolerance: 0.05
+  hot_tolerance: 0
+  precision: 0.1
+  away_temp: 20
+
+# Насос теплого пола
+- platform: generic_thermostat
+  name: warm_floor
+  heater: switch.warm_floor
+  #target_sensor: sensor.floor_pump_temperature
+  target_sensor: sensor.home_temperature
+  ac_mode: true
+  initial_hvac_mode: "cool"
+
+# Вытяжка
+- platform: generic_hygrostat
+  name: kitchen
+  dryer: fan.kitchen
+  target_sensor: sensor.kitchen_humidity
+  initial_hvac_mode: dry

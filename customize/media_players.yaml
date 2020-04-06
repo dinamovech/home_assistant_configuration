@@ -1,0 +1,14 @@
+# Настольный компьютер
+media_player.desktop_pc:
+  friendly_name: "Настольный компьютер"
+  icon: mdi:desktop-classic
+
+# Телевизор в зале
+media_player.lounge_tv:
+  friendly_name: "Телевизор в зале"
+  icon: mdi:television
+
+# Телевизор на кухне
+media_player.kitchen_tv:
+  friendly_name: "Телевизор на кухне"
+  icon: mdi:television

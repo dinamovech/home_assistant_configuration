@@ -1,0 +1,26 @@
+# Режим спаривания ZigBee/Bluetooth шлюза
+- platform: mqtt
+  name: gateway_join
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/bridge/config"
+  value_template: "{{ value_json.permit_join }}"
+  state_on: true
+  state_off: false
+  command_topic: "/zigbee-ble/bridge/config/permit_join"
+  payload_on: "true"
+  payload_off: "false"
+
+
+# Охранная система
+- platform: mqtt
+  name: security_system
+  command_topic: "megad/cmd"
+  payload_on: '{"port":29,"value":"ON"}'
+  payload_off: '{"port":29,"value":"OFF"}'
+  state_topic: "megad/29"
+  value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":29,"value":"ON"}
+    {% else %}
+      {"port":29,"value":"OFF"}
+    {% endif %}

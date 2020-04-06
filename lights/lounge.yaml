@@ -1,0 +1,29 @@
+####################
+# ОСВЕЩЕНИЕ В ЗАЛЕ #
+####################
+
+- platform: mqtt
+  name: lounge_first
+  command_topic: "megad/cmd"
+  payload_on: '{"port":2,"value":"ON"}'
+  payload_off: '{"port":2,"value":"OFF"}'
+  state_topic: "megad/2"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":2,"value":"ON"}
+    {% else %}
+      {"port":2,"value":"OFF"}
+    {% endif %}
+
+- platform: mqtt
+  name: lounge_second
+  command_topic: "megad/cmd"
+  payload_on: '{"port":3,"value":"ON"}'
+  payload_off: '{"port":3,"value":"OFF"}'
+  state_topic: "megad/3"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":3,"value":"ON"}
+    {% else %}
+      {"port":3,"value":"OFF"}
+    {% endif %}

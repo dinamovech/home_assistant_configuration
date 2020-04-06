@@ -1,0 +1,33 @@
+# Создание резервной копии
+create_system_backup:
+  sequence:
+    - service: browser_mod.toast
+      data_template:
+        message: "Выполняется создание файла резервной копии \"Full Snapshot {{ now().strftime('%Y-%m-%d %H:%M:%S') }}\"..."
+    - service: hassio.snapshot_full
+      data_template:
+        name: Full Snapshot {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+
+# Перезагрузка Home Assistant
+restart_homeassistant:
+  sequence:
+    - service: browser_mod.toast
+      data:
+        message: "Выполняется перезагрузка Home Assistant..."
+    - service: homeassistant.restart
+
+# Перезагрузка сервера
+reboot_server:
+  sequence:
+    - service: browser_mod.toast
+      data:
+        message: "Выполняется перезагрузка Raspberry PI..."
+    - service: hassio.host_reboot
+
+# Выключить сервер
+shutdown_server:
+  sequence:
+    - service: browser_mod.toast
+      data:
+        message: "Выполняется выключение Raspberry PI..."
+    - service: hassio.host_shutdown

@@ -1,0 +1,3 @@
+# Инициатор срабатывания охранной сигнализации
+security_trigger_source:
+  initial: ""

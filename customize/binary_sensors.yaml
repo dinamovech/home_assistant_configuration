@@ -1,0 +1,19 @@
+# Датчик протечки №1 в ванной
+binary_sensor.bathroom_leak_1:
+  friendly_name: "Датчик протечки №1 в ванной"
+  device_class: moisture
+
+# Датчик протечки №2 в ванной
+binary_sensor.bathroom_leak_2:
+  friendly_name: "Датчик протечки №2 в ванной"
+  device_class: moisture
+
+# Датчик протечки на кухне
+binary_sensor.kitchen_leak:
+  friendly_name: "Датчик протечки на кухне"
+  device_class: moisture
+
+# Датчик движения в коридоре
+binary_sensor.hallway_motion:
+  friendly_name: "Датчик движения в коридоре"
+  device_class: motion

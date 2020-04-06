@@ -1,0 +1,123 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+homeassistant:
+  customize: !include_dir_merge_named customize/
+  # Authorization
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.0.0/16
+        - fc00::/7
+      allow_bypass_login: true
+    - type: homeassistant
+  # For filesize sensor
+  whitelist_external_dirs:
+    - /config
+
+# Lovelace UI
+lovelace:
+  mode: yaml
+  resources:
+  - url: /hacsfiles/lovelace-weather-card-chart/weather-card-chart.js
+    type: module
+  - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+    type: module
+  - url: /browser_mod.js
+    type: module
+
+# Yandex icons
+frontend:
+  extra_html_url:
+    - /hacsfiles/ha-yandex-icons/yandex-icons.html
+
+# https://github.com/thomasloven/hass-browser_mod
+browser_mod:
+  disable:
+    - all
+
+# Using SSL/TLS
+http:
+  base_url: home.io-net.ru:8123
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+# History
+recorder:
+  purge_keep_days: 7
+  include: # Включить в историю
+    domains:
+      - sensor
+      - climate
+      - input_boolean
+  exclude: # Исключить из истории
+    entities:
+      # Системные
+      - sensor.ipv4_address_eth0
+      - sensor.last_boot
+      - sensor.home_assistant_v2_db
+      - sensor.snapshot_backup
+      - sensor.gateway_uptime
+      - sensor.gateway_map
+      - sensor.hacs
+      # Датчик радиации (храним только отфильтрованные)
+      - sensor.radiation_level
+      - sensor.radiation_accuracy
+      # Состояние батареек датчиков
+      - sensor.bathroom_sensor_battery
+      - sensor.bathroom_leak_1_battery
+      - sensor.bathroom_leak_2_battery
+      - sensor.bathroom_button_battery
+      - sensor.bedroom_sensor_battery
+      - sensor.hallway_sensor_battery
+      - sensor.kitchen_sensor_battery
+      - sensor.kitchen_leak_battery
+      - sensor.loggia_sensor_battery
+      - sensor.lounge_sensor_battery
+      # Разное
+      - sensor.hallway_illuminance
+
+# HACS (https://hacs.xyz)
+hacs:
+  token: !secret hacs_token
+
+# Speedtest.net
+speedtestdotnet:
+  server_id: 3682 # Moscow Rostelecom
+
+# Weather
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    mode: daily
+    units: ca
+
+# Elfin-EE11
+modbus:
+  name: elfin
+  type: tcp
+  host: 192.168.1.4
+  port: 502
+
+# Devices
+sensor: !include_dir_merge_list sensors/
+binary_sensor: !include_dir_merge_list binary_sensors/
+switch: !include_dir_merge_list switches/
+light: !include_dir_merge_list lights/
+fan: !include_dir_merge_list fans/
+climate: !include_dir_merge_list climates/
+media_player: !include_dir_merge_list media_players/
+utility_meter: !include_dir_merge_named utility_meters/
+
+# Other
+group: !include groups.yaml
+automation: !include_dir_merge_list automations/
+script: !include_dir_merge_named scripts/
+input_text: !include_dir_merge_named input_texts/
+rest_command: !include rest_commands.yaml
+alarm_control_panel: !include alarm_control_panel.yaml
+
+# Voice assistant
+yandex_smart_home: !include yandex_smart_home.yaml

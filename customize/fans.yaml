@@ -1,0 +1,7 @@
+# Вентиляция в ванной
+fan.bathroom:
+  friendly_name: "Вентиляция"
+
+# Вытяжка на кухне
+fan.kitchen:
+  friendly_name: "Вытяжка"

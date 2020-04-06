@@ -1,0 +1,16 @@
+#######################
+# ОСВЕЩЕНИЕ В СПАЛЬНЕ #
+#######################
+
+- platform: mqtt
+  name: bedroom
+  command_topic: "megad/cmd"
+  payload_on: '{"port":1,"value":"ON"}'
+  payload_off: '{"port":1,"value":"OFF"}'
+  state_topic: "megad/1"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":1,"value":"ON"}
+    {% else %}
+      {"port":1,"value":"OFF"}
+    {% endif %}

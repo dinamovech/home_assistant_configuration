@@ -1,0 +1,20 @@
+# Скрипты
+script.update_ssl_certificate:
+  friendly_name: "Обновить SSL сертификат"
+  icon: mdi:certificate
+script.reboot_gateway:
+  friendly_name: "Перезагрузить шлюз"
+  icon: mdi:zigbee
+script.create_system_backup:
+  friendly_name: "Создать резервную копию"
+  icon: mdi:cloud-upload
+  can_cancel: false
+script.restart_homeassistant:
+  friendly_name: "Перезагрузить систему"
+  icon: mdi:home-assistant
+script.reboot_server:
+  friendly_name: "Перезагрузить сервер"
+  icon: mdi:reload
+script.shutdown_server:
+  friendly_name: "Выключить сервер"
+  icon: mdi:power

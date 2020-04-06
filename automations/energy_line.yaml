@@ -1,0 +1,57 @@
+##################################################################
+# УВЕДОМЛЕНИЯ ПРИ ВЫХОДЕ ПАРАМЕТРОВ ЭЛЕКТРОСЕТИ ЗА ПРЕДЕЛЫ НОРМЫ #
+##################################################################
+
+# Сетевое напряжение вышло за пределы нормы
+- alias: bad_energy_line_voltage
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.energy_line_voltage
+      below: 200
+    - platform: numeric_state
+      entity_id: sensor.energy_line_voltage
+      above: 260
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Сетевое напряжение вышло за пределы нормы и составляет {{ trigger.to_state | int }} вольт!"
+
+# Сетевая частота вышла за пределы нормы
+- alias: bad_energy_line_frequency
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.energy_line_frequency
+      below: 49
+    - platform: numeric_state
+      entity_id: sensor.energy_line_frequency
+      above: 51
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Сетевая частота вышла за пределы нормы и составляет {{ trigger.to_state | int }} герц!"
+
+# Электрическая нагрузка вышла за пределы нормы
+- alias: bad_energy_line_current
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.energy_line_current
+      above: 24
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Электрическая нагрузка на сеть вышла за пределы нормы и составляет {{ trigger.to_state | int }} ампер!"
+
+# Коэффициент преобразования электрической мощности вышел за пределы нормы
+- alias: bad_energy_line_coefficient
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.energy_line_coefficient
+      below: 0.4
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Коэффициент преобразования электрической мощности вышел за пределы нормы и составляет {{ trigger.to_state | float }}!"

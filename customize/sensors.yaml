@@ -1,0 +1,212 @@
+# Speedtest
+sensor.speedtest_ping:
+  friendly_name: "Интернет соединение"
+  unit_of_measurement: "мс"
+  icon: mdi:internet-explorer
+sensor.speedtest_download:
+  friendly_name: "Входящее соединение"
+  icon: mdi:download-network
+sensor.speedtest_upload:
+  friendly_name: "Исходящее соединение"
+  icon: mdi:upload-network
+
+# Системный монитор
+sensor.ipv4_address_eth0:
+  friendly_name: "Локальный IP-адрес"
+  icon: mdi:earth
+sensor.network_in_eth0:
+  friendly_name: "Принятые данные"
+  icon: mdi:download
+sensor.network_out_eth0:
+  friendly_name: "Отправленные данные"
+  icon: mdi:upload
+sensor.network_in_last_hour:
+  friendly_name: "Принято данных за час"
+  icon: mdi:download
+  unit_of_measurement: "Мб"
+sensor.network_out_last_hour:
+  friendly_name: "Отправлено данных за час"
+  icon: mdi:upload
+  unit_of_measurement: "Мб"
+sensor.gateway_uptime:
+  friendly_name: "Время работы шлюза"
+  unit_of_measurement: ""
+  icon: mdi:clock
+sensor.last_boot:
+  friendly_name: "Дата загрузки сервера"
+  icon: mdi:calendar-clock
+sensor.memory_use_percent:
+  friendly_name: "Оперативная память"
+  icon: mdi:chip
+sensor.swap_use_percent:
+  friendly_name: "Файл подкачки"
+  icon: mdi:file-settings-variant
+sensor.disk_use_percent:
+  friendly_name: "Жесткий диск"
+  icon: mdi:harddisk
+sensor.processor_use:
+  friendly_name: "Загрузка процессора"
+  icon: mdi:memory
+sensor.cpu_temperature:
+  friendly_name: "Температура процессора"
+  unit_of_measurement: "°C"
+
+# Размер файла home_assistant_v2.db
+sensor.home_assistant_v2_db:
+  friendly_name: "Размер файла истории"
+  icon: mdi:file-chart
+
+# SDM-220
+sensor.energy_line_voltage:
+  friendly_name: "Напряжение"
+  unit_of_measurement: "В"
+sensor.energy_line_current:
+  friendly_name: "Ток"
+  unit_of_measurement: "А"
+#sensor.energy_line_active_power:
+#  friendly_name: "Активная мощность"
+#  unit_of_measurement: "Вт"
+#sensor.energy_line_apparent_power:
+#  friendly_name: "Кажущаяся мощность"
+#  unit_of_measurement: "ВА"
+#sensor.energy_line_reactive_power:
+#  friendly_name: "Реактивная мощность"
+#  unit_of_measurement: "ВАр"
+sensor.energy_line_coefficient:
+  friendly_name: "Коэффициент преобразования мощности"
+  unit_of_measurement: " "
+#sensor.energy_line_phase_angle:
+#  friendly_name: "Фазовый угол"
+#  unit_of_measurement: "°"
+sensor.energy_line_frequency:
+  friendly_name: "Частота"
+  unit_of_measurement: "Гц"
+sensor.energy_line_reverse_active_energy:
+  friendly_name: "Обратная активная энергия"
+  unit_of_measurement: "кВт/ч"
+#sensor.energy_line_direct_active_energy:
+#  friendly_name: "Прямая активная энергия"
+#  unit_of_measurement: "кВт/ч"
+#sensor.energy_line_reverse_reactive_energy:
+#  friendly_name: "Обратная реактивная энергия"
+#  unit_of_measurement: "кВАр/ч"
+#sensor.energy_line_direct_reactive_energy:
+#  friendly_name: "Прямая реактивная энергия"
+#  unit_of_measurement: "кВАр/ч"
+#sensor.energy_line_total_active_energy:
+#  friendly_name: "Суммарная активная энергия"
+#  unit_of_measurement: "кВт/ч"
+#sensor.energy_line_total_reactive_energy:
+#  friendly_name: "Суммарная реактивная энергия"
+#  unit_of_measurement: "кВАр/ч"
+
+# Часовое потребление электроэнергии
+sensor.energy_line_hourly_kwh:
+  friendly_name: "Электроэнергия"
+sensor.energy_line_hourly_rub:
+  friendly_name: "Стоимость"
+  unit_of_measurement: "₽"
+  icon: mdi:cash-100
+# Дневное потребление электроэнергии
+sensor.energy_line_daily_kwh:
+  friendly_name: "Электроэнергия"
+sensor.energy_line_daily_rub:
+  friendly_name: "Стоимость"
+  unit_of_measurement: "₽"
+  icon: mdi:cash-100
+# Месячное потребление электроэнергии
+sensor.energy_line_monthly_kwh:
+  friendly_name: "Электроэнергия"
+sensor.energy_line_monthly_rub:
+  friendly_name: "Стоимость"
+  unit_of_measurement: "₽"
+  icon: mdi:cash-100
+
+# ESP Radiation Meter
+sensor.radiation_level:
+  friendly_name: "Уровень радиации"
+  unit_of_measurement: "мкР/ч"
+sensor.radiation_accuracy:
+  friendly_name: "Точность измерений"
+  unit_of_measurement: "%"
+#sensor.radiation_voltage:
+#  friendly_name: "Напряжение датчика"
+#  unit_of_measurement: "В"
+# Отфильтрованное значение
+sensor.radiation_level_filtered:
+  friendly_name: "Усредненные значения"
+  unit_of_measurement: "мкР/ч"
+
+# Датчик температуры/влажности в ванной
+sensor.bathroom_temperature:
+  friendly_name: "Температура"
+sensor.bathroom_humidity:
+  friendly_name: "Влажность"
+sensor.bathroom_sensor_battery:
+  friendly_name: "Датчик температуры/влажности в ванной"
+
+# Датчики протечки в ванной
+sensor.bathroom_leak_1_battery:
+  friendly_name: "Датчик протечки №1 в ванной"
+sensor.bathroom_leak_2_battery:
+  friendly_name: "Датчик протечки №2 в ванной"
+
+# Кнопка вентиляции в ванной
+sensor.bathroom_button_battery:
+  friendly_name: "Кнопка вентиляции в ванной"
+
+# Датчики протечки на кухне
+sensor.kitchen_leak_battery:
+  friendly_name: "Датчик протечки на кухне"
+
+# Датчик температуры/влажности на кухне
+sensor.kitchen_temperature:
+  friendly_name: "Температура"
+sensor.kitchen_humidity:
+  friendly_name: "Влажность"
+sensor.kitchen_sensor_battery:
+  friendly_name: "Датчик температуры/влажности на кухне"
+
+# Датчик температуры насоса теплого пола
+sensor.floor_pump_temperature:
+  friendly_name: "Температура теплого пола"
+sensor.floor_pump_sensor_battery:
+  friendly_name: "Датчик температуры теплого пола"
+
+# Датчик температуры/влажности/давления на лоджии
+sensor.loggia_temperature:
+  friendly_name: "Температура"
+sensor.loggia_humidity:
+  friendly_name: "Влажность"
+sensor.loggia_pressure:
+  friendly_name: "Давление"
+sensor.loggia_sensor_battery:
+  friendly_name: "Датчик температуры/влажности на лоджии"
+
+# Датчик температуры/влажности в коридоре
+sensor.hallway_temperature:
+  friendly_name: "Температура"
+sensor.hallway_humidity:
+  friendly_name: "Влажность"
+sensor.hallway_sensor_battery:
+  friendly_name: "Датчик температуры/влажности в коридоре"
+
+# Датчик движения в коридоре
+sensor.hallway_motion_battery:
+  friendly_name: "Датчик движения в коридоре"
+
+# Датчик температуры/влажности в спальне
+sensor.bedroom_temperature:
+  friendly_name: "Температура"
+sensor.bedroom_humidity:
+  friendly_name: "Влажность"
+sensor.bedroom_sensor_battery:
+  friendly_name: "Датчик температуры/влажности в спальне"
+
+# Датчик температуры/влажности в зале
+sensor.lounge_temperature:
+  friendly_name: "Температура"
+sensor.lounge_humidity:
+  friendly_name: "Влажность"
+sensor.lounge_sensor_battery:
+  friendly_name: "Датчик температуры/влажности в зале"

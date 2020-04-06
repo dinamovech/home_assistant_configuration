@@ -1,0 +1,161 @@
+###########################
+# СИСТЕМНЫЕ АВТОМАТИЗАЦИИ #
+###########################
+
+# Проверка срока действия и обновление SSL сертификата
+- alias: letsencrypt_renewal
+  trigger:
+    - platform: time
+      at: "00:00:00"
+  action:
+    - service: script.update_ssl_certificate
+
+
+# Запуск теста Speedtest при старте системы
+- alias: speedtest_autostart
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: speedtestdotnet.speedtest
+
+
+# Отправка оповещений в web интерфей при каждом notify.notify
+- alias: notify_to_persistent_notification
+  trigger:
+    platform: event
+    event_type: call_service
+    event_data: 
+      domain: notify
+      service: notify
+  action:
+    - service: persistent_notification.create
+      data_template:
+        title: "{{ trigger.event.data.service_data.title }}"
+        message: "{{ trigger.event.data.service_data.message }}"
+
+
+# Отправка оповещений на Яндекс.Станцию при каждом notify.notify
+- alias: notify_to_yandex_station
+  trigger:
+    platform: event
+    event_type: call_service
+    event_data: 
+      domain: notify
+      service: notify
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.home
+      state: "disarmed"
+  action:
+    - service: rest_command.yandex_reminder
+      data_template:
+        title: "{{ trigger.event.data.service_data.title }}"
+        message: "{{ trigger.event.data.service_data.message }}"
+    #- service: tts.yandex_station_say
+    #  data_template:
+    #    entity_id: media_player.yandex_station_12345678901234567890
+    #    message: "{{ trigger.event.data.service_data.title }} {{ trigger.event.data.service_data.message }}"
+
+
+# Оповещение о необходимости замены батарейки в беспроводном датчике
+- alias: low_battery_triggering
+  trigger:
+    - platform: numeric_state
+      entity_id:
+        - sensor.bathroom_sensor_battery
+        - sensor.bathroom_leak_1_battery
+        - sensor.bathroom_leak_2_battery
+        - sensor.bathroom_button_battery
+        - sensor.bedroom_sensor_battery
+        - sensor.hallway_motion_battery
+        - sensor.hallway_sensor_battery
+        - sensor.kitchen_sensor_battery
+        - sensor.kitchen_leak_battery
+        - sensor.loggia_sensor_battery
+        - sensor.lounge_sensor_battery
+      below: 20
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: '{{ trigger.from_state.attributes.friendly_name }} нуждается в замене элемента питания (текущий уровень заряда состовляет {{ trigger.to_state }}%).'
+
+
+# Обновление значений датчиков при загрузке системы для корректной работы climate-интеграциями
+- alias: update_sensors_on_startup
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    # Уровень влажности на кухне
+    - service: homeassistant.update_entity
+      entity_id: sensor.kitchen_humidity
+    # Температура теплоносителя отопления
+    - service: homeassistant.update_entity
+      entity_id: sensor.floor_pump_temperature
+    # Уровень влажности в ванной комнате
+    - service: homeassistant.update_entity
+      entity_id: sensor.bathroom_humidity
+    # Средняя температура в квартире
+    - service: homeassistant.update_entity
+      entity_id: sensor.home_temperature
+
+
+# Опрос состояния выходов MegaD
+- alias: update_megad_on_startup
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: time_pattern
+      minutes: "/5"
+  action:
+    #- service: mqtt.publish
+    #  data:
+    #    topic: "megad/cmd"
+    #    payload: '{"port":[29,0,1,2,3,4,5,6,7]}'
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":29}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":0}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":1}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":2}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":3}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":4}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":5}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":6}'
+    - delay: "00:00:01"
+    - service: mqtt.publish
+      data:
+        topic: "megad/cmd"
+        payload: '{"port":7}'
+    - delay: "00:00:01"

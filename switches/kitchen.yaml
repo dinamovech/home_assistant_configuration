@@ -1,0 +1,15 @@
+# Газовый котел
+- platform: mqtt
+  name: gas_boiler
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/gas_boiler"
+  value_template: "{{ value_json.state_l1 }}"
+  command_topic: "/zigbee-ble/gas_boiler/set/state_l1"
+
+# Насос теплого пола
+- platform: mqtt
+  name: warm_floor
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/gas_boiler"
+  value_template: "{{ value_json.state_l2 }}"
+  command_topic: "/zigbee-ble/gas_boiler/set/state_l2"

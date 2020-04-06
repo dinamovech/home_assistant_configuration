@@ -1,0 +1,16 @@
+# Телевизор в зале
+# https://www.home-assistant.io/integrations/lg_netcast/
+- platform: lg_netcast
+  name: lounge_tv
+  host: "192.168.1.202"
+  access_token: !secret lg_smarttv_key
+  turn_on_action:
+    service: mqtt.publish
+    data:
+      topic: "cmnd/ir-remote/irsend"
+      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x20DF10EF","DataLSB":"0x04FB08F7","Repeat":0}'
+
+# Телевизор на кухне
+- platform: universal
+  name: kitchen_tv
+  children: []

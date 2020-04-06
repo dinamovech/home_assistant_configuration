@@ -1,0 +1,19 @@
+# Газовый котел на кухне
+climate.gas_boiler:
+  friendly_name: "Газовое отопление"
+  icon: mdi:water-boiler
+
+# Насос теплого пола
+climate.warm_floor:
+  friendly_name: "Насос теплого пола"
+  icon: mdi:car-defrost-rear
+
+# Вытяжка над плитой
+climate.kitchen:
+  friendly_name: "Вытяжка"
+  icon: mdi:fan
+
+# Вентиляция в ванной
+climate.bathroom:
+  friendly_name: "Вентиляция"
+  icon: mdi:fan

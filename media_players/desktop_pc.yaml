@@ -1,0 +1,12 @@
+# Настольный компьютер
+# https://www.home-assistant.io/integrations/universal/
+- platform: universal
+  name: desktop_pc
+  children: []
+  commands:
+    turn_on:
+      service: script.turnon_desktop_pc_and_ups
+    turn_off:
+      service: script.turnoff_desktop_pc_and_ups
+  attributes:
+    state: switch.desktop_pc

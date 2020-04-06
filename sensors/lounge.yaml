@@ -1,0 +1,22 @@
+# Датчик температуры/влажности
+- platform: mqtt # Температура
+  name: lounge_temperature
+  icon: mdi:thermometer
+  unit_of_measurement: "°C"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/lounge_sensor"
+  value_template: "{{ value_json.temperature | round(2) }}"
+- platform: mqtt # Влажность
+  name: lounge_humidity
+  icon: mdi:water-percent
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/lounge_sensor"
+  value_template: "{{ value_json.humidity | round(2) }}"
+- platform: mqtt # Уровень заряда
+  name: lounge_sensor_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/lounge_sensor"
+  value_template: "{{ value_json.battery }}"

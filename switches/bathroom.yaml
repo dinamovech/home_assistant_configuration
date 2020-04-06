@@ -1,0 +1,7 @@
+# Водоснабжение
+- platform: mqtt
+  name: water_valve
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/water_valve"
+  value_template: "{{ value_json.state }}"
+  command_topic: "/zigbee-ble/water_valve/set/state"

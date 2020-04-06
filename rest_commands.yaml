@@ -1,0 +1,10 @@
+# Yandex reminder
+yandex_reminder:
+  url: "https://calendar.yandex.ru/api/models"
+  method: POST
+  content_type: application/json
+  headers:
+    x-yandex-maya-ckey: !secret yandex_maya_ckey
+    Cookie: !secret yandex_cookie
+  verify_ssl: false
+  payload: '{"models":[{"name":"do-update-reminder","params":{"id":"00000000-00000000-00000000-00000000","name":"бы узнать что {{ message }}","reminderDate":"{{ (utcnow().strftime("%s") | int + 5) | timestamp_custom("%Y-%m-%dT%H:%M:%S%z")}}","channels":{"sup":{"title":"{{ title }}","uri":"dialog:\/\/?directives=%5B%7B%22name%22%3A%22update_form%22%2C%22payload%22%3A%7B%22form_update%22%3A%7B%22name%22%3A%22personal_assistant.scenarios.alarm_reminder%22%2C%22slots%22%3A%5B%7B%22name%22%3A%22push_reminder_id%22%2C%22optional%22%3Atrue%2C%22type%22%3A%22string%22%2C%22value%22%3A%2200000000-00000000-00000000-00000000%22%7D%5D%7D%2C%22resubmit%22%3Atrue%7D%2C%22type%22%3A%22server_action%22%7D%5D"}}}}]}'

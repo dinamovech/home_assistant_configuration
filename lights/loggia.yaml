@@ -1,0 +1,16 @@
+#######################
+# ОСВЕЩЕНИЕ НА ЛОДЖИИ #
+#######################
+
+- platform: mqtt
+  name: loggia
+  command_topic: "megad/cmd"
+  payload_on: '{"port":5,"value":"ON"}'
+  payload_off: '{"port":5,"value":"OFF"}'
+  state_topic: "megad/5"
+  state_value_template: >-
+    {% if value_json.value == "ON" %}
+      {"port":5,"value":"ON"}
+    {% else %}
+      {"port":5,"value":"OFF"}
+    {% endif %}

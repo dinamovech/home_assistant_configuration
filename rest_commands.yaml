@@ -1,4 +1,4 @@
-# Yandex reminder
+# Уведомления Яндекс.Календаря
 yandex_reminder:
   url: "https://calendar.yandex.ru/api/models"
   method: POST

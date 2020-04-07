@@ -1,6 +1,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
- 
+
 homeassistant:
   customize: !include_dir_merge_named customize/
   # Authorization

@@ -1,7 +1,6 @@
 # Ignore folders
 /.cloud/
 /.git/
-/.ssh/
 /.storage/
 /custom_components/
 /deps/

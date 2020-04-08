@@ -17,6 +17,7 @@ all_lights:
 all_open_sensors:
   name: "Датчики открытия"
   entities:
+    - binary_sensor.hallway_door
 
 # Датчики разбития окон
 all_vibration_sensors:

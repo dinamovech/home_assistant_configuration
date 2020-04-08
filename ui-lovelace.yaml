@@ -17,7 +17,7 @@ views:
             entity: light.hallway
             style:
               top: 53.5%
-              left: 35.3%
+              left: 35%
           - type: state-icon # Подсветка шлюза
             entity: light.gateway
             style:
@@ -40,6 +40,11 @@ views:
             style:
               top: 53.5%
               left: 30%
+          - type: state-icon # Датчик входной двери
+            entity: binary_sensor.hallway_door
+            style:
+              top: 58.1%
+              left: 35%
           # Спальня
           - type: state-icon # Освещение
             tap_action:
@@ -236,6 +241,9 @@ views:
           - sensor.hallway_temperature
           - sensor.hallway_humidity
           - entity: binary_sensor.hallway_motion
+            secondary_info: last-changed
+            state_color: true
+          - entity: binary_sensor.hallway_door
             secondary_info: last-changed
             state_color: true
       - type: entities

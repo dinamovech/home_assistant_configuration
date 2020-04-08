@@ -17,3 +17,7 @@ binary_sensor.kitchen_leak:
 binary_sensor.hallway_motion:
   friendly_name: "Датчик движения в коридоре"
   device_class: motion
+
+# Датчик открытия входной двери
+binary_sensor.hallway_door:
+  friendly_name: "Датчик входной двери"

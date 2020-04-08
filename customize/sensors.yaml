@@ -195,6 +195,10 @@ sensor.hallway_sensor_battery:
 sensor.hallway_motion_battery:
   friendly_name: "Датчик движения в коридоре"
 
+# Датчик открытия входной двери
+sensor.hallway_door_battery:
+  friendly_name: "Датчик входной двери"
+
 # Датчик температуры/влажности в спальне
 sensor.bedroom_temperature:
   friendly_name: "Температура"

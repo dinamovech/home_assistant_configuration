@@ -36,3 +36,12 @@
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/hallway_motion"
   value_template: "{{ value_json.battery }}"
+
+# Датчик открытия входной двери
+- platform: mqtt # Уровень заряда
+  name: hallway_door_battery
+  icon: mdi:battery-high
+  unit_of_measurement: "%"
+  availability_topic: "/zigbee-ble/bridge/state"
+  state_topic: "/zigbee-ble/hallway_door"
+  value_template: "{{ value_json.battery }}"

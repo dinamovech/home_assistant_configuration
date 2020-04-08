@@ -16,5 +16,5 @@
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/hallway_door"
   value_template: "{{ value_json.contact }}"
-  payload_on: true
-  payload_off: false
+  payload_on: false
+  payload_off: true

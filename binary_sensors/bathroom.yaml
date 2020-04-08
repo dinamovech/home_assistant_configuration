@@ -1,26 +1,22 @@
 # Датчик протечки №1
 - platform: mqtt
   name: bathroom_leak_1
+  device_class: moisture
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/bathroom_leak_1"
-  value_template: >-
-    {% if value_json.water_leak == true %}
-      {{'ON'}}
-    {% else %}
-      {{'OFF'}}
-    {% endif %}
+  value_template: "{{ value_json.water_leak }}"
+  payload_on: true
+  payload_off: false
 
 # Датчик протечки №2
 - platform: mqtt
   name: bathroom_leak_2
+  device_class: moisture
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/bathroom_leak_2"
-  value_template: >-
-    {% if value_json.water_leak == true %}
-      {{'ON'}}
-    {% else %}
-      {{'OFF'}}
-    {% endif %}
+  value_template: "{{ value_json.water_leak }}"
+  payload_on: true
+  payload_off: false
 
 # Кнопка включения вентиляции
 # single, double, triple, quadruple
@@ -28,9 +24,6 @@
   name: bathroom_button_single # Однократное нажатие
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/bathroom_button"
-  value_template: >-
-    {% if value_json.click == 'single' %}
-      {{'ON'}}
-    {% else %}
-      {{'OFF'}}
-    {% endif %}
+  value_template: "{{ value_json.click }}"
+  payload_on: "single"
+  payload_off: ""

@@ -3,7 +3,7 @@
 - platform: telnet
   switches:
     pc_ups:
-      resource: "192.168.1.201"
+      resource: "192.168.1.6"
       port: 23
       command_on: "C"
       command_off: "S00R0000"
@@ -15,7 +15,7 @@
 - platform: wake_on_lan
   name: desktop_pc
   mac: "48:5B:39:AA:52:2A"
-  host: "192.168.1.200"
+  host: "192.168.1.5"
   turn_off:
     service: hassio.addon_stdin
     data:

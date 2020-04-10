@@ -2,7 +2,7 @@
 # https://www.home-assistant.io/integrations/lg_netcast/
 - platform: lg_netcast
   name: lounge_tv
-  host: "192.168.1.202"
+  host: "192.168.1.7"
   access_token: !secret lg_smarttv_key
   turn_on_action:
     service: mqtt.publish

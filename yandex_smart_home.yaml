@@ -1,8 +1,5 @@
 # https://github.com/dmitry-k/yandex_smart_home
 
-# TODO: температура отпления / теплого пола
-# TODO: датчики температуры в комнатах
-
 filter:
   include_entities:
     # Коридор
@@ -26,7 +23,7 @@ filter:
     - media_player.kitchen_tv
     # Ванная
     - light.bathroom
-    - fan.bathroom
+    - switch.bathroom_fan
 
 entity_config:
   # Коридор
@@ -80,6 +77,6 @@ entity_config:
   light.bathroom:
     name: "Свет"
     room: "Ванная"
-  fan.bathroom:
+  switch.bathroom_fan:
     name: "Вентиляция"
     room: "Ванная"

@@ -5,3 +5,16 @@
   state_topic: "/zigbee-ble/water_valve"
   value_template: "{{ value_json.state }}"
   command_topic: "/zigbee-ble/water_valve/set/state"
+
+# Вентиляция (гиростат)
+- platform: template
+  switches:
+    bathroom_fan:
+      value_template: "{{ is_state('climate.bathroom', 'fan_only') }}"
+      turn_on:
+        service: climate.set_hvac_mode
+        entity_id: climate.bathroom
+        data:
+          hvac_mode: "fan_only"
+      turn_off:
+        service: script.bathroom_turnoff_fan_only_mode

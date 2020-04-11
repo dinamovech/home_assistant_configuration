@@ -3,9 +3,26 @@ anti_jamming_water_valve:
   sequence:
     - condition: state
       entity_id: switch.water_valve
-      state: 'on'
+      state: "on"
     - service: switch.turn_off
       entity_id: switch.water_valve
     - delay: "00:00:10"
     - service: switch.turn_on
       entity_id: switch.water_valve
+
+# Отключение fan_only режима вентиляции
+bathroom_turnoff_fan_only_mode:
+  sequence:
+    - service: climate.set_hvac_mode # Отключаем вентиляцию
+      entity_id: climate.bathroom
+      data:
+        hvac_mode: "off"
+    - condition: state # Если свет в ванной отключен
+      entity_id: light.bathroom
+      state: "off"
+    - condition: template # И ночной режим не активирован
+      value_template: "{{ not is_state('alarm_control_panel.home', 'armed_night') }}"
+    - service: climate.set_hvac_mode # Включаем режим осушения
+      entity_id: climate.bathroom
+      data:
+        hvac_mode: "dry"

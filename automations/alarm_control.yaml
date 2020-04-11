@@ -207,13 +207,10 @@
   trigger:
     - platform: state
       entity_id:
+        - group.all_open_sensors # Открыто дверь/окно
         - group.all_vibration_sensors # Разбито окно
         - group.all_motion_sensors # Движение в квартире
       to: "on"
-    - platform: state
-      entity_id:
-        - group.all_open_sensors # Открыто дверь/окно
-      to: "off"
   condition:
     - condition: state
       entity_id: alarm_control_panel.home

@@ -1,22 +1,8 @@
 # Управление гиростатом в зависимости от ночного режима
-- alias: turnoff_kitchen_climate_when_night_mode_enabled # Ночной режим вкл
+- alias: control_kitchen_climate_when_night_changed
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
-      to: "armed_night"
-  action: # Отключаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.kitchen
-      data:
-        hvac_mode: "off"
-- alias: turnoff_kitchen_climate_when_night_mode_disabled # Ночной режим выкл
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "armed_night"
-      to: "disarmed"
-  action: # Включаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.kitchen
-      data:
-        hvac_mode: "dry"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.kitchen_fan

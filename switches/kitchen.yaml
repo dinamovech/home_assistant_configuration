@@ -13,3 +13,16 @@
   state_topic: "/zigbee-ble/gas_boiler"
   value_template: "{{ value_json.state_l2 }}"
   command_topic: "/zigbee-ble/gas_boiler/set/state_l2"
+
+# Вытяжка (гиростат)
+- platform: template
+  switches:
+    kitchen_fan:
+      value_template: "{{ is_state('climate.kitchen', 'fan_only') }}"
+      turn_on:
+        service: climate.set_hvac_mode
+        entity_id: climate.kitchen
+        data:
+          hvac_mode: "fan_only"
+      turn_off:
+        service: script.kitchen_turnoff_fan_only_mode

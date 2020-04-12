@@ -1,0 +1,13 @@
+# Отключение fan_only режима вытяжки
+kitchen_turnoff_fan_only_mode:
+  sequence:
+    - service: climate.set_hvac_mode # Отключаем вытяжку
+      entity_id: climate.kitchen
+      data:
+        hvac_mode: "off"
+    - condition: template # Если ночной режим не активирован
+      value_template: "{{ not is_state('alarm_control_panel.home', 'armed_night') }}"
+    - service: climate.set_hvac_mode # Включаем режим осушения
+      entity_id: climate.kitchen
+      data:
+        hvac_mode: "dry"

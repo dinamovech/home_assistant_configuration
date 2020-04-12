@@ -17,9 +17,9 @@ filter:
     - light.loggia
     # Кухня
     - light.kitchen
-    - fan.kitchen
     - climate.gas_boiler
     - climate.warm_floor
+    - switch.kitchen_fan
     - media_player.kitchen_tv
     # Ванная
     - light.bathroom
@@ -61,14 +61,14 @@ entity_config:
   light.kitchen:
     name: "Свет"
     room: "Кухня"
-  fan.kitchen:
-    name: "Вытяжка"
-    room: "Кухня"
   climate.gas_boiler:
     name: "Отопление"
     room: "Кухня"
   climate.warm_floor:
     name: "Теплый пол"
+    room: "Кухня"
+  switch.kitchen_fan:
+    name: "Вытяжка"
     room: "Кухня"
   media_player.kitchen_tv:
     name: "Телевизор"

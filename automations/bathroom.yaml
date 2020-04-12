@@ -22,109 +22,24 @@
         message: "Сработал {{ trigger.from_state.attributes.friendly_name | lower }}! Водоснабжение квартиры было отключено."
 
 
-# Управление гиростатом в зависимости от состояния освещения
-- alias: turnoff_bathroom_climate_when_light_turnon # Включили свет
+# Управление гиростатом в зависимости от состояния освещения и ночного режима
+- alias: control_bathroom_climate_when_light_changed # Включили свет
   trigger:
     - platform: state
       entity_id: light.bathroom
-      to: "on"
-  action: # Отключаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "off"
-
-- alias: turnon_bathroom_climate_when_light_turnoff # Отключили свет
-  trigger:
-    - platform: state
-      entity_id: light.bathroom
-      to: "off"
-  condition: # И ночной режим отключен
-    - condition: template
-      value_template: "{{ not is_state('alarm_control_panel.home', 'armed_night') }}"
-  action: # Включаем режим осушения на гиростате
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "dry"
-
-- alias: turnoff_bathroom_climate_when_light_turnoff # Отключили свет
-  trigger:
-    - platform: state
-      entity_id: light.bathroom
-      to: "off"
-  condition: # И ночной режим включен
-    - condition: template
-      value_template: "{{ is_state('alarm_control_panel.home', 'armed_night') }}"
-  action: # Отключаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "off"
-
-
-# Управление гиростатом в зависимости от ночного режима
-- alias: turnoff_bathroom_climate_when_night_mode_enabled # Ночной режим отключился
-  trigger:
     - platform: state
       entity_id: alarm_control_panel.home
-      to: "armed_night"
-  action: # Отключаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "off"
-
-- alias: turnoff_bathroom_climate_when_night_mode_disabled # Ночной режим отключился
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "armed_night"
-      to: "disarmed"
-  condition: # И свет тоже отключен
-    - condition: state
-      entity_id: light.bathroom
-      state: "off"
-  action: # Включаем режим осушения на гиростате
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "dry"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bathroom_fan
 
 
 # Включение/отключение вентиляции по нажатии на кнопку
-- alias: turnon_bathroom_fan_when_button_pushed
+- alias: toggle_bathroom_fan_when_button_pushed
   trigger:
     - platform: state
       entity_id: binary_sensor.bathroom_button_single
       to: "on"
-  condition:
-    - condition: state # Только при включенном свете
-      entity_id: light.bathroom
-      state: "on"
-    - condition: state # И отключенном гиростате
-      entity_id: climate.bathroom
-      state: "off"
-  action: # Включаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "fan_only"
-
-- alias: turnoff_bathroom_fan_when_button_pushed
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.bathroom_button_single
-      to: "on"
-  condition:
-    - condition: state # Только при включенном свете
-      entity_id: light.bathroom
-      state: "on"
-    - condition: state # И включенном гиростате
-      entity_id: climate.bathroom
-      state: "fan_only"
-  action: # Отключаем гиростат
-    - service: climate.set_hvac_mode
-      entity_id: climate.bathroom
-      data:
-        hvac_mode: "off"
+  action: # Переключаем гиростат
+    - service: switch.toggle
+      entity_id: switch.bathroom_fan

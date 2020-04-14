@@ -68,12 +68,15 @@
         - sensor.bathroom_leak_2_battery
         - sensor.bathroom_button_battery
         - sensor.bedroom_sensor_battery
+        - sensor.floor_pump_sensor_battery
+        - sensor.hallway_door_battery
         - sensor.hallway_motion_battery
         - sensor.hallway_sensor_battery
         - sensor.kitchen_sensor_battery
         - sensor.kitchen_leak_battery
         - sensor.loggia_sensor_battery
         - sensor.lounge_sensor_battery
+        - sensor.xiaomi_robot_battery
       below: 20
   action:
     - service: notify.notify

@@ -13,6 +13,7 @@ filter:
     - light.lounge_first
     - light.lounge_second
     - media_player.lounge_tv
+    - vacuum.xiaomi_robot
     # Лоджия
     - light.loggia
     # Кухня
@@ -52,6 +53,9 @@ entity_config:
     room: "Зал"
   media_player.lounge_tv:
     name: "Телевизор"
+    room: "Зал"
+  vacuum.xiaomi_robot:
+    name: "Робот пылесос"
     room: "Зал"
   # Лоджия
   light.loggia:

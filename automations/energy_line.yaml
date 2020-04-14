@@ -15,7 +15,7 @@
     - service: notify.notify
       data_template:
         title: "Внимание!"
-        message: "Сетевое напряжение вышло за пределы нормы и составляет {{ trigger.to_state | int }} вольт!"
+        message: "Сетевое напряжение вышло за пределы нормы и составляет {{ trigger.to_state.state | int }} вольт!"
 
 # Сетевая частота вышла за пределы нормы
 - alias: bad_energy_line_frequency
@@ -30,7 +30,7 @@
     - service: notify.notify
       data_template:
         title: "Внимание!"
-        message: "Сетевая частота вышла за пределы нормы и составляет {{ trigger.to_state | int }} герц!"
+        message: "Сетевая частота вышла за пределы нормы и составляет {{ trigger.to_state.state | int }} герц!"
 
 # Электрическая нагрузка вышла за пределы нормы
 - alias: bad_energy_line_current
@@ -42,7 +42,7 @@
     - service: notify.notify
       data_template:
         title: "Внимание!"
-        message: "Электрическая нагрузка на сеть вышла за пределы нормы и составляет {{ trigger.to_state | int }} ампер!"
+        message: "Электрическая нагрузка на сеть вышла за пределы нормы и составляет {{ trigger.to_state.state | int }} ампер!"
 
 # Коэффициент преобразования электрической мощности вышел за пределы нормы
 - alias: bad_energy_line_coefficient
@@ -54,4 +54,4 @@
     - service: notify.notify
       data_template:
         title: "Внимание!"
-        message: "Коэффициент преобразования электрической мощности вышел за пределы нормы и составляет {{ trigger.to_state | float }}!"
+        message: "Коэффициент преобразования электрической мощности вышел за пределы нормы и составляет {{ trigger.to_state.state | float }}!"

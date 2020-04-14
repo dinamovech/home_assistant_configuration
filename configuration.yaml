@@ -19,12 +19,14 @@ homeassistant:
 lovelace:
   mode: yaml
   resources:
-  - url: /hacsfiles/lovelace-weather-card-chart/weather-card-chart.js
-    type: module
-  - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
-    type: module
-  - url: /browser_mod.js
-    type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
+    - url: /hacsfiles/lovelace-weather-card-chart/weather-card-chart.js
+      type: module
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: module
+    - url: /browser_mod.js
+      type: module
 
 # Yandex icons
 frontend:
@@ -100,6 +102,14 @@ modbus:
   type: tcp
   host: 192.168.1.4
   port: 502
+
+# Xiaomi Mi Robot Vacuum
+# https://www.home-assistant.io/integrations/vacuum.xiaomi_miio/
+vacuum:
+  - platform: xiaomi_miio
+    name: xiaomi_robot
+    host: 192.168.1.15
+    token: !secret xiaomi_vacuum_token
 
 # Devices
 sensor: !include_dir_merge_list sensors/

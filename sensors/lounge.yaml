@@ -20,3 +20,11 @@
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/lounge_sensor"
   value_template: "{{ value_json.battery }}"
+
+# Робот-пылесос
+- platform: template
+  sensors:
+    xiaomi_robot_battery:
+      icon_template: mdi:battery-high
+      unit_of_measurement: "%"
+      value_template: "{{ state_attr('vacuum.xiaomi_robot', 'battery_level') }}"

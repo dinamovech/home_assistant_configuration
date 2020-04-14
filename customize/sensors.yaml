@@ -214,3 +214,7 @@ sensor.lounge_humidity:
   friendly_name: "Влажность"
 sensor.lounge_sensor_battery:
   friendly_name: "Датчик температуры/влажности в зале"
+
+# Робот-пылесос
+sensor.xiaomi_robot_battery:
+  friendly_name: "Робот-пылесос"

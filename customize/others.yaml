@@ -1,0 +1,4 @@
+# Робот-пылесос
+vacuum.xiaomi_robot:
+  friendly_name: "Робот-пылесос"
+  icon: mdi:robot-vacuum

@@ -90,6 +90,11 @@ views:
             style:
               top: 36%
               left: 69%
+          - type: state-icon # Робот пылесос
+            entity: vacuum.xiaomi_robot
+            style:
+              top: 23.5%
+              left: 69%
           - type: state-label # Температура
             entity: sensor.lounge_temperature
             prefix: "Температура: "
@@ -256,6 +261,8 @@ views:
           - light.lounge_second
           - entity: media_player.lounge_tv
             icon: mdi:television
+            state_color: true
+          - entity: vacuum.xiaomi_robot
             state_color: true
           - sensor.lounge_temperature
           - sensor.lounge_humidity

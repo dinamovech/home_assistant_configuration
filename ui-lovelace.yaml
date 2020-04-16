@@ -410,38 +410,44 @@ views:
     icon: mdi:robot-vacuum
     panel: true
     cards:
-      # https://github.com/PiotrMachowski/lovelace-xiaomi-vacuum-map-card
-      - type: custom:xiaomi-vacuum-map-card
-        entity: vacuum.xiaomi_robot
-        map_image: "/local/vacuum_map.png"
-        default_mode: predefined_zones
-        language: ru
-        calibration_points:
-          - vacuum:
-              x: 17300
-              y: 25850
-            map:
-              x: 460
-              y: 125
-          - vacuum:
-              x: 17300
-              y: 20500
-            map:
-              x: 460
-              y: 675
-          - vacuum:
-              x: 27750
-              y: 20500
-            map:
-              x: 1485
-              y: 675
-        zones:
-          - [[17325, 22220, 18480, 23190], [18480, 22080, 22450, 23190]]
-          - [[17325, 23370, 20630, 25855]]
-          - [[20810, 23370, 25855, 25855], [21550, 23030, 25855, 23373]]
-          - [[22620, 20760, 25855, 22870], [25855, 20960, 26560, 22610]]
-          - [[26560, 20810, 27480, 25855]]
-          - [[19720, 20760, 22450, 21970]]
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: vacuum.xiaomi_robot
+                state_color: true
+          # https://github.com/PiotrMachowski/lovelace-xiaomi-vacuum-map-card
+          - type: custom:xiaomi-vacuum-map-card
+            entity: vacuum.xiaomi_robot
+            map_image: "/local/vacuum_map.png"
+            default_mode: predefined_zones
+            language: ru
+            calibration_points:
+              - vacuum:
+                  x: 17300
+                  y: 25850
+                map:
+                  x: 460
+                  y: 125
+              - vacuum:
+                  x: 17300
+                  y: 20500
+                map:
+                  x: 460
+                  y: 675
+              - vacuum:
+                  x: 27750
+                  y: 20500
+                map:
+                  x: 1485
+                  y: 675
+            zones:
+              - [[17325, 22220, 18480, 23190], [18480, 22080, 22450, 23190]]
+              - [[17325, 23370, 20630, 25855]]
+              - [[20810, 23370, 25855, 25855], [21550, 23030, 25855, 23373]]
+              - [[22620, 20760, 25855, 22870], [25855, 20960, 26560, 22610]]
+              - [[26560, 20810, 27480, 25855]]
+              - [[19720, 20760, 22450, 21970]]
 
   # Элементы питания
   - title: "Элементы питания"

@@ -68,7 +68,7 @@
         - sensor.bathroom_leak_2_battery
         - sensor.bathroom_button_battery
         - sensor.bedroom_sensor_battery
-        - sensor.floor_pump_sensor_battery
+        - sensor.coolant_sensor_battery
         - sensor.hallway_door_battery
         - sensor.hallway_motion_battery
         - sensor.hallway_sensor_battery
@@ -94,9 +94,9 @@
     # Уровень влажности на кухне
     - service: homeassistant.update_entity
       entity_id: sensor.kitchen_humidity
-    # Температура теплоносителя отопления
+    # Температура теплоносителя
     - service: homeassistant.update_entity
-      entity_id: sensor.floor_pump_temperature
+      entity_id: sensor.coolant_temperature
     # Уровень влажности в ванной комнате
     - service: homeassistant.update_entity
       entity_id: sensor.bathroom_humidity

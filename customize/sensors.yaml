@@ -167,11 +167,11 @@ sensor.kitchen_humidity:
 sensor.kitchen_sensor_battery:
   friendly_name: "Датчик температуры/влажности на кухне"
 
-# Датчик температуры насоса теплого пола
-sensor.floor_pump_temperature:
-  friendly_name: "Температура теплого пола"
-sensor.floor_pump_sensor_battery:
-  friendly_name: "Датчик температуры теплого пола"
+# Датчик температуры теплоносителя
+sensor.coolant_temperature:
+  friendly_name: "Температура теплоносителя"
+sensor.coolant_sensor_battery:
+  friendly_name: "Датчик температуры теплоносителя"
 
 # Датчик температуры/влажности/давления на лоджии
 sensor.loggia_temperature:

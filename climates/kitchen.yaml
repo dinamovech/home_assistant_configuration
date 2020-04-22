@@ -17,8 +17,7 @@
 - platform: generic_thermostat
   name: warm_floor
   heater: switch.warm_floor
-  #target_sensor: sensor.floor_pump_temperature
-  target_sensor: sensor.home_temperature
+  target_sensor: sensor.coolant_temperature
   ac_mode: true
   initial_hvac_mode: "cool"
 

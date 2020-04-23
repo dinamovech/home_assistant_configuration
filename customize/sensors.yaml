@@ -1,15 +1,3 @@
-# Speedtest
-sensor.speedtest_ping:
-  friendly_name: "Интернет соединение"
-  unit_of_measurement: "мс"
-  icon: mdi:internet-explorer
-sensor.speedtest_download:
-  friendly_name: "Входящее соединение"
-  icon: mdi:download-network
-sensor.speedtest_upload:
-  friendly_name: "Исходящее соединение"
-  icon: mdi:upload-network
-
 # Системный монитор
 sensor.ipv4_address_eth0:
   friendly_name: "Локальный IP-адрес"

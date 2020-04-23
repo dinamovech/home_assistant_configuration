@@ -476,9 +476,6 @@ views:
         show_header_toggle: false
         entities:
           - sensor.ipv4_address_eth0
-          - sensor.speedtest_ping
-          - sensor.speedtest_download
-          - sensor.speedtest_upload
           - sensor.network_in_last_hour
           - sensor.network_out_last_hour
       - type: entities

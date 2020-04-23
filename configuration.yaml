@@ -89,10 +89,6 @@ recorder:
 hacs:
   token: !secret hacs_token
 
-# Speedtest.net
-speedtestdotnet:
-  server_id: 3682 # Moscow Rostelecom
-
 # Weather
 weather:
   - platform: darksky

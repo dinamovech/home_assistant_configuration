@@ -2,20 +2,6 @@
 sensor.ipv4_address_eth0:
   friendly_name: "Локальный IP-адрес"
   icon: mdi:earth
-sensor.network_in_eth0:
-  friendly_name: "Принятые данные"
-  icon: mdi:download
-sensor.network_out_eth0:
-  friendly_name: "Отправленные данные"
-  icon: mdi:upload
-sensor.network_in_last_hour:
-  friendly_name: "Принято данных за час"
-  icon: mdi:download
-  unit_of_measurement: "Мб"
-sensor.network_out_last_hour:
-  friendly_name: "Отправлено данных за час"
-  icon: mdi:upload
-  unit_of_measurement: "Мб"
 sensor.gateway_uptime:
   friendly_name: "Время работы шлюза"
   unit_of_measurement: ""

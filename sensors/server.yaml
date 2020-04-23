@@ -8,26 +8,12 @@
   resources:
     - type: ipv4_address
       arg: eth0
-    - type: network_in
-      arg: eth0
-    - type: network_out
-      arg: eth0
     - type: last_boot
     - type: memory_use_percent
     - type: swap_use_percent
     - type: disk_use_percent
       arg: /
     - type: processor_use
-- platform: sql
-  queries:
-    - name: network_in_last_hour
-      query: "SELECT ((SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_in_eth0' ORDER BY `created` DESC LIMIT 1) - IFNULL((SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_in_eth0' AND `created` <= DATETIME('now', '-1 hour') ORDER BY `created` DESC LIMIT 1), (SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_in_eth0' ORDER BY `created` ASC LIMIT 1))) AS `state`;"
-      column: "state"
-      value_template: "{{ value | float(default=0) | round(1) }}"
-    - name: network_out_last_hour
-      query: "SELECT ((SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_out_eth0' ORDER BY `created` DESC LIMIT 1) - IFNULL((SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_out_eth0' AND `created` <= DATETIME('now', '-1 hour') ORDER BY `created` DESC LIMIT 1), (SELECT `state` FROM `states` WHERE `entity_id` = 'sensor.network_out_eth0' ORDER BY `created` ASC LIMIT 1))) AS `state`;"
-      column: "state"
-      value_template: "{{ value | float(default=0) | round(1) }}"
 - platform: command_line
   name: cpu_temperature
   command: "cat /sys/class/thermal/thermal_zone0/temp"

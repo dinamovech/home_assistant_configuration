@@ -11,15 +11,6 @@
     - service: script.update_ssl_certificate
 
 
-# Запуск теста Speedtest при старте системы
-- alias: speedtest_autostart
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    - service: speedtestdotnet.speedtest
-
-
 # Отправка оповещений в web интерфей при каждом notify.notify
 - alias: notify_to_persistent_notification
   trigger:

@@ -57,6 +57,9 @@ entity_config:
   vacuum.xiaomi_robot:
     name: "Робот пылесос"
     room: "Зал"
+    properties:
+      - type: battery_level
+        entity: sensor.xiaomi_robot_battery
   # Лоджия
   light.loggia:
     name: "Свет"
@@ -74,6 +77,9 @@ entity_config:
   switch.kitchen_fan:
     name: "Вытяжка"
     room: "Кухня"
+    properties:
+      - type: humidity
+        entity: sensor.kitchen_humidity
   media_player.kitchen_tv:
     name: "Телевизор"
     room: "Кухня"
@@ -84,3 +90,6 @@ entity_config:
   switch.bathroom_fan:
     name: "Вентиляция"
     room: "Ванная"
+    properties:
+      - type: humidity
+        entity: sensor.bathroom_humidity

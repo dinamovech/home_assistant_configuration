@@ -6,25 +6,36 @@ filter:
     - switch.security_system
     - light.hallway
     - light.gateway
+    - sensor.hallway_temperature
+
     # Спальня
     - light.bedroom
     - media_player.desktop_pc
+    - sensor.bedroom_temperature
+
     # Зал
     - light.lounge_first
     - light.lounge_second
     - media_player.lounge_tv
     - vacuum.xiaomi_robot
+    - sensor.lounge_temperature
+
     # Лоджия
     - light.loggia
+    - sensor.loggia_temperature
+
     # Кухня
     - light.kitchen
     - climate.gas_boiler
     - climate.warm_floor
     - switch.kitchen_fan
     - media_player.kitchen_tv
+    - sensor.kitchen_temperature
+
     # Ванная
     - light.bathroom
     - switch.bathroom_fan
+    - sensor.bathroom_temperature
 
 entity_config:
   # Коридор
@@ -37,6 +48,17 @@ entity_config:
   light.gateway:
     name: "Подсветка"
     room: "Коридор"
+  sensor.hallway_temperature:
+    name: "Датчики"
+    room: "Коридор"
+    properties:
+      - type: temperature
+        entity: sensor.hallway_temperature
+      - type: humidity
+        entity: sensor.hallway_humidity
+      - type: battery_level
+        entity: sensor.hallway_sensor_battery
+
   # Спальня
   light.bedroom:
     name: "Свет"
@@ -44,6 +66,17 @@ entity_config:
   media_player.desktop_pc:
     name: "Компьютер"
     room: "Спальня"
+  sensor.bedroom_temperature:
+    name: "Датчики"
+    room: "Спальня"
+    properties:
+      - type: temperature
+        entity: sensor.bedroom_temperature
+      - type: humidity
+        entity: sensor.bedroom_humidity
+      - type: battery_level
+        entity: sensor.bedroom_sensor_battery
+
   # Зал
   light.lounge_first:
     name: "Свет"
@@ -60,10 +93,34 @@ entity_config:
     properties:
       - type: battery_level
         entity: sensor.xiaomi_robot_battery
+  sensor.lounge_temperature:
+    name: "Датчики"
+    room: "Зал"
+    properties:
+      - type: temperature
+        entity: sensor.lounge_temperature
+      - type: humidity
+        entity: sensor.lounge_humidity
+      - type: battery_level
+        entity: sensor.lounge_sensor_battery
+
   # Лоджия
   light.loggia:
     name: "Свет"
     room: "Лоджия"
+  sensor.loggia_temperature:
+    name: "Датчики"
+    room: "Лоджия"
+    properties:
+      - type: temperature
+        entity: sensor.loggia_temperature
+      - type: humidity
+        entity: sensor.loggia_humidity
+      #- type: pressure
+      #  entity: sensor.loggia_pressure
+      - type: battery_level
+        entity: sensor.loggia_sensor_battery
+
   # Кухня
   light.kitchen:
     name: "Свет"
@@ -77,12 +134,20 @@ entity_config:
   switch.kitchen_fan:
     name: "Вытяжка"
     room: "Кухня"
-    properties:
-      - type: humidity
-        entity: sensor.kitchen_humidity
   media_player.kitchen_tv:
     name: "Телевизор"
     room: "Кухня"
+  sensor.kitchen_temperature:
+    name: "Датчики"
+    room: "Кухня"
+    properties:
+      - type: temperature
+        entity: sensor.kitchen_temperature
+      - type: humidity
+        entity: sensor.kitchen_humidity
+      - type: battery_level
+        entity: sensor.kitchen_sensor_battery
+
   # Ванная
   light.bathroom:
     name: "Свет"
@@ -90,6 +155,13 @@ entity_config:
   switch.bathroom_fan:
     name: "Вентиляция"
     room: "Ванная"
+  sensor.bathroom_temperature:
+    name: "Датчики"
+    room: "Ванная"
     properties:
+      - type: temperature
+        entity: sensor.bathroom_temperature
       - type: humidity
         entity: sensor.bathroom_humidity
+      - type: battery_level
+        entity: sensor.bathroom_sensor_battery

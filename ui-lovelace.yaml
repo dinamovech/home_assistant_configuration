@@ -9,6 +9,12 @@ views:
       - type: picture-elements
         image: "/local/home_map.png"
         elements:
+          # Охрана
+          - type: state-icon
+            entity: alarm_control_panel.home
+            style:
+              top: 66%
+              left: 30.9%
           # Коридор
           - type: state-icon # Освещение
             tap_action:
@@ -43,7 +49,7 @@ views:
             entity: binary_sensor.hallway_door
             style:
               top: 66%
-              left: 30%
+              left: 28.9%
           # Спальня
           - type: state-icon # Освещение
             tap_action:

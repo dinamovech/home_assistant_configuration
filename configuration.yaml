@@ -27,11 +27,8 @@ lovelace:
       type: module
     - url: /browser_mod.js
       type: module
-
-# Yandex icons
-frontend:
-  extra_html_url:
-    - /hacsfiles/ha-yandex-icons/yandex-icons.html
+    - url: /hacsfiles/ha-yandex-icons/yandex-icons.js
+      type: module
 
 # https://github.com/thomasloven/hass-browser_mod
 browser_mod:

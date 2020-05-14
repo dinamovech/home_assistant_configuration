@@ -38,7 +38,7 @@
   availability_topic: "/zigbee-ble/bridge/state"
   state_topic: "/zigbee-ble/coolant_sensor"
   # BATTERY = 100 * (CURRENT_VALUE - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)
-  value_template: "{{ (100*(value_json.l3_voltage-2.0)/(3.3-2.0)) | round(2) }}"
+  value_template: "{{ (100*(value_json.l3_voltage-1.85)/(3.3-1.85)) | round(2) }}"
 
 # Датчик протечки
 - platform: mqtt

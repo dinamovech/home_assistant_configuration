@@ -22,7 +22,7 @@
         message: "Сработал {{ trigger.from_state.attributes.friendly_name | lower }}! Водоснабжение квартиры было отключено."
 
 
-# Управление гиростатом в зависимости от состояния освещения и ночного режима
+# Управление гигростатом в зависимости от состояния освещения и ночного режима
 - alias: control_bathroom_climate_when_light_or_night_changed
   trigger:
     - platform: state
@@ -40,6 +40,6 @@
     - platform: state
       entity_id: binary_sensor.bathroom_button_single
       to: "on"
-  action: # Переключаем гиростат
+  action: # Переключаем гигростат
     - service: switch.toggle
       entity_id: switch.bathroom_fan

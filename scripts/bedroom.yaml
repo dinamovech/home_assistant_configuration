@@ -3,9 +3,9 @@
 # Включение стационарного компьютера + ИБП
 turnon_desktop_pc_and_ups:
   sequence:
-    - service: switch.turn_on
-      entity_id: switch.pc_ups
-    - delay: "00:00:01"
+    #- service: switch.turn_on
+    #  entity_id: switch.pc_ups
+    #- delay: "00:00:01"
     - service: switch.turn_on
       entity_id: switch.desktop_pc
 
@@ -14,7 +14,7 @@ turnoff_desktop_pc_and_ups:
   sequence:
     - service: switch.turn_off
       entity_id: switch.desktop_pc
-    - wait_template: "{{ is_state('switch.desktop_pc', 'off') }}"
-    - delay: "00:00:10"
-    - service: switch.turn_off
-      entity_id: switch.pc_ups
+    #- wait_template: "{{ is_state('switch.desktop_pc', 'off') }}"
+    #- delay: "00:00:10"
+    #- service: switch.turn_off
+    #  entity_id: switch.pc_ups

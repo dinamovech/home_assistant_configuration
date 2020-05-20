@@ -37,7 +37,6 @@ browser_mod:
 
 # Using SSL/TLS
 http:
-  base_url: home.io-net.ru:8123
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   ip_ban_enabled: true

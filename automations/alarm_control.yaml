@@ -102,6 +102,9 @@
         state: "armed_away"
       - condition: state
         entity_id: alarm_control_panel.home
+        state: "arming"
+      - condition: state
+        entity_id: alarm_control_panel.home
         state: "pending"
       - condition: state
         entity_id: alarm_control_panel.home
@@ -121,7 +124,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
-      from: "pending"
+      from: "arming"
       to: "armed_away"
   action:
     - service: input_text.set_value # Забываем имя инициатора сработки
@@ -155,6 +158,10 @@
       to: "disarmed"
     - platform: state
       entity_id: alarm_control_panel.home
+      from: "arming"
+      to: "disarmed"
+    - platform: state
+      entity_id: alarm_control_panel.home
       from: "pending"
       to: "disarmed"
     - platform: state
@@ -178,9 +185,12 @@
         entity_id: automation.enable_night_mode
         skip_condition: false
 
-# Действия во время pending-ожидания
-- alias: away_mode_before_pending_actions
+# Действия во время arming/pending-ожидания
+- alias: away_mode_before_arming_pending_actions
   trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home
+      to: "arming"
     - platform: state
       entity_id: alarm_control_panel.home
       to: "pending"
@@ -192,8 +202,11 @@
 
 
 # Действия после pending-ожидания
-- alias: away_mode_after_pending_actions
+- alias: away_mode_after_arming_pending_actions
   trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home
+      from: "arming"
     - platform: state
       entity_id: alarm_control_panel.home
       from: "pending"

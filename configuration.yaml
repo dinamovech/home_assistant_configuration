@@ -118,7 +118,6 @@ media_player: !include_dir_merge_list media_players/
 utility_meter: !include_dir_merge_named utility_meters/
 
 # Other
-group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/
 input_text: !include_dir_merge_named input_texts/

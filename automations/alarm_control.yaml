@@ -61,42 +61,63 @@
 # РЕЖИМ ОХРАНЫ #
 ################
 
-# Постановка квартиры на охрану (с кнопки)
+# Постановка квартиры на охрану
 - alias: enable_away_mode
   trigger:
     - platform: state
+      entity_id: alarm_control_panel.home
+      from: "disarmed"
+      to: "arming"
+    - platform: state
       entity_id: switch.security_system
+      from: "off"
       to: "on"
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.home
-        state: "armed_night"
-      - condition: state
-        entity_id: alarm_control_panel.home
-        state: "disarmed"
   action:
-    - service: light.turn_off # Отключаем весь свет в квартире
+    - service: input_text.set_value # Забываем имя инициатора сработки
       data:
-        entity_id: group.all_lights
+        entity_id: input_text.security_trigger_source
+        value: ""
+    - service: alarm_control_panel.alarm_arm_away # Включаем охрану
+      data:
+        entity_id: alarm_control_panel.home
+    - service: switch.turn_on # Включаем реле охранной системы
+      data:
+        entity_id: switch.security_system
+    - service: light.turn_off # Отключаем весь свет в квартире
+      data_template: # Исключаем подсветку шлюза
+        entity_id: "{% for device in states.light|rejectattr('entity_id', 'in', ['light.gateway']) %}{% if loop.first %}{% else %}, {% endif %}{{device.entity_id }}{% endfor %}"
+    - service: media_player.turn_off # Отключаем телевизор в зале
+      data:
+        entity_id: media_player.lounge_tv
+    - service: media_player.turn_off # Отключаем телевизор на кухне
+      data:
+        entity_id: media_player.kitchen_tv
+    - service: climate.set_preset_mode # Переключаем газовое отопление на режим "away"
+      data:
+        entity_id: climate.gas_boiler
+        preset_mode: "away"
     - service: mqtt.publish # Звуковое уведомление
       data:
         topic: "/zigbee-ble/bridge/config/sound"
         payload: "FIXME"
-    - service: alarm_control_panel.alarm_arm_away # Включаем охрану
-      data:
-        entity_id: alarm_control_panel.home
 
-# Снятие квартиры с охраны (с кнопки)
+
+# Снятие квартиры с охраны
 - alias: disable_away_mode
   trigger:
     - platform: state
+      entity_id: alarm_control_panel.home
+      to: "disarmed"
+    - platform: state
       entity_id: switch.security_system
+      from: "on"
       to: "off"
   condition:
     condition: or
     conditions:
+      - condition: state
+        entity_id: switch.security_system
+        state: "on"
       - condition: state
         entity_id: alarm_control_panel.home
         state: "armed_away"
@@ -110,83 +131,32 @@
         entity_id: alarm_control_panel.home
         state: "triggered"
   action:
+    - service: input_text.set_value # Забываем имя инициатора сработки
+      data:
+        entity_id: input_text.security_trigger_source
+        value: ""
     - service: alarm_control_panel.alarm_disarm # Отключаем охрану
       data:
         entity_id: alarm_control_panel.home
+    - service: switch.turn_off # Отключаем реле охранной системы
+      data:
+        entity_id: switch.security_system
     - service: mqtt.publish # Звуковое уведомление
       data:
         topic: "/zigbee-ble/bridge/config/sound"
         payload: "FIXME"
-
-
-# Действия после постановки квартиры на охрану
-- alias: away_mode_enabled_actions
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "arming"
-      to: "armed_away"
-  action:
-    - service: input_text.set_value # Забываем имя инициатора сработки
-      data:
-        entity_id: input_text.security_trigger_source
-        value: ""
-    - service: climate.set_preset_mode # Переключаем газовое отопление на режим "away"
-      data:
-        entity_id: climate.gas_boiler
-        preset_mode: "away"
-    - service: light.turn_off # Отключаем весь свет в квартире
-      data:
-        entity_id: group.all_lights
-    - service: media_player.turn_off # Отключаем телевизор в зале
-      data:
-        entity_id: media_player.lounge_tv
-    - service: media_player.turn_off # Отключаем телевизор на кухне
-      data:
-        entity_id: media_player.kitchen_tv
-    - service: switch.turn_on # Включаем реле охранной системы
-      data:
-        entity_id: switch.security_system
-
-
-# Действия после снятия квартиры с охраны
-- alias: away_mode_disabled_actions
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "armed_away"
-      to: "disarmed"
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "arming"
-      to: "disarmed"
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "pending"
-      to: "disarmed"
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "triggered"
-      to: "disarmed"
-  action:
-    - service: input_text.set_value # Забываем имя инициатора сработки
-      data:
-        entity_id: input_text.security_trigger_source
-        value: ""
-    - service: climate.set_preset_mode # Переключаем газовое отопление на обычный режим
-      data:
-        entity_id: climate.gas_boiler
-        preset_mode: "none"
-    - service: switch.turn_off # Отключаем реле охранной системы
-      data:
-        entity_id: switch.security_system
     - service: automation.trigger # Включаем ночной режим, если это необходимо
       data:
         entity_id: automation.enable_night_mode
         skip_condition: false
+    - service: climate.set_preset_mode # Переключаем газовое отопление на обычный режим
+      data:
+        entity_id: climate.gas_boiler
+        preset_mode: "none"
+
 
 # Действия во время arming/pending-ожидания
-- alias: away_mode_before_arming_pending_actions
+- alias: enable_arming_pending_away_mode
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
@@ -201,8 +171,8 @@
         rgb_color: [255, 63, 0]
 
 
-# Действия после pending-ожидания
-- alias: away_mode_after_arming_pending_actions
+# Действия после arming/pending-ожидания
+- alias: disable_arming_pending_away_mode
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
@@ -215,14 +185,13 @@
       entity_id: light.gateway
 
 
-# Срабатывание охранной сигнализации
-- alias: security_alarm_trigger
+# Срабатывание охранной сигнализации (условия)
+- alias: conditions_triggered_away_mode
   trigger:
     - platform: state
       entity_id:
-        - group.all_open_sensors # Открыто дверь/окно
-        - group.all_vibration_sensors # Разбито окно
-        - group.all_motion_sensors # Движение в квартире
+        - binary_sensor.hallway_door # Открыта входная дверь
+        - binary_sensor.hallway_motion # Обнаружено движение в коридоре
       to: "on"
   condition:
     - condition: state
@@ -238,8 +207,8 @@
         entity_id: alarm_control_panel.home
 
 
-# Действия при срабатывании охранной сигнализации
-- alias: security_alarm_actions
+# Срабатывание охранной сигнализации (действия)
+- alias: enable_triggered_away_mode
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
@@ -248,7 +217,7 @@
     - service: notify.notify # Оповещаем пользователя
       data_template:
         title: "Внимание!"
-        message: "{{ states('input_text.security_trigger_source') }} вызвали срабатывание охранной сигнализации!"
+        message: "{{ states('input_text.security_trigger_source') }} вызвал срабатывание охранной сигнализации!"
     - service: light.turn_on # Включаем подсветку шлюза
       data:
         entity_id: light.gateway
@@ -259,8 +228,8 @@
         payload: "FIXME"
 
 
-# Действия по окончанию срабатывания охранной сигнализации
-- alias: security_retreat_actions
+# Окончание срабатывания охранной сигнализации (действия)
+- alias: disable_triggered_away_mode
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home

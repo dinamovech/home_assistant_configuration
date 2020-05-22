@@ -81,10 +81,6 @@ recorder:
       # Разное
       - sensor.hallway_illuminance
 
-# HACS (https://hacs.xyz)
-hacs:
-  token: !secret hacs_token
-
 # Weather
 weather:
   - platform: darksky

@@ -61,8 +61,8 @@
 # РЕЖИМ ОХРАНЫ #
 ################
 
-# Постановка квартиры на охрану
-- alias: enable_away_mode
+# Постановка квартиры на охрану (вручную)
+- alias: manual_enable_away_mode
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home
@@ -100,6 +100,25 @@
       data:
         topic: "/zigbee-ble/bridge/config/sound"
         payload: "FIXME"
+
+
+# Постановка квартиры на охрану (автоматически)
+- alias: auto_enable_away_mode
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion
+      to: "off"
+      for: "24:00:00"
+  condition:
+    - condition: state
+      entity_id: person.sergei
+      state: "not_home"
+    #- condition: template # Только если статус изменился не раньше, чем 12 часов назад
+    #  value_template: "{{ (as_timestamp(now()) - as_timestamp(states.person.sergei.last_changed)) > 43200 }}"
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      data:
+        entity_id: alarm_control_panel.home
 
 
 # Снятие квартиры с охраны (вручную)
@@ -167,7 +186,7 @@
       entity_id: person.sergei
       state: "home"
     #- condition: template # Только если статус изменился в течении последних 5 минут
-    #  value_template: "{{ (as_timestamp(now()) - as_timestamp(states.person.sergei.last_changed)) > 300 }}"
+    #  value_template: "{{ (as_timestamp(now()) - as_timestamp(states.person.sergei.last_changed)) < 300 }}"
   action:
     - service: alarm_control_panel.alarm_disarm
       data:

@@ -107,6 +107,13 @@ vacuum:
     host: 192.168.1.15
     token: !secret xiaomi_vacuum_token
 
+# OpenWRT Device Tracker
+device_tracker:
+  - platform: luci
+    host: 192.168.1.1
+    username: !secret openwrt_login
+    password: !secret openwrt_password
+
 # Devices
 sensor: !include_dir_merge_list sensors/
 binary_sensor: !include_dir_merge_list binary_sensors/

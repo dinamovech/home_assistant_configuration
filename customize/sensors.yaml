@@ -57,22 +57,22 @@ sensor.energy_line_frequency:
   unit_of_measurement: "Гц"
 sensor.energy_line_reverse_active_energy:
   friendly_name: "Обратная активная энергия"
-  unit_of_measurement: "кВт/ч"
+  unit_of_measurement: "кВт·ч"
 #sensor.energy_line_direct_active_energy:
 #  friendly_name: "Прямая активная энергия"
-#  unit_of_measurement: "кВт/ч"
+#  unit_of_measurement: "кВт·ч"
 #sensor.energy_line_reverse_reactive_energy:
 #  friendly_name: "Обратная реактивная энергия"
-#  unit_of_measurement: "кВАр/ч"
+#  unit_of_measurement: "кВАр·ч"
 #sensor.energy_line_direct_reactive_energy:
 #  friendly_name: "Прямая реактивная энергия"
-#  unit_of_measurement: "кВАр/ч"
+#  unit_of_measurement: "кВАр·ч"
 #sensor.energy_line_total_active_energy:
 #  friendly_name: "Суммарная активная энергия"
-#  unit_of_measurement: "кВт/ч"
+#  unit_of_measurement: "кВт·ч"
 #sensor.energy_line_total_reactive_energy:
 #  friendly_name: "Суммарная реактивная энергия"
-#  unit_of_measurement: "кВАр/ч"
+#  unit_of_measurement: "кВАр·ч"
 
 # Часовое потребление электроэнергии
 sensor.energy_line_hourly_kwh:

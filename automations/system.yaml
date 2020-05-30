@@ -76,7 +76,7 @@
         message: '{{ trigger.from_state.attributes.friendly_name }} нуждается в замене элемента питания (текущий уровень заряда состовляет {{ trigger.to_state.state }}%).'
 
 
-# Обновление значений датчиков при загрузке системы для корректной работы climate-интеграциями
+# Обновление значений датчиков при загрузке системы для корректной работы climate-интеграций
 - alias: update_sensors_on_startup
   trigger:
     - platform: homeassistant

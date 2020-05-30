@@ -43,3 +43,14 @@
   action: # Переключаем гигростат
     - service: switch.toggle
       entity_id: switch.bathroom_fan
+
+# Автоматическое изменение предельного уровня влажности
+- alias: autoset_bathroom_climate_max_humidity_level
+  trigger:
+    - platform: state
+      entity_id: sensor.home_humidity
+  action:
+    - service: climate.set_humidity
+      data_template:
+        entity_id: climate.bathroom
+        humidity: "{{ states('sensor.home_humidity') | round }}"

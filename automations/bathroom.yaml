@@ -53,4 +53,4 @@
     - service: climate.set_humidity
       data_template:
         entity_id: climate.bathroom
-        humidity: "{{ states('sensor.home_humidity') | round }}"
+        humidity: "{{ (states('sensor.home_humidity') | round) + 10 | int }}"

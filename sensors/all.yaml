@@ -9,9 +9,7 @@
             states("sensor.hallway_temperature"),
             states("sensor.bedroom_temperature"),
             states("sensor.lounge_temperature"),
-            states("sensor.kitchen_temperature"),
             states("sensor.loggia_temperature"),
-            states("sensor.bathroom_temperature"),
           ]
         %}
         {% set avg_temperatere = namespace(summ = 0, count = 0) %}

@@ -23,3 +23,28 @@
           {% endif %}
         {% endfor %}
         {{ (avg_temperatere.summ / avg_temperatere.count) | float | round(2) }}
+
+
+# Средняя влажность в квартире (для гигростатов)
+- platform: template
+  sensors:
+    home_humidity:
+      unit_of_measurement: "%"
+      value_template: >-
+        {% set rooms_humidities = 
+          [
+            states("sensor.hallway_humidity"),
+            states("sensor.bedroom_humidity"),
+            states("sensor.lounge_humidity"),
+            states("sensor.loggia_humidity"),
+          ]
+        %}
+        {% set avg_humidity = namespace(summ = 0, count = 0) %}
+        {% for current_humidity in rooms_humidities %}
+          {% set current_humidity = (current_humidity | float) %}
+          {% if current_humidity %}
+            {% set avg_humidity.summ = (avg_humidity.summ + current_humidity) %}
+            {% set avg_humidity.count = (avg_humidity.count + 1) %}
+          {% endif %}
+        {% endfor %}
+        {{ (avg_humidity.summ / avg_humidity.count) | float | round(2) }}

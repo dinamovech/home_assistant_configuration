@@ -29,19 +29,19 @@ views:
               top: 57%
               left: 38%
           - type: state-label # Температура
-            entity: sensor.hallway_temperature
+            entity: sensor.hallway_sensor_temperature
             prefix: "Температура: "
             style:
               top: 62%
               left: 38%
           - type: state-label # Влажность
-            entity: sensor.hallway_humidity
+            entity: sensor.hallway_sensor_humidity
             prefix: "Влажность: "
             style:
               top: 64%
               left: 38%
           - type: state-icon # Датчик движения
-            entity: binary_sensor.hallway_motion
+            entity: binary_sensor.hallway_motion_occupancy
             style:
               top: 60.5%
               left: 22%
@@ -137,7 +137,7 @@ views:
               top: 82%
               left: 55%
           - type: state-icon # Датчик протечки
-            entity: binary_sensor.kitchen_leak
+            entity: binary_sensor.kitchen_leak_water_leak
             style:
               top: 82%
               left: 57%
@@ -147,13 +147,13 @@ views:
               top: 63%
               left: 53%
           - type: state-label # Температура
-            entity: sensor.kitchen_temperature
+            entity: sensor.kitchen_sensor_temperature
             prefix: "Температура: "
             style:
               top: 62%
               left: 62%
           - type: state-label # Влажность
-            entity: sensor.kitchen_humidity
+            entity: sensor.kitchen_sensor_humidity
             prefix: "Влажность: "
             style:
               top: 64%
@@ -167,19 +167,19 @@ views:
               top: 69%
               left: 75%
           - type: state-label # Температура
-            entity: sensor.loggia_temperature
+            entity: sensor.loggia_sensor_temperature
             prefix: "Температура: "
             style:
               top: 73%
               left: 75%
           - type: state-label # Влажность
-            entity: sensor.loggia_humidity
+            entity: sensor.loggia_sensor_humidity
             prefix: "Влажность: "
             style:
               top: 75%
               left: 75%
           - type: state-label # Давление
-            entity: sensor.loggia_pressure
+            entity: sensor.loggia_sensor_pressure
             prefix: "Давление: "
             style:
               top: 77%
@@ -198,24 +198,24 @@ views:
               top: 82%
               left: 49%
           - type: state-label # Температура
-            entity: sensor.bathroom_temperature
+            entity: sensor.bathroom_sensor_temperature
             prefix: "Температура: "
             style:
               top: 76%
               left: 42.5%
           - type: state-label # Влажность
-            entity: sensor.bathroom_humidity
+            entity: sensor.bathroom_sensor_humidity
             prefix: "Влажность: "
             style:
               top: 78%
               left: 42.5%
           - type: state-icon # Датчик протечки №1
-            entity: binary_sensor.bathroom_leak_1
+            entity: binary_sensor.bathroom_leak_1_water_leak
             style:
               top: 82%
               left: 38%
           - type: state-icon # Датчик протечки №2
-            entity: binary_sensor.bathroom_leak_2
+            entity: binary_sensor.bathroom_leak_2_water_leak
             style:
               top: 82%
               left: 47%
@@ -242,9 +242,9 @@ views:
         entities:
           - light.hallway
           - light.gateway
-          - sensor.hallway_temperature
-          - sensor.hallway_humidity
-          - entity: binary_sensor.hallway_motion
+          - sensor.hallway_sensor_temperature
+          - sensor.hallway_sensor_humidity
+          - entity: binary_sensor.hallway_motion_occupancy
             secondary_info: last-changed
             state_color: true
           - entity: binary_sensor.hallway_door
@@ -285,8 +285,8 @@ views:
             state_color: true
           - entity: climate.warm_floor
             state_color: true
-          - sensor.kitchen_temperature
-          - entity: binary_sensor.kitchen_leak
+          - sensor.kitchen_sensor_temperature
+          - entity: binary_sensor.kitchen_leak_water_leak
             secondary_info: last-changed
             state_color: true
       - type: entities
@@ -294,9 +294,9 @@ views:
         show_header_toggle: false
         entities:
           - light.loggia
-          - sensor.loggia_temperature
-          - sensor.loggia_humidity
-          - sensor.loggia_pressure
+          - sensor.loggia_sensor_temperature
+          - sensor.loggia_sensor_humidity
+          - sensor.loggia_sensor_pressure
       - type: entities
         title: "Ванная"
         show_header_toggle: false
@@ -304,11 +304,11 @@ views:
           - light.bathroom
           - entity: climate.bathroom
             state_color: true
-          - sensor.bathroom_temperature
-          - entity: binary_sensor.bathroom_leak_1
+          - sensor.bathroom_sensor_temperature
+          - entity: binary_sensor.bathroom_leak_1_water_leak
             secondary_info: last-changed
             state_color: true
-          - entity: binary_sensor.bathroom_leak_2
+          - entity: binary_sensor.bathroom_leak_2_water_leak
             secondary_info: last-changed
             state_color: true
           - entity: switch.water_valve
@@ -393,7 +393,7 @@ views:
               hours_to_show: 24
               refresh_interval: 30
               entities:
-                - entity: sensor.loggia_pressure
+                - entity: sensor.loggia_sensor_pressure
             - type: history-graph
               title: "Уровень радиации"
               hours_to_show: 24

@@ -51,7 +51,7 @@ recorder:
       - climate
       - input_boolean
     entities:
-      - binary_sensor.hallway_motion
+      - binary_sensor.hallway_motion_occupancy
   exclude: # Исключить из истории
     entities:
       # Системные

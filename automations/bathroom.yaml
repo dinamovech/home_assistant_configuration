@@ -8,9 +8,9 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.bathroom_leak_1
-        - binary_sensor.bathroom_leak_2
-        - binary_sensor.kitchen_leak
+        - binary_sensor.bathroom_leak_1_water_leak
+        - binary_sensor.bathroom_leak_2_water_leak
+        - binary_sensor.kitchen_leak_water_leak
       to: "on"
   action:
     - service: switch.turn_off
@@ -48,9 +48,9 @@
 - alias: autoset_bathroom_climate_max_humidity_level
   trigger:
     - platform: state
-      entity_id: sensor.home_humidity
+      entity_id: sensor.home_sensor_humidity
   action:
     - service: climate.set_humidity
       data_template:
         entity_id: climate.bathroom
-        humidity: "{{ (states('sensor.home_humidity') | round) + 10 | int }}"
+        humidity: "{{ (states('sensor.home_sensor_humidity') | round) + 10 | int }}"

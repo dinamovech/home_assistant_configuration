@@ -2,7 +2,7 @@
 - alias: turnon_gateway_light_when_hallway_motion_detected # Обнаружено движение в комнате
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_motion
+      entity_id: binary_sensor.hallway_motion_occupancy
       to: "on"
   condition:
     - condition: state # Ночной режим включен
@@ -20,7 +20,7 @@
 - alias: turnoff_gateway_light_when_hallway_motion_lost # Движение закончено или включили свет
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_motion
+      entity_id: binary_sensor.hallway_motion_occupancy
       to: "off"
     - platform: state
       entity_id: light.hallway

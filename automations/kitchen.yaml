@@ -11,9 +11,9 @@
 - alias: autoset_kitchen_climate_max_humidity_level
   trigger:
     - platform: state
-      entity_id: sensor.home_humidity
+      entity_id: sensor.home_sensor_humidity
   action:
     - service: climate.set_humidity
       data_template:
         entity_id: climate.kitchen
-        humidity: "{{ (states('sensor.home_humidity') | round) + 5 | int }}"
+        humidity: "{{ (states('sensor.home_sensor_humidity') | round) + 5 | int }}"

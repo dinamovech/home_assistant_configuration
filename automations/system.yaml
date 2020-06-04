@@ -84,16 +84,16 @@
   action:
     # Уровень влажности на кухне
     - service: homeassistant.update_entity
-      entity_id: sensor.kitchen_humidity
+      entity_id: sensor.kitchen_sensor_humidity
     # Температура теплоносителя
     - service: homeassistant.update_entity
       entity_id: sensor.coolant_temperature
     # Уровень влажности в ванной комнате
     - service: homeassistant.update_entity
-      entity_id: sensor.bathroom_humidity
+      entity_id: sensor.bathroom_sensor_humidity
     # Средняя температура в квартире
     - service: homeassistant.update_entity
-      entity_id: sensor.home_temperature
+      entity_id: sensor.home_sensor_temperature
 
 
 # Опрос состояния выходов MegaD

@@ -2,5 +2,5 @@
 - platform: generic_hygrostat
   name: bathroom
   dryer: fan.bathroom
-  target_sensor: sensor.bathroom_humidity
+  target_sensor: sensor.bathroom_sensor_humidity
   initial_hvac_mode: dry

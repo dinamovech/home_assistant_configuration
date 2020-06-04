@@ -1,15 +1,15 @@
 # Средняя температура в квартире (для отопления)
 - platform: template
   sensors:
-    home_temperature:
+    home_sensor_temperature:
       unit_of_measurement: "°C"
       value_template: >-
         {% set rooms_temperatures = 
           [
-            states("sensor.hallway_temperature"),
-            states("sensor.bedroom_temperature"),
-            states("sensor.lounge_temperature"),
-            states("sensor.loggia_temperature"),
+            states("sensor.hallway_sensor_temperature"),
+            states("sensor.bedroom_sensor_temperature"),
+            states("sensor.lounge_sensor_temperature"),
+            states("sensor.loggia_sensor_temperature"),
           ]
         %}
         {% set avg_temperatere = namespace(summ = 0, count = 0) %}
@@ -26,15 +26,15 @@
 # Средняя влажность в квартире (для гигростатов)
 - platform: template
   sensors:
-    home_humidity:
+    home_sensor_humidity:
       unit_of_measurement: "%"
       value_template: >-
         {% set rooms_humidities = 
           [
-            states("sensor.hallway_humidity"),
-            states("sensor.bedroom_humidity"),
-            states("sensor.lounge_humidity"),
-            states("sensor.loggia_humidity"),
+            states("sensor.hallway_sensor_humidity"),
+            states("sensor.bedroom_sensor_humidity"),
+            states("sensor.lounge_sensor_humidity"),
+            states("sensor.loggia_sensor_humidity"),
           ]
         %}
         {% set avg_humidity = namespace(summ = 0, count = 0) %}

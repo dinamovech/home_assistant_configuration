@@ -106,7 +106,7 @@
 - alias: auto_enable_away_mode
   trigger:
     - platform: state
-      entity_id: binary_sensor.hallway_motion
+      entity_id: binary_sensor.hallway_motion_occupancy
       to: "off"
       for: "24:00:00"
   condition:
@@ -229,7 +229,7 @@
     - platform: state
       entity_id:
         - binary_sensor.hallway_door # Открыта входная дверь
-        - binary_sensor.hallway_motion # Обнаружено движение в коридоре
+        - binary_sensor.hallway_motion_occupancy # Обнаружено движение в коридоре
       to: "on"
   condition:
     - condition: state

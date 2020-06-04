@@ -6,7 +6,7 @@
       friendly_name: "Температура теплоносителя"
       icon_template: mdi:thermometer
       unit_of_measurement: "°C"
-      value_template: "{{ states('sensor.hallway_temperature') }}"
+      value_template: "{{ states('sensor.hallway_sensor_temperature') }}"
     coolant_sensor_battery:
       friendly_name: "Датчик температуры теплоносителя"
       icon_template: mdi:battery

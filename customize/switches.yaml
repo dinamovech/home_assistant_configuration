@@ -1,20 +1,4 @@
 # Режим сопряжения ZigBee/Bluetooth шлюза
 switch.gateway_join:
   friendly_name: "Режим сопряжения"
-  icon: mdi:access-point-network
   assumed_state: false
-
-# Газовый котел на кухне
-switch.gas_boiler:
-  friendly_name: "Газовое отопление"
-  icon: mdi:water-boiler
-
-# Насос теплого пола
-switch.warm_floor:
-  friendly_name: "Насос теплого пола"
-  icon: mdi:car-defrost-rear
-
-# Водоснабжение
-switch.water_valve:
-  friendly_name: "Водоснабжение"
-  icon: mdi:water-pump

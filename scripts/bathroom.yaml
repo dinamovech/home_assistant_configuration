@@ -1,5 +1,7 @@
 # Профилактика заклинивания водопроводного крана
 anti_jamming_water_valve:
+  alias: "Профилактика заклинивания водопроводного крана"
+  icon: mdi:water-pump
   sequence:
     - condition: state
       entity_id: switch.water_valve
@@ -12,6 +14,8 @@ anti_jamming_water_valve:
 
 # Отключение fan_only режима вентиляции
 bathroom_turnoff_fan_only_mode:
+  alias: "Отключение fan-only режима для вентиляции в ванной"
+  icon: mdi:fan
   sequence:
     - service: climate.set_hvac_mode # Отключаем вентиляцию
       entity_id: climate.bathroom

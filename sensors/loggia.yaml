@@ -2,12 +2,15 @@
 # https://github.com/avdeevsv91/esp_radiation_meter
 - platform: mqtt
   name: radiation_level
+  unit_of_measurement: "мкР/ч"
   state_topic: "/radiation/valuedes0"
 - platform: mqtt
   name: radiation_accuracy
+  unit_of_measurement: "%"
   state_topic: "/radiation/valuedes1"
 #- platform: mqtt
 #  name: radiation_voltage
+#  unit_of_measurement: "В"
 #  state_topic: "/radiation/valuedes2"
 
 # Отфильтрованное значение
@@ -17,33 +20,3 @@
   filters:
     - filter: lowpass
       time_constant: 10
-
-# Датчик температуры/влажности/давления
-- platform: mqtt # Температура
-  name: loggia_temperature
-  icon: mdi:thermometer
-  unit_of_measurement: "°C"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/loggia_sensor"
-  value_template: "{{ value_json.temperature | round(2) }}"
-- platform: mqtt # Влажность
-  name: loggia_humidity
-  icon: mdi:water-percent
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/loggia_sensor"
-  value_template: "{{ value_json.humidity | round(2) }}"
-- platform: mqtt # Давление
-  name: loggia_pressure
-  icon: mdi:gauge
-  unit_of_measurement: "мм рт.ст."
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/loggia_sensor"
-  value_template: "{{ (value_json.pressure | float * 7.501) | round | int }}"
-- platform: mqtt # Уровень заряда
-  name: loggia_sensor_battery
-  icon: mdi:battery-high
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/loggia_sensor"
-  value_template: "{{ value_json.battery }}"

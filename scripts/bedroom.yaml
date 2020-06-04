@@ -2,6 +2,8 @@
 
 # Включение стационарного компьютера + ИБП
 turnon_desktop_pc_and_ups:
+  alias: "Включить ИБП + компьютер"
+  icon: mdi:desktop-classic
   sequence:
     #- service: switch.turn_on
     #  entity_id: switch.pc_ups
@@ -11,6 +13,8 @@ turnon_desktop_pc_and_ups:
 
 # Выключение стационарного компьютера + ИБП
 turnoff_desktop_pc_and_ups:
+  alias: "Отключить ИБП + компьютер"
+  icon: mdi:desktop-classic
   sequence:
     - service: switch.turn_off
       entity_id: switch.desktop_pc

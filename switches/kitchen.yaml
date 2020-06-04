@@ -1,18 +1,35 @@
+# Реле отопления
+# FIXME: временная заглушка!
+#- platform: template
+#  switches:
+#    gas_boiler: # Газовый котел
+#      friendly_name: "Газовое отопление"
+#      icon_template: mdi:water-boiler
+#      value_template: "OFF"
+#      turn_on:
+#      turn_off:
+#    warm_floor: # Насос теплого пола
+#      friendly_name: "Насос теплого пола"
+#      icon_template: mdi:car-defrost-rear
+#      value_template: "OFF"
+#      turn_on:
+#      turn_off:
+
 # Газовый котел
 - platform: mqtt
   name: gas_boiler
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/gas_boiler"
+  availability_topic: "/zigbee/bridge/state"
+  state_topic: "/zigbee/gas_boiler"
   value_template: "{{ value_json.state_l1 }}"
-  command_topic: "/zigbee-ble/gas_boiler/set/state_l1"
+  command_topic: "/zigbee/gas_boiler/set/state_l1"
 
 # Насос теплого пола
 - platform: mqtt
   name: warm_floor
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/gas_boiler"
+  availability_topic: "/zigbee/bridge/state"
+  state_topic: "/zigbee/gas_boiler"
   value_template: "{{ value_json.state_l2 }}"
-  command_topic: "/zigbee-ble/gas_boiler/set/state_l2"
+  command_topic: "/zigbee/gas_boiler/set/state_l2"
 
 # Вытяжка (гигростат)
 - platform: template

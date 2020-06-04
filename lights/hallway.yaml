@@ -19,9 +19,9 @@
 # Подсветка шлюза
 - platform: mqtt
   name: gateway
-  availability_topic: "/zigbee-ble/bridge/state"
-  command_topic: "/zigbee-ble/led"
-  rgb_command_topic: "/zigbee-ble/led"
+  availability_topic: "/zigbee/bridge/state"
+  command_topic: "/zigbee/led"
+  rgb_command_topic: "/zigbee/led"
   rgb_command_template: >-
     {
       "mode": "manual",

@@ -1,5 +1,7 @@
 # Обновление SSL сертификата
 update_ssl_certificate:
+  alias: "Обновить SSL сертификат"
+  icon: mdi:certificate
   sequence:
     - service: hassio.addon_restart
       data:
@@ -7,6 +9,8 @@ update_ssl_certificate:
 
 # Перезагрузка ZigBee/Bluetooth шлюза
 reboot_gateway:
+  alias: "Перезагрузить шлюз"
+  icon: mdi:zigbee
   sequence:
     - service: browser_mod.toast
       data:

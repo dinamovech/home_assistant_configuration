@@ -1,50 +1,15 @@
-# Датчик температуры/влажности
-- platform: mqtt # Температура
-  name: kitchen_temperature
-  icon: mdi:thermometer
-  unit_of_measurement: "°C"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/kitchen_sensor"
-  value_template: "{{ value_json.temperature | round(2) }}"
-- platform: mqtt # Влажность
-  name: kitchen_humidity
-  icon: mdi:water-percent
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/kitchen_sensor"
-  value_template: "{{ value_json.humidity | round(2) }}"
-  force_update: true
-- platform: mqtt # Уровень заряда
-  name: kitchen_sensor_battery
-  icon: mdi:battery-high
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/kitchen_sensor"
-  value_template: "{{ value_json.battery }}"
-
 # Датчик температуры теплоносителя
-- platform: mqtt # Температура
-  name: coolant_temperature
-  icon: mdi:thermometer
-  unit_of_measurement: "°C"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/coolant_sensor"
-  value_template: "{{ value_json.l1_temperature | round(2) }}"
-  force_update: true
-- platform: mqtt # Уровень заряда
-  name: coolant_sensor_battery
-  icon: mdi:battery-high
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/coolant_sensor"
-  # BATTERY = 100 * (CURRENT_VALUE - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)
-  value_template: "{{ (100*(value_json.l3_voltage-1.85)/(3.3-1.85)) | round }}"
-
-# Датчик протечки
-- platform: mqtt
-  name: kitchen_leak_battery
-  icon: mdi:battery-high
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/kitchen_leak"
-  value_template: "{{ value_json.battery }}"
+# FIXME: временная заглушка!
+- platform: template
+  sensors:
+    coolant_temperature:
+      friendly_name: "Температура теплоносителя"
+      icon_template: mdi:thermometer
+      unit_of_measurement: "°C"
+      value_template: "{{ states('sensor.hallway_temperature') }}"
+    coolant_sensor_battery:
+      friendly_name: "Датчик температуры теплоносителя"
+      icon_template: mdi:battery
+      unit_of_measurement: "%"
+      value_template: "100"
+      # BATTERY = 100 * (CURRENT_VALUE - MIN_VALUE) / (MAX_VALUE - MIN_VALUE)

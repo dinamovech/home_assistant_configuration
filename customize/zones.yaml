@@ -1,7 +1,0 @@
-# Дом
-zone.home:
-  friendly_name: "Дом"
-
-# Работа
-zone.work:
-  friendly_name: "Работа"

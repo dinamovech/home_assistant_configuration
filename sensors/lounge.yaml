@@ -1,30 +1,28 @@
 # Датчик температуры/влажности
-- platform: mqtt # Температура
-  name: lounge_temperature
-  icon: mdi:thermometer
-  unit_of_measurement: "°C"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/lounge_sensor"
-  value_template: "{{ value_json.temperature | round(2) }}"
-- platform: mqtt # Влажность
-  name: lounge_humidity
-  icon: mdi:water-percent
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/lounge_sensor"
-  value_template: "{{ value_json.humidity | round(2) }}"
-- platform: mqtt # Уровень заряда
-  name: lounge_sensor_battery
-  icon: mdi:battery-high
-  unit_of_measurement: "%"
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/lounge_sensor"
-  value_template: "{{ value_json.battery }}"
+# FIXME: временная заглушка!
+- platform: template
+  sensors:
+    lounge_temperature:
+      friendly_name: "Температура"
+      icon_template: mdi:thermometer
+      unit_of_measurement: "°C"
+      value_template: "{{ states('sensor.hallway_temperature') }}"
+    lounge_humidity:
+      friendly_name: "Влажность"
+      icon_template: mdi:water-percent
+      unit_of_measurement: "%"
+      value_template: "{{ states('sensor.hallway_humidity') }}"
+    lounge_sensor_battery:
+      friendly_name: "Датчик температуры/влажности в зале"
+      icon_template: mdi:battery
+      unit_of_measurement: "%"
+      value_template: "100"
 
 # Робот-пылесос
 - platform: template
   sensors:
     xiaomi_robot_battery:
-      icon_template: mdi:battery-high
+      friendly_name: "Робот-пылесос"
+      icon_template: mdi:battery
       unit_of_measurement: "%"
       value_template: "{{ state_attr('vacuum.xiaomi_robot', 'battery_level') }}"

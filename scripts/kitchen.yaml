@@ -1,5 +1,7 @@
 # Отключение fan_only режима вытяжки
 kitchen_turnoff_fan_only_mode:
+  alias: "Отключение fan-only режима для кухонной вытяжки"
+  icon: mdi:fan
   sequence:
     - service: climate.set_hvac_mode # Отключаем вытяжку
       entity_id: climate.kitchen

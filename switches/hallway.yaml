@@ -1,12 +1,13 @@
 # Режим спаривания ZigBee/Bluetooth шлюза
 - platform: mqtt
   name: gateway_join
-  availability_topic: "/zigbee-ble/bridge/state"
-  state_topic: "/zigbee-ble/bridge/config"
+  icon: mdi:access-point-network
+  availability_topic: "/zigbee/bridge/state"
+  state_topic: "/zigbee/bridge/config"
   value_template: "{{ value_json.permit_join }}"
   state_on: true
   state_off: false
-  command_topic: "/zigbee-ble/bridge/config/permit_join"
+  command_topic: "/zigbee/bridge/config/permit_join"
   payload_on: "true"
   payload_off: "false"
 

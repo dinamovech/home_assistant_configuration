@@ -5,6 +5,7 @@
   scan_interval: 30
   registers:
     - name: energy_line_voltage # Напряжение
+      unit_of_measurement: "В"
       hub: elfin
       register: 0
       register_type: input
@@ -12,6 +13,7 @@
       data_type: float
       precision: 2
     - name: energy_line_current # Ток
+      unit_of_measurement: "А"
       hub: elfin
       register: 6
       register_type: input
@@ -19,6 +21,7 @@
       data_type: float
       precision: 2
     #- name: energy_line_active_power # Активная мощность
+    #  unit_of_measurement: "Вт"
     #  hub: elfin
     #  register: 12
     #  register_type: input
@@ -26,6 +29,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_apparent_power # Кажущаяся мощность
+    #  unit_of_measurement: "ВА"
     #  hub: elfin
     #  register: 18
     #  register_type: input
@@ -33,6 +37,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_reactive_power # Реактивная мощность
+    #  unit_of_measurement: "ВАр"
     #  hub: elfin
     #  register: 24
     #  register_type: input
@@ -40,6 +45,7 @@
     #  data_type: float
     #  precision: 2
     - name: energy_line_coefficient # Коэффициент преобразования мощности
+      unit_of_measurement: " "
       hub: elfin
       register: 30
       register_type: input
@@ -47,6 +53,7 @@
       data_type: float
       precision: 2
     #- name: energy_line_phase_angle # Фазовый угол
+    #  unit_of_measurement: "°"
     #  hub: elfin
     #  register: 36
     #  register_type: input
@@ -54,6 +61,7 @@
     #  data_type: float
     #  precision: 2
     - name: energy_line_frequency # Частота
+      unit_of_measurement: "Гц"
       hub: elfin
       register: 70
       register_type: input
@@ -61,6 +69,7 @@
       data_type: float
       precision: 2
     - name: energy_line_reverse_active_energy # Обратная активная энергия
+      unit_of_measurement: "кВт·ч"
       hub: elfin
       register: 72
       register_type: input
@@ -68,6 +77,7 @@
       data_type: float
       precision: 2
     #- name: energy_line_direct_active_energy # Прямая активная энергия
+    #  unit_of_measurement: "кВт·ч"
     #  hub: elfin
     #  register: 74
     #  register_type: input
@@ -75,6 +85,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_reverse_reactive_energy # Обратная реактивная энергия
+    #  unit_of_measurement: "кВАр·ч"
     #  hub: elfin
     #  register: 76
     #  register_type: input
@@ -82,6 +93,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_direct_reactive_energy # Прямая реактивная энергия
+    #  unit_of_measurement: "кВАр·ч"
     #  hub: elfin
     #  register: 78
     #  register_type: input
@@ -89,6 +101,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_total_active_energy # Суммарная активная энергия
+    #  unit_of_measurement: "кВт·ч"
     #  hub: elfin
     #  register: 342
     #  register_type: input
@@ -96,6 +109,7 @@
     #  data_type: float
     #  precision: 2
     #- name: energy_line_total_reactive_energy # Суммарная реактивная энергия
+    #  unit_of_measurement: "кВАр·ч"
     #  hub: elfin
     #  register: 344
     #  register_type: input
@@ -107,8 +121,17 @@
 - platform: template
   sensors:
     energy_line_hourly_rub: # За час
+      friendly_name: "Стоимость"
+      unit_of_measurement: "₽"
+      icon_template: mdi:cash-100
       value_template: "{{ (states.sensor.energy_line_hourly_kwh.state | float * 2.57)|round(2) }}"
     energy_line_daily_rub: # За день
+      friendly_name: "Стоимость"
+      unit_of_measurement: "₽"
+      icon_template: mdi:cash-100
       value_template: "{{ (states.sensor.energy_line_daily_kwh.state | float * 2.57)|round(2) }}"
     energy_line_monthly_rub: # За месяц
+      friendly_name: "Стоимость"
+      unit_of_measurement: "₽"
+      icon_template: mdi:cash-100
       value_template: "{{ (states.sensor.energy_line_monthly_kwh.state | float * 2.57)|round(2) }}"

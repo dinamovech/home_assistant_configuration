@@ -24,6 +24,6 @@
 # Вытяжка
 - platform: generic_hygrostat
   name: kitchen
-  dryer: fan.kitchen
+  dryer: switch.kitchen_plug
   target_sensor: sensor.kitchen_humidity
   initial_hvac_mode: dry

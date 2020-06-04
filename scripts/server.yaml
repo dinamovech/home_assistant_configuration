@@ -1,5 +1,7 @@
 # Создание резервной копии
 create_system_backup:
+  alias: "Создать резервную копию"
+  icon: mdi:cloud-upload
   sequence:
     - service: browser_mod.toast
       data_template:
@@ -10,6 +12,8 @@ create_system_backup:
 
 # Перезагрузка Home Assistant
 restart_homeassistant:
+  alias: "Перезагрузить систему"
+  icon: mdi:home-assistant
   sequence:
     - service: browser_mod.toast
       data:
@@ -18,6 +22,8 @@ restart_homeassistant:
 
 # Перезагрузка сервера
 reboot_server:
+  alias: "Перезагрузить сервер"
+  icon: mdi:reload
   sequence:
     - service: browser_mod.toast
       data:
@@ -26,6 +32,8 @@ reboot_server:
 
 # Выключить сервер
 shutdown_server:
+  alias: "Выключить сервер"
+  icon: mdi:power
   sequence:
     - service: browser_mod.toast
       data:

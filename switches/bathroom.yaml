@@ -1,7 +1,7 @@
 # Вентиляция (гигростат)
 - platform: template
   switches:
-    bathroom_fan:
+    bathroom_fan_hygrostat:
       value_template: "{{ is_state('climate.bathroom', 'fan_only') }}"
       turn_on:
         service: climate.set_hvac_mode

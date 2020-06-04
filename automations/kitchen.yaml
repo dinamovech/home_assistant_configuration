@@ -5,7 +5,7 @@
       entity_id: alarm_control_panel.home
   action:
     - service: switch.turn_off
-      entity_id: switch.kitchen_fan
+      entity_id: switch.kitchen_fan_hygrostat
 
 # Автоматическое изменение предельного уровня влажности
 - alias: autoset_kitchen_climate_max_humidity_level

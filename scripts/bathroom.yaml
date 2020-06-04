@@ -4,13 +4,13 @@ anti_jamming_water_valve:
   icon: mdi:water-pump
   sequence:
     - condition: state
-      entity_id: switch.water_valve
+      entity_id: switch.water_valve_switch
       state: "on"
     - service: switch.turn_off
-      entity_id: switch.water_valve
+      entity_id: switch.water_valve_switch
     - delay: "00:00:10"
     - service: switch.turn_on
-      entity_id: switch.water_valve
+      entity_id: switch.water_valve_switch
 
 # Отключение fan_only режима вентиляции
 bathroom_turnoff_fan_only_mode:

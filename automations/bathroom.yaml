@@ -15,7 +15,7 @@
   action:
     - service: switch.turn_off
       data:
-        entity_id: switch.water_valve
+        entity_id: switch.water_valve_switch
     - service: notify.notify
       data_template:
         title: "Внимание!"
@@ -31,7 +31,7 @@
       entity_id: alarm_control_panel.home
   action:
     - service: switch.turn_off
-      entity_id: switch.bathroom_fan
+      entity_id: switch.bathroom_fan_hygrostat
 
 
 # Включение/отключение вентиляции по нажатии на кнопку
@@ -42,7 +42,7 @@
       to: "single"
   action: # Переключаем гигростат
     - service: switch.toggle
-      entity_id: switch.bathroom_fan
+      entity_id: switch.bathroom_fan_hygrostat
 
 # Автоматическое изменение предельного уровня влажности
 - alias: autoset_bathroom_climate_max_humidity_level

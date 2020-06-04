@@ -28,13 +28,13 @@ filter:
     - light.kitchen
     - climate.gas_boiler
     - climate.warm_floor
-    - switch.kitchen_fan
+    - switch.kitchen_fan_hygrostat
     - media_player.kitchen_tv
     - sensor.kitchen_sensor_temperature
 
     # Ванная
     - light.bathroom
-    - switch.bathroom_fan
+    - switch.bathroom_fan_hygrostat
     - sensor.bathroom_sensor_temperature
 
 entity_config:
@@ -131,7 +131,7 @@ entity_config:
   climate.warm_floor:
     name: "Теплый пол"
     room: "Кухня"
-  switch.kitchen_fan:
+  switch.kitchen_fan_hygrostat:
     name: "Вытяжка"
     room: "Кухня"
   media_player.kitchen_tv:
@@ -152,7 +152,7 @@ entity_config:
   light.bathroom:
     name: "Свет"
     room: "Ванная"
-  switch.bathroom_fan:
+  switch.bathroom_fan_hygrostat:
     name: "Вентиляция"
     room: "Ванная"
   sensor.bathroom_sensor_temperature:

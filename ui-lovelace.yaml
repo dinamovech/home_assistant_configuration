@@ -46,7 +46,7 @@ views:
               top: 60.5%
               left: 22%
           - type: state-icon # Датчик входной двери
-            entity: binary_sensor.hallway_door
+            entity: binary_sensor.hallway_door_contact
             style:
               top: 66%
               left: 28.9%
@@ -220,7 +220,7 @@ views:
               top: 82%
               left: 47%
           - type: state-icon # Водоснабжение
-            entity: switch.water_valve
+            entity: switch.water_valve_switch
             style:
               top: 82%
               left: 36%
@@ -247,7 +247,7 @@ views:
           - entity: binary_sensor.hallway_motion_occupancy
             secondary_info: last-changed
             state_color: true
-          - entity: binary_sensor.hallway_door
+          - entity: binary_sensor.hallway_door_contact
             secondary_info: last-changed
             state_color: true
       - type: entities
@@ -311,7 +311,7 @@ views:
           - entity: binary_sensor.bathroom_leak_2_water_leak
             secondary_info: last-changed
             state_color: true
-          - entity: switch.water_valve
+          - entity: switch.water_valve_switch
             state_color: true
 
   # Энергоснабжение

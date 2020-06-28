@@ -6,7 +6,7 @@
 # Газовый котел
 - platform: generic_thermostat
   name: gas_boiler
-  heater: switch.gas_boiler
+  heater: switch.gas_boiler_switch_l1
   target_sensor: sensor.home_sensor_temperature
   cold_tolerance: 0.05
   hot_tolerance: 0
@@ -16,7 +16,7 @@
 # Насос теплого пола
 - platform: generic_thermostat
   name: warm_floor
-  heater: switch.warm_floor
+  heater: switch.gas_boiler_switch_l2
   target_sensor: sensor.coolant_temperature
   ac_mode: true
   initial_hvac_mode: "cool"

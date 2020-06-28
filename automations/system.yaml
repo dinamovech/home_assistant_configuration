@@ -39,14 +39,10 @@
       entity_id: alarm_control_panel.home
       state: "disarmed"
   action:
-    - service: rest_command.yandex_reminder
+    - service: tts.yandex_station_say
+      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
       data_template:
-        title: "{{ trigger.event.data.service_data.title }}"
-        message: "{{ trigger.event.data.service_data.message }}"
-    #- service: tts.yandex_station_say
-    #  data_template:
-    #    entity_id: media_player.yandex_station_12345678901234567890
-    #    message: "{{ trigger.event.data.service_data.title }} {{ trigger.event.data.service_data.message }}"
+        message: "{{ trigger.event.data.service_data.title }} {{ trigger.event.data.service_data.message }}"
 
 
 # Оповещение о необходимости замены батарейки в беспроводном датчике

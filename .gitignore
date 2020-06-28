@@ -11,6 +11,7 @@ __pycache__/
 # Ignore files
 /.gitattributes
 /.HA_VERSION
+/.yandex_station.json
 /home-assistant.log
 /home-assistant_v2.db
 /home-assistant_v2.db-shm

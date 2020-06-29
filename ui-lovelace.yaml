@@ -257,6 +257,7 @@ views:
           - light.bedroom
           - entity: media_player.desktop_pc
             state_color: true
+          - entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
           - sensor.bedroom_temperature
           - sensor.bedroom_humidity
       - type: entities
@@ -305,6 +306,7 @@ views:
           - entity: climate.bathroom
             state_color: true
           - sensor.bathroom_sensor_temperature
+          - entity: media_player.yandex_station_4673583569717842043
           - entity: binary_sensor.bathroom_leak_1_water_leak
             secondary_info: last-changed
             state_color: true

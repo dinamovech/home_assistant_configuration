@@ -60,6 +60,7 @@ views:
               left: 29.5%
           - type: state-icon # Irbis A
             entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+            state_color: false
             style:
               top: 24%
               left: 34%
@@ -231,6 +232,7 @@ views:
               left: 36%
           - type: state-icon # DEXP SmartBox
             entity: media_player.yandex_station_4673583569717842043
+            state_color: false
             style:
               top: 82%
               left: 45%

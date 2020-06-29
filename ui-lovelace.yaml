@@ -285,9 +285,14 @@ views:
         entities:
           - light.lounge_first
           - light.lounge_second
-          - entity: media_player.lounge_tv
-            icon: mdi:television
-            state_color: true
+          - type: custom:mini-media-player # Телевизор
+            entity: media_player.lounge_tv
+            group: true
+            artwork: none
+            hide:
+              controls: true
+              source: true
+              icon_state: false
           - entity: vacuum.xiaomi_robot
             state_color: true
           - sensor.lounge_temperature
@@ -297,8 +302,14 @@ views:
         show_header_toggle: false
         entities:
           - light.kitchen
-          - entity: media_player.kitchen_tv
-            state_color: true
+          - type: custom:mini-media-player # Телевизор
+            entity: media_player.kitchen_tv
+            group: true
+            artwork: none
+            hide:
+              controls: true
+              source: true
+              icon_state: false
           - entity: climate.kitchen
             state_color: true
           - entity: climate.gas_boiler
@@ -463,9 +474,9 @@ views:
           columns: 6
         tts:
           platform: yandex_station
-      - type: media-control
+      - type: custom:mini-media-player # Телевизор в зале
         entity: media_player.lounge_tv
-      - type: media-control
+      - type: custom:mini-media-player # Телевизор на кухне
         entity: media_player.kitchen_tv
       - type: custom:mini-media-player # DEXP SmartBox
         entity: media_player.yandex_station_4673583569717842043

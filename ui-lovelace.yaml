@@ -265,8 +265,13 @@ views:
         show_header_toggle: false
         entities:
           - light.bedroom
-          - entity: media_player.desktop_pc
-            state_color: true
+          - type: custom:mini-media-player # Настольный компьютер
+            entity: media_player.desktop_pc
+            group: true
+            hide:
+              volume: true
+              controls: true
+              icon_state: false
           - type: custom:mini-media-player # Irbis A
             entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
             group: true
@@ -426,8 +431,12 @@ views:
     path: multimedia
     icon: mdi:youtube
     cards:
-      - type: media-control
+      - type: custom:mini-media-player # Настольный компьютер
         entity: media_player.desktop_pc
+        hide:
+          controls: true
+          volume: true
+          icon_state: false
       - type: custom:mini-media-player # Irbis A
         entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
         shortcuts:

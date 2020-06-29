@@ -408,10 +408,62 @@ views:
     cards:
       - type: media-control
         entity: media_player.desktop_pc
+      - type: custom:mini-media-player # Irbis A
+        entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+        shortcuts:
+          attribute: sound_mode
+          buttons:
+            - type: sound_mode
+              icon: mdi:voice
+              id: "Произнеси текст"
+            - type: sound_mode
+              icon: mdi:google-assistant
+              id: "Выполни команду"
+            - icon: mdi:playlist-star
+              type: command
+              id: "включи мою любимую музыку вперемешку"
+            - icon: mdi:playlist-music
+              type: command
+              id: "включи плейлист дня"
+            - icon: mdi:heart
+              type: command
+              id: "лайк"
+            - icon: mdi:heart-off
+              type: command
+              id: "снять лайк"
+          columns: 6
+        tts:
+          platform: yandex_station
       - type: media-control
         entity: media_player.lounge_tv
       - type: media-control
         entity: media_player.kitchen_tv
+      - type: custom:mini-media-player # DEXP SmartBox
+        entity: media_player.yandex_station_4673583569717842043
+        shortcuts:
+          attribute: sound_mode
+          buttons:
+            - type: sound_mode
+              icon: mdi:voice
+              id: "Произнеси текст"
+            - type: sound_mode
+              icon: mdi:google-assistant
+              id: "Выполни команду"
+            - icon: mdi:playlist-star
+              type: command
+              id: "включи мою любимую музыку вперемешку"
+            - icon: mdi:playlist-music
+              type: command
+              id: "включи плейлист дня"
+            - icon: mdi:heart
+              type: command
+              id: "лайк"
+            - icon: mdi:heart-off
+              type: command
+              id: "снять лайк"
+          columns: 6
+        tts:
+          platform: yandex_station
 
   # Уборка квартиры
   - title: "Уборка квартиры"

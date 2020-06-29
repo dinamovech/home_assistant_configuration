@@ -58,6 +58,11 @@ views:
             style:
               top: 35%
               left: 29.5%
+          - type: state-icon # Irbis A
+            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+            style:
+              top: 24%
+              left: 34%
           - type: state-icon # Настольный компьютер
             entity: media_player.desktop_pc
             style:
@@ -191,7 +196,7 @@ views:
             entity: light.bathroom
             style:
               top: 82%
-              left: 42.6%
+              left: 42.5%
           - type: state-icon # Вентиляция
             entity: climate.bathroom
             style:
@@ -224,6 +229,11 @@ views:
             style:
               top: 82%
               left: 36%
+          - type: state-icon # DEXP SmartBox
+            entity: media_player.yandex_station_4673583569717842043
+            style:
+              top: 82%
+              left: 45%
 
   # Обзор комнат
   - title: "Обзор комнат"

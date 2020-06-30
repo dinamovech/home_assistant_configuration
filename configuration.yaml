@@ -19,7 +19,7 @@ homeassistant:
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
       type: module
     - url: /hacsfiles/lovelace-weather-card-chart/weather-card-chart.js
       type: module

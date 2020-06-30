@@ -511,46 +511,73 @@ views:
   - title: "Уборка квартиры"
     path: cleaning
     icon: mdi:robot-vacuum
-    panel: true
     cards:
-      - type: vertical-stack
-        cards:
-          - type: entities
-            entities:
-              - entity: vacuum.xiaomi_robot
-                state_color: true
-          # https://github.com/PiotrMachowski/lovelace-xiaomi-vacuum-map-card
-          - type: custom:xiaomi-vacuum-map-card
-            entity: vacuum.xiaomi_robot
-            map_image: "/local/vacuum_map.png"
-            default_mode: predefined_zones
-            language: ru
-            calibration_points:
-              - vacuum:
-                  x: 17300
-                  y: 25850
-                map:
-                  x: 460
-                  y: 125
-              - vacuum:
-                  x: 17300
-                  y: 20500
-                map:
-                  x: 460
-                  y: 675
-              - vacuum:
-                  x: 27750
-                  y: 20500
-                map:
-                  x: 1485
-                  y: 675
-            zones:
-              - [[17325, 22220, 18480, 23190], [18480, 22080, 22450, 23190]]
-              - [[17325, 23370, 20630, 25855]]
-              - [[20810, 23370, 25855, 25855], [21550, 23030, 25855, 23373]]
-              - [[22620, 20760, 25855, 22870], [25855, 20960, 26560, 22610]]
-              - [[26560, 20810, 27480, 25855]]
-              - [[19720, 20760, 22450, 21970]]
+      - type: custom:vacuum-card
+        entity: vacuum.xiaomi_robot
+        stats:
+          default:
+            - attribute: filter_left
+              subtitle: "Ресурс фильтра"
+              unit: "ч"
+            - attribute: side_brush_left
+              subtitle: "Боковая щетка"
+              unit: "ч"
+            - attribute: main_brush_left
+              subtitle: "Основная щетка"
+              unit: "ч"
+            - attribute: sensor_dirty_left
+              subtitle: "Датчики"
+              unit: "ч"
+          cleaning:
+            - attribute: cleaned_area
+              subtitle: "Площадь уборки"
+              unit: "м2"
+            - attribute: cleaning_time
+              subtitle: "Время уборки"
+              unit: "мин"
+        actions:
+          - name: "Уборка коридора"
+            icon: mdi:hanger
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[17276, 21727, 22426, 23027, 1]]
+          - name: "Уборка спальни"
+            icon: mdi:bed-empty
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[17277, 23100, 20677, 25850, 1]]
+          - name: "Уборка зала"
+            icon: mdi:sofa
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[20830, 22826, 26030, 25826, 1]]
+          - name: "Уборка кухни"
+            icon: mdi:silverware-variant
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[22634, 20367, 26784, 22667, 1]]
+          - name: "Уборка лоджии"
+            icon: mdi:fridge-outline
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[26722, 20442, 27722, 25092, 1]]
+          - name: "Уборка ванной"
+            icon: mdi:shower
+            service: vacuum.send_command
+            service_data:
+              entity_id: vacuum.xiaomi_robot
+              command: app_zoned_clean
+              params: [[19622, 20417, 22372, 21717, 1]]
 
   # Элементы питания
   - title: "Элементы питания"

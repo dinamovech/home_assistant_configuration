@@ -64,9 +64,6 @@ recorder:
       - sensor.gateway_uptime
       - sensor.gateway_map
       - sensor.hacs
-      # Датчик радиации (храним только отфильтрованные)
-      - sensor.radiation_level
-      - sensor.radiation_accuracy
       # Состояние батареек датчиков
       - sensor.bathroom_sensor_battery
       - sensor.bathroom_leak_1_battery

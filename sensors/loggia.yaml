@@ -4,19 +4,3 @@
   name: radiation_level
   unit_of_measurement: "мкР/ч"
   state_topic: "/radiation/valuedes0"
-- platform: mqtt
-  name: radiation_accuracy
-  unit_of_measurement: "%"
-  state_topic: "/radiation/valuedes1"
-#- platform: mqtt
-#  name: radiation_voltage
-#  unit_of_measurement: "В"
-#  state_topic: "/radiation/valuedes2"
-
-# Отфильтрованное значение
-- platform: filter
-  name: radiation_level_filtered
-  entity_id: sensor.radiation_level
-  filters:
-    - filter: lowpass
-      time_constant: 10

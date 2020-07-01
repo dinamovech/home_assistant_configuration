@@ -71,11 +71,3 @@ sensor.energy_line_monthly_kwh:
 # ESP Radiation Meter
 sensor.radiation_level:
   friendly_name: "Уровень радиации"
-sensor.radiation_accuracy:
-  friendly_name: "Точность измерений"
-#sensor.radiation_voltage:
-#  friendly_name: "Напряжение датчика"
-# Отфильтрованное значение
-sensor.radiation_level_filtered:
-  friendly_name: "Усредненные значения"
-  unit_of_measurement: "мкР/ч"

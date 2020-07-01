@@ -2,12 +2,8 @@
 - alias: high_radiation_notify
   trigger:
     - platform: numeric_state
-      entity_id: sensor.radiation_level_filtered
+      entity_id: sensor.radiation_level
       above: 30
-  condition:
-    - condition: numeric_state
-      entity_id: sensor.radiation_accuracy
-      above: 100
   action:
     - service: notify.notify
       data_template:

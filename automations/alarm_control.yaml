@@ -72,11 +72,15 @@
       entity_id: switch.security_system
       from: "off"
       to: "on"
+  condition: # Защита от двойного срабатывания
+    - condition: state
+      entity_id: input_text.security_trigger_source
+      state: ""
   action:
-    - service: input_text.set_value # Забываем имя инициатора сработки
+    - service: input_text.set_value # Устанавливаем имя инициатора сработки
       data:
         entity_id: input_text.security_trigger_source
-        value: ""
+        value: "NULL"
     - service: alarm_control_panel.alarm_arm_away # Включаем охрану
       data:
         entity_id: alarm_control_panel.home
@@ -96,10 +100,11 @@
       data:
         entity_id: climate.gas_boiler
         preset_mode: "away"
-    - service: mqtt.publish # Звуковое уведомление
+    - service: media_player.play_media # FIXME: звуковое уведомление
+      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
       data:
-        topic: "/zigbee-ble/bridge/config/sound"
-        payload: "FIXME"
+        media_content_id: "Охранная сигнализация включена!"
+        media_content_type: text
 
 
 # Постановка квартиры на охрану (автоматически)
@@ -139,16 +144,11 @@
         state: "on"
       - condition: state
         entity_id: alarm_control_panel.home
-        state: "armed_away"
-      - condition: state
-        entity_id: alarm_control_panel.home
-        state: "arming"
-      - condition: state
-        entity_id: alarm_control_panel.home
-        state: "pending"
-      - condition: state
-        entity_id: alarm_control_panel.home
-        state: "triggered"
+        state:
+          - armed_away
+          - arming
+          - pending
+          - triggered
   action:
     - service: input_text.set_value # Забываем имя инициатора сработки
       data:
@@ -160,10 +160,11 @@
     - service: switch.turn_off # Отключаем реле охранной системы
       data:
         entity_id: switch.security_system
-    - service: mqtt.publish # Звуковое уведомление
+    - service: media_player.play_media # FIXME: звуковое уведомление
+      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
       data:
-        topic: "/zigbee-ble/bridge/config/sound"
-        payload: "FIXME"
+        media_content_id: "Охранная сигнализация отключена!"
+        media_content_type: text
     - service: automation.trigger # Включаем ночной режим, если это необходимо
       data:
         entity_id: automation.enable_night_mode
@@ -260,10 +261,11 @@
       data:
         entity_id: light.gateway
         rgb_color: [255, 0, 0]
-    - service: mqtt.publish # Включаем звуковую сирену
+    - service: media_player.play_media # FIXME: включаем звуковую сирену
+      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
       data:
-        topic: "/zigbee-ble/bridge/config/sound"
-        payload: "FIXME"
+        media_content_id: '<speaker audio="alice-sounds-things-cuckoo-clock-2.opus">'
+        media_content_type: text
 
 
 # Окончание срабатывания охранной сигнализации (действия)
@@ -273,10 +275,11 @@
       entity_id: alarm_control_panel.home
       from: "triggered"
   action:
-    - service: mqtt.publish # Отключаем звуковую сирену
+    - service: yandex_station.send_command # FIXME: отключаем звуковую сирену
+      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
       data:
-        topic: "/zigbee-ble/bridge/config/sound"
-        payload: "FIXME"
+        command: sendText
+        text: "Стоп"
     - service: light.turn_off # Отключаем подсветку шлюза
       data:
         entity_id: light.gateway

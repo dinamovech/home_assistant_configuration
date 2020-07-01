@@ -85,13 +85,6 @@ recorder:
       # Разное
       - sensor.hallway_illuminance
 
-# Weather
-weather:
-  - platform: darksky
-    api_key: !secret darksky_key
-    mode: daily
-    units: ca
-
 # Elfin-EE11
 modbus:
   name: elfin

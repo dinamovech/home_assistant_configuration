@@ -330,6 +330,7 @@ views:
           - sensor.loggia_sensor_temperature
           - sensor.loggia_sensor_humidity
           - sensor.loggia_sensor_pressure
+          - sensor.radiation_level
       - type: entities
         title: "Ванная"
         show_header_toggle: false
@@ -414,27 +415,6 @@ views:
         entities:
           - entity: sensor.energy_line_monthly_kwh
           - entity: sensor.energy_line_monthly_rub
-
-  # Погодные условия
-  - title: "Погодные условия"
-    path: weather
-    icon: mdi:cloud
-    panel: true
-    cards:
-        - type: horizontal-stack
-          cards:
-            - type: history-graph
-              title: "Атмосферное давление"
-              hours_to_show: 24
-              refresh_interval: 30
-              entities:
-                - entity: sensor.loggia_sensor_pressure
-            - type: history-graph
-              title: "Уровень радиации"
-              hours_to_show: 24
-              refresh_interval: 30
-              entities:
-                - entity: sensor.radiation_level_filtered
 
   # Мультимедиа
   - title: "Мультимедиа"

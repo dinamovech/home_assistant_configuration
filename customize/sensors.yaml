@@ -70,4 +70,4 @@ sensor.energy_line_monthly_kwh:
 
 # ESP Radiation Meter
 sensor.radiation_level:
-  friendly_name: "Уровень радиации"
+  friendly_name: "Радиационный фон"

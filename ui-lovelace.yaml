@@ -190,6 +190,12 @@ views:
             style:
               top: 77%
               left: 75%
+          - type: state-label # Радиационный фон
+            entity: sensor.radiation_level
+            prefix: "Радиация: "
+            style:
+              top: 79%
+              left: 75%
           # Ванная
           - type: state-icon # Освещение
             tap_action:

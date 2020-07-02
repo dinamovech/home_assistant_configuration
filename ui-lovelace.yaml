@@ -583,30 +583,27 @@ views:
   - title: "Сервис"
     path: service
     icon: mdi:settings
-    panel: true
     cards:
-        - type: horizontal-stack
-          cards:
-            - type: entities
-              title: "Система"
-              show_header_toggle: false
-              entities:
-                - sensor.gateway_uptime
-                - sensor.last_boot
-                - sensor.home_assistant_v2_db
-                - sensor.memory_use_percent
-                - sensor.swap_use_percent
-                - sensor.disk_use_percent
-                - sensor.processor_use
-                - sensor.cpu_temperature
-            - type: entities
-              title: "Управление"
-              show_header_toggle: false
-              entities:
-                - entity: switch.gateway_join
-                  state_color: true
-                - script.reboot_gateway
-                - script.create_system_backup
-                - script.restart_homeassistant
-                - script.reboot_server
-                - script.shutdown_server
+      - type: entities
+        title: "Система"
+        show_header_toggle: false
+        entities:
+          - sensor.gateway_uptime
+          - sensor.last_boot
+          - sensor.home_assistant_v2_db
+          - sensor.memory_use_percent
+          - sensor.swap_use_percent
+          - sensor.disk_use_percent
+          - sensor.processor_use
+          - sensor.cpu_temperature
+      - type: entities
+        title: "Управление"
+        show_header_toggle: false
+        entities:
+          - entity: switch.gateway_join
+            state_color: true
+          - script.reboot_gateway
+          - script.create_system_backup
+          - script.restart_homeassistant
+          - script.reboot_server
+          - script.shutdown_server

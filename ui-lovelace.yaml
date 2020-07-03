@@ -525,42 +525,42 @@ views:
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[17276, 21727, 22426, 23027, 1]]
+              params: [[28598, 28132, 33998, 29432, 1]]
           - name: "Уборка спальни"
             icon: mdi:bed-empty
             service: vacuum.send_command
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[17277, 23100, 20677, 25850, 1]]
+              params: [[30348, 25271, 33998, 28121, 1]]
           - name: "Уборка зала"
             icon: mdi:sofa
             service: vacuum.send_command
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[20830, 22826, 26030, 25826, 1]]
+              params: [[25209, 25303, 30359, 28353, 1]]
           - name: "Уборка кухни"
             icon: mdi:silverware-variant
             service: vacuum.send_command
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[22634, 20367, 26784, 22667, 1]]
+              params: [[24523, 28397, 28623, 30747, 1]]
           - name: "Уборка лоджии"
             icon: mdi:fridge-outline
             service: vacuum.send_command
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[26722, 20442, 27722, 25092, 1]]
+              params: [[23501, 25782, 24551, 30632, 1]]
           - name: "Уборка ванной"
             icon: mdi:shower
             service: vacuum.send_command
             service_data:
               entity_id: vacuum.xiaomi_robot
               command: app_zoned_clean
-              params: [[19622, 20417, 22372, 21717, 1]]
+              params: [[28815, 29331, 31615, 30781, 1]]
 
   # Элементы питания
   - title: "Элементы питания"

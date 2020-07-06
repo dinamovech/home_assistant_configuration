@@ -1,0 +1,10 @@
+# Датчик движения
+- platform: mqtt
+  name: hallway_motion_occupancy
+  device_class: motion
+  availability_topic: "/zigbee/bridge/state"
+  state_topic: "/zigbee/hallway_motion"
+  value_template: "{{ value_json.occupancy }}"
+  payload_on: true
+  payload_off: false
+  off_delay: 7

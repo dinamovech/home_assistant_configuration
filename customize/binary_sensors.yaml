@@ -1,0 +1,3 @@
+# Датчик движения в коридоре
+binary_sensor.hallway_motion_occupancy:
+  friendly_name: "Датчик движения в коридоре"

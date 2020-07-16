@@ -58,12 +58,6 @@ views:
             style:
               top: 35%
               left: 29.5%
-          - type: state-icon # Irbis A
-            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
-            state_color: false
-            style:
-              top: 24%
-              left: 34%
           - type: state-icon # Настольный компьютер
             entity: media_player.desktop_pc
             style:
@@ -147,6 +141,12 @@ views:
             style:
               top: 82%
               left: 57%
+          - type: state-icon # Irbis A
+            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+            state_color: false
+            style:
+              top: 82%
+              left: 69%
           - type: state-icon # Телевизор
             entity: media_player.kitchen_tv
             style:
@@ -280,11 +280,6 @@ views:
               volume: true
               controls: true
               icon_state: false
-          - type: custom:mini-media-player # Irbis A
-            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
-            group: true
-            hide:
-              volume: true
           - sensor.bedroom_temperature
           - sensor.bedroom_humidity
       - type: entities
@@ -310,6 +305,11 @@ views:
         show_header_toggle: false
         entities:
           - light.kitchen
+          - type: custom:mini-media-player # Irbis A
+            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+            group: true
+            hide:
+              volume: true
           - type: custom:mini-media-player # Телевизор
             entity: media_player.kitchen_tv
             group: true

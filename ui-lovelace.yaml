@@ -63,6 +63,13 @@ views:
             style:
               top: 24%
               left: 36%
+          - type: state-icon # Яндекс Мини
+            entity: media_player.yandex_station_ff98f02956241bb6fce15af6
+            icon: yandex:station-mini
+            state_color: false
+            style:
+              top: 24%
+              left: 34%
           - type: state-label # Температура
             entity: sensor.bedroom_temperature
             prefix: "Температура: "
@@ -143,6 +150,7 @@ views:
               left: 57%
           - type: state-icon # Irbis A
             entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+            icon: yandex:irbis-a
             state_color: false
             style:
               top: 82%
@@ -238,6 +246,7 @@ views:
               left: 36%
           - type: state-icon # DEXP SmartBox
             entity: media_player.yandex_station_4673583569717842043
+            icon: yandex:dexp-smartbox
             state_color: false
             style:
               top: 82%
@@ -273,6 +282,12 @@ views:
         show_header_toggle: false
         entities:
           - light.bedroom
+          - type: custom:mini-media-player # Яндекс Мини
+            entity: media_player.yandex_station_ff98f02956241bb6fce15af6
+            group: true
+            artwork: none
+            hide:
+              volume: true
           - type: custom:mini-media-player # Настольный компьютер
             entity: media_player.desktop_pc
             group: true
@@ -308,6 +323,7 @@ views:
           - type: custom:mini-media-player # Irbis A
             entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
             group: true
+            artwork: none
             hide:
               volume: true
           - type: custom:mini-media-player # Телевизор
@@ -348,6 +364,7 @@ views:
           - type: custom:mini-media-player # DEXP SmartBox
             entity: media_player.yandex_station_4673583569717842043
             group: true
+            artwork: none
             hide:
               volume: true
           - entity: binary_sensor.bathroom_leak_1_water_leak
@@ -433,8 +450,9 @@ views:
           controls: true
           volume: true
           icon_state: false
-      - type: custom:mini-media-player # Irbis A
-        entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      - type: custom:mini-media-player # Яндекс Мини
+        entity: media_player.yandex_station_ff98f02956241bb6fce15af6
+        artwork: none
         shortcuts:
           attribute: sound_mode
           buttons:
@@ -463,8 +481,36 @@ views:
         entity: media_player.lounge_tv
       - type: custom:mini-media-player # Телевизор на кухне
         entity: media_player.kitchen_tv
+      - type: custom:mini-media-player # Irbis A
+        entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+        artwork: none
+        shortcuts:
+          attribute: sound_mode
+          buttons:
+            - type: sound_mode
+              icon: mdi:voice
+              id: "Произнеси текст"
+            - type: sound_mode
+              icon: mdi:google-assistant
+              id: "Выполни команду"
+            - icon: mdi:playlist-star
+              type: command
+              id: "включи мою любимую музыку вперемешку"
+            - icon: mdi:playlist-music
+              type: command
+              id: "включи плейлист дня"
+            - icon: mdi:heart
+              type: command
+              id: "лайк"
+            - icon: mdi:heart-off
+              type: command
+              id: "снять лайк"
+          columns: 6
+        tts:
+          platform: yandex_station
       - type: custom:mini-media-player # DEXP SmartBox
         entity: media_player.yandex_station_4673583569717842043
+        artwork: none
         shortcuts:
           attribute: sound_mode
           buttons:

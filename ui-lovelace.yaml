@@ -628,7 +628,7 @@ views:
   # Сервис
   - title: "Сервис"
     path: service
-    icon: mdi:settings
+    icon: mdi:cog
     cards:
       - type: entities
         title: "Система"

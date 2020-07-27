@@ -78,7 +78,7 @@ recorder:
       - sensor.lounge_sensor_battery
       - sensor.xiaomi_robot_battery
       # Разное
-      - sensor.hallway_illuminance
+      - sensor.hallway_motion_illuminance
 
 # Elfin-EE11
 modbus:

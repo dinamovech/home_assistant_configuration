@@ -9,7 +9,7 @@
       entity_id: alarm_control_panel.home
       state: "armed_night"
     - condition: numeric_state # И в комнате темно
-      entity_id: sensor.hallway_illuminance
+      entity_id: sensor.hallway_motion_illuminance
       below: 5
   action: # Включаем подсветку
     - service: light.turn_on

@@ -33,3 +33,19 @@
     - service: light.turn_off
       data:
         entity_id: light.gateway
+
+# Автоматическое отключение света в коридоре
+- alias: turnoff_hallway_light_when_hallway_motion_lost
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hallway_motion_occupancy
+      to: "off"
+      for: "00:05:00"
+  condition:
+    - condition: state
+      entity_id: light.hallway
+      state: "on"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.hallway

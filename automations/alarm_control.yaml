@@ -72,15 +72,11 @@
       entity_id: switch.security_system
       from: "off"
       to: "on"
-  condition: # Защита от двойного срабатывания
-    - condition: state
-      entity_id: input_text.security_trigger_source
-      state: ""
   action:
-    - service: input_text.set_value # Устанавливаем имя инициатора сработки
+    - service: input_text.set_value # Забываем имя инициатора сработки
       data:
         entity_id: input_text.security_trigger_source
-        value: "NULL"
+        value: ""
     - service: alarm_control_panel.alarm_arm_away # Включаем охрану
       data:
         entity_id: alarm_control_panel.home

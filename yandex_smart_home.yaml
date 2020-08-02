@@ -74,6 +74,8 @@ entity_config:
         entity: sensor.bedroom_temperature
       - type: humidity
         entity: sensor.bedroom_humidity
+      - type: co2_level
+        entity: sensor.bedroom_airmon_co2
       - type: battery_level
         entity: sensor.bedroom_sensor_battery
 

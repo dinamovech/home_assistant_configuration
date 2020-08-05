@@ -97,7 +97,7 @@
         entity_id: climate.gas_boiler
         preset_mode: "away"
     - service: media_player.play_media # FIXME: звуковое уведомление
-      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      entity_id: media_player.yandex_station_4673583569717842043
       data:
         media_content_id: "Охранная сигнализация включена!"
         media_content_type: text
@@ -157,7 +157,7 @@
       data:
         entity_id: switch.security_system
     - service: media_player.play_media # FIXME: звуковое уведомление
-      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      entity_id: media_player.yandex_station_4673583569717842043
       data:
         media_content_id: "Охранная сигнализация отключена!"
         media_content_type: text
@@ -258,7 +258,7 @@
         entity_id: light.gateway
         rgb_color: [255, 0, 0]
     - service: media_player.play_media # FIXME: включаем звуковую сирену
-      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      entity_id: media_player.yandex_station_4673583569717842043
       data:
         media_content_id: '<speaker audio="alice-sounds-things-cuckoo-clock-2.opus">'
         media_content_type: text
@@ -272,7 +272,7 @@
       from: "triggered"
   action:
     - service: yandex_station.send_command # FIXME: отключаем звуковую сирену
-      entity_id: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      entity_id: media_player.yandex_station_4673583569717842043
       data:
         command: sendText
         text: "Стоп"

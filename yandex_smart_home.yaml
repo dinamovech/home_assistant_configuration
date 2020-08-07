@@ -120,6 +120,8 @@ entity_config:
         entity: sensor.loggia_sensor_humidity
       #- type: pressure
       #  entity: sensor.loggia_sensor_pressure
+      #- type: radiation
+      #  entity: sensor.geiger_counter_radiation_dose_per_hour
       - type: battery_level
         entity: sensor.loggia_sensor_battery
 

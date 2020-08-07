@@ -205,7 +205,7 @@ views:
               top: 77%
               left: 75%
           - type: state-label # Радиационный фон
-            entity: sensor.radiation_level
+            entity: sensor.geiger_counter_radiation_dose_per_hour
             prefix: "Радиация: "
             style:
               top: 79%
@@ -359,7 +359,7 @@ views:
           - sensor.loggia_sensor_temperature
           - sensor.loggia_sensor_humidity
           - sensor.loggia_sensor_pressure
-          - sensor.radiation_level
+          - sensor.geiger_counter_radiation_dose_per_hour
       - type: entities
         title: "Ванная"
         show_header_toggle: false

@@ -2,7 +2,7 @@
 - alias: high_radiation_notify
   trigger:
     - platform: numeric_state
-      entity_id: sensor.radiation_level
+      entity_id: sensor.geiger_counter_radiation_dose_per_hour
       above: 30
   action:
     - service: notify.notify

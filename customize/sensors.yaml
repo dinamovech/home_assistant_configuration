@@ -67,7 +67,3 @@ sensor.energy_line_daily_kwh:
 # Месячное потребление электроэнергии
 sensor.energy_line_monthly_kwh:
   friendly_name: "Электроэнергия"
-
-# ESP Radiation Meter
-sensor.radiation_level:
-  friendly_name: "Радиационный фон"

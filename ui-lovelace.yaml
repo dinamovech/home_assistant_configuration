@@ -154,13 +154,13 @@ views:
             style:
               top: 82%
               left: 57%
-          - type: state-icon # Irbis A
-            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
-            icon: yandex:irbis-a
-            state_color: false
-            style:
-              top: 82%
-              left: 69%
+          #- type: state-icon # Irbis A
+          #  entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+          #  icon: yandex:irbis-a
+          #  state_color: false
+          #  style:
+          #    top: 82%
+          #    left: 69%
           - type: state-icon # Телевизор
             entity: media_player.kitchen_tv
             style:
@@ -327,12 +327,12 @@ views:
         show_header_toggle: false
         entities:
           - light.kitchen
-          - type: custom:mini-media-player # Irbis A
-            entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
-            group: true
-            artwork: none
-            hide:
-              volume: true
+          #- type: custom:mini-media-player # Irbis A
+          #  entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+          #  group: true
+          #  artwork: none
+          #  hide:
+          #    volume: true
           - type: custom:mini-media-player # Телевизор
             entity: media_player.kitchen_tv
             group: true
@@ -488,33 +488,33 @@ views:
         entity: media_player.lounge_tv
       - type: custom:mini-media-player # Телевизор на кухне
         entity: media_player.kitchen_tv
-      - type: custom:mini-media-player # Irbis A
-        entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
-        artwork: none
-        shortcuts:
-          attribute: sound_mode
-          buttons:
-            - type: sound_mode
-              icon: mdi:voice
-              id: "Произнеси текст"
-            - type: sound_mode
-              icon: mdi:google-assistant
-              id: "Выполни команду"
-            - icon: mdi:playlist-star
-              type: command
-              id: "включи мою любимую музыку вперемешку"
-            - icon: mdi:playlist-music
-              type: command
-              id: "включи плейлист дня"
-            - icon: mdi:heart
-              type: command
-              id: "лайк"
-            - icon: mdi:heart-off
-              type: command
-              id: "снять лайк"
-          columns: 6
-        tts:
-          platform: yandex_station
+      #- type: custom:mini-media-player # Irbis A
+      #  entity: media_player.yandex_station_ff98f010ed6379a0067d96ff
+      #  artwork: none
+      #  shortcuts:
+      #    attribute: sound_mode
+      #    buttons:
+      #      - type: sound_mode
+      #        icon: mdi:voice
+      #        id: "Произнеси текст"
+      #      - type: sound_mode
+      #        icon: mdi:google-assistant
+      #        id: "Выполни команду"
+      #      - icon: mdi:playlist-star
+      #        type: command
+      #        id: "включи мою любимую музыку вперемешку"
+      #      - icon: mdi:playlist-music
+      #        type: command
+      #        id: "включи плейлист дня"
+      #      - icon: mdi:heart
+      #        type: command
+      #        id: "лайк"
+      #      - icon: mdi:heart-off
+      #        type: command
+      #        id: "снять лайк"
+      #    columns: 6
+      #  tts:
+      #    platform: yandex_station
       - type: custom:mini-media-player # DEXP SmartBox
         entity: media_player.yandex_station_4673583569717842043
         artwork: none

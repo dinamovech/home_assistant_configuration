@@ -1,6 +1,0 @@
-# ESP Radiation Meter
-# https://github.com/avdeevsv91/esp_radiation_meter
-- platform: mqtt
-  name: radiation_level
-  unit_of_measurement: "мкР/ч"
-  state_topic: "/radiation/valuedes0"

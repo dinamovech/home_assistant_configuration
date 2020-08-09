@@ -67,7 +67,3 @@ sensor.energy_line_daily_kwh:
 # Месячное потребление электроэнергии
 sensor.energy_line_monthly_kwh:
   friendly_name: "Электроэнергия"
-
-# Датчик радиации
-sensor.geiger_counter_radiation_dose_per_hour:
-  unit_of_measurement: "мкР/ч"

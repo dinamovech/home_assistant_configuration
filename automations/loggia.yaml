@@ -4,6 +4,7 @@
     - platform: numeric_state
       entity_id: sensor.geiger_counter_radiation_dose_per_hour
       above: 30
+      for: "00:05:00"
   action:
     - service: notify.notify
       data_template:

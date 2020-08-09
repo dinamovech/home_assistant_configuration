@@ -12,7 +12,7 @@ sensor.memory_use_percent:
   icon: mdi:chip
 sensor.swap_use_percent:
   friendly_name: "Файл подкачки"
-  icon: mdi:file-settings-variant
+  icon: mdi:file-cog
 sensor.disk_use_percent:
   friendly_name: "Жесткий диск"
   icon: mdi:harddisk

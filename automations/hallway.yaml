@@ -49,3 +49,19 @@
     - service: light.turn_off
       data:
         entity_id: light.hallway
+
+# Таймаут для датчика движения в коридоре
+- alias: hallway_motion_off_delay
+  mode: restart
+  trigger:
+    - platform: mqtt
+      topic: "/zigbee/hallway_motion"
+  condition:
+    condition: template
+    value_template: '{{ trigger.payload_json.occupancy == true }}'
+  action:
+    - delay: 00:00:07
+    - service: mqtt.publish
+      data:
+        topic: "/zigbee/hallway_motion"
+        payload: '{"occupancy": false}'

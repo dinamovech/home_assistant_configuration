@@ -65,3 +65,4 @@
       data:
         topic: "/zigbee/hallway_motion"
         payload: '{"occupancy": false}'
+        retain: true

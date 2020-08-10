@@ -60,9 +60,19 @@
     condition: template
     value_template: '{{ trigger.payload_json.occupancy == true }}'
   action:
-    - delay: 00:00:07
+    - delay:
+        seconds: >
+          {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'occupancy_timeout') | int) }}
     - service: mqtt.publish
       data:
         topic: "/zigbee/hallway_motion"
-        payload: '{"occupancy": false}'
+        payload_template: >
+          {
+            "battery": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'battery') | int) }},
+            "illuminance": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'illuminance') | int) }},
+            "linkquality": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'linkquality') | int) }},
+            "occupancy": false,
+            "occupancy_timeout": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'occupancy_timeout') | int) }},
+            "voltage": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'voltage') | float) }}
+          }
         retain: true

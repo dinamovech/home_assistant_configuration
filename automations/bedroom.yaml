@@ -1,0 +1,11 @@
+# Повышенный уровень CO2
+- alias: bedroom_high_co2_notify
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.bedroom_airmon_co2
+      above: 800
+  action:
+    - service: notify.notify
+      data_template:
+        title: "Внимание!"
+        message: "Уровень углекислого газа в спальне превысил норму и составляет {{ trigger.to_state.state | int }} ppm! Рекомендуется проветрить помещение."

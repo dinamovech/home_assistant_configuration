@@ -260,7 +260,7 @@
     - service: media_player.play_media # FIXME: включаем звуковую сирену
       entity_id: media_player.yandex_station_4673583569717842043
       data:
-        media_content_id: '<speaker audio="alice-sounds-things-cuckoo-clock-2.opus">'
+        media_content_id: '<speaker audio="alice-sounds-things-siren-2.opus">'
         media_content_type: text
 
 

@@ -76,3 +76,20 @@
             "voltage": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'voltage') | float) }}
           }
         retain: true
+
+# Кнопка дверного звонка (тестирование)
+- alias: hallway_doorbell_button_pushed
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.doorbell_button_binary_input_1
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.home
+      state: "disarmed"
+  action:
+    - service: media_player.play_media
+      entity_id: media_player.yandex_station_ff98f02956241bb6fce15af6
+      data:
+        media_content_id: '<speaker audio="alice-sounds-game-8-bit-phone-1.opus">'
+        media_content_type: text

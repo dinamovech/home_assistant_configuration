@@ -174,21 +174,32 @@
 # Снятие квартиры с охраны (автоматически)
 - alias: auto_disable_away_mode
   trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home
-      from: "armed_away"
-      to: "pending"
+    - platform: state # Открыта входная дверь
+      entity_id: binary_sensor.hallway_door_contact
+      to: "on"
   condition:
+    - condition: state
+      entity_id: alarm_control_panel.home
+      state:
+        - armed_away
+        #- pending
     - condition: state
       entity_id: person.sergei
       state: "home"
-    #- condition: template # Только если статус изменился в течении последних 5 минут
+    #- condition: template # Только если статус "home" для "person.sergei" установлен в течении последних 5 минут
     #  value_template: "{{ (as_timestamp(now()) - as_timestamp(states.person.sergei.last_changed)) < 300 }}"
   action:
-    - service: alarm_control_panel.alarm_disarm
+    - service: alarm_control_panel.alarm_disarm # Снимаем с охраны
       data:
         entity_id: alarm_control_panel.home
-
+    - condition: state # Если свет в коридоре отключен
+      entity_id: light.hallway
+      state: "off"
+    - condition: numeric_state # И там темно
+      entity_id: sensor.hallway_motion_illuminance
+      below: 5
+    - service: light.turn_on # Включаем свет
+      entity_id: light.hallway
 
 # Действия во время arming/pending-ожидания
 - alias: enable_arming_pending_away_mode

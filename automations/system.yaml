@@ -43,7 +43,7 @@
       entity_id: media_player.yandex_station_ff98f02956241bb6fce15af6
       data_template:
         media_content_id: "{{ trigger.event.data.service_data.title }} {{ trigger.event.data.service_data.message }}"
-        media_content_type: text
+        media_content_type: dialog
 
 
 # Оповещение о необходимости замены батарейки в беспроводном датчике

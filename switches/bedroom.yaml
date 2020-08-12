@@ -1,15 +1,3 @@
-# ИБП
-# https://www.home-assistant.io/integrations/telnet/
-- platform: telnet
-  switches:
-    pc_ups:
-      resource: "192.168.1.6"
-      port: 23
-      command_on: "C"
-      command_off: "S00R0000"
-      command_state: "Q1"
-      value_template: '{{ value != "" }}'
-
 # Компьютер
 # https://www.home-assistant.io/integrations/wake_on_lan/
 - platform: wake_on_lan

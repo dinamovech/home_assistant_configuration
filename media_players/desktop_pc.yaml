@@ -5,8 +5,12 @@
   children: []
   commands:
     turn_on:
-      service: script.turnon_desktop_pc_and_ups
+      service: switch.turn_on
+      data:
+        entity_id: switch.desktop_pc
     turn_off:
-      service: script.turnoff_desktop_pc_and_ups
+      service: switch.turn_off
+      data:
+        entity_id: switch.desktop_pc
   attributes:
     state: switch.desktop_pc

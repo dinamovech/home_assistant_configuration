@@ -79,6 +79,8 @@ recorder:
       - sensor.xiaomi_redmi_note_8t_battery
       - sensor.xiaomi_robot_battery
       # Разное
+      - sensor.home_sensor_humidity
+      - sensor.home_sensor_temperature
       - sensor.hallway_motion_illuminance
 
 # Elfin-EE11

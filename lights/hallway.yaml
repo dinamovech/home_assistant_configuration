@@ -28,4 +28,4 @@
       "hex": "#{{ '%02x%02x%02x' | format(red, green, blue) }}"
     }
   on_command_type: "brightness"
-  payload_off: '{"mode": "auto"}'
+  payload_off: '{"mode": "off"}'

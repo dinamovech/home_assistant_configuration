@@ -57,6 +57,7 @@
         - sensor.bathroom_button_battery
         - sensor.bedroom_sensor_battery
         - sensor.coolant_sensor_battery
+        - sensor.doorbell_button_battery
         - sensor.hallway_door_battery
         - sensor.hallway_motion_battery
         - sensor.hallway_sensor_battery

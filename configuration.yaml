@@ -60,7 +60,6 @@ recorder:
       - sensor.home_assistant_v2_db
       - sensor.snapshot_backup
       - sensor.gateway_uptime
-      - sensor.gateway_map
       - sensor.hacs
       # Состояние батареек датчиков
       - sensor.bathroom_sensor_battery
@@ -68,6 +67,7 @@ recorder:
       - sensor.bathroom_leak_2_battery
       - sensor.bathroom_button_battery
       - sensor.bedroom_sensor_battery
+      - sensor.doorbell_button_battery
       - sensor.coolant_sensor_battery
       - sensor.hallway_door_battery
       - sensor.hallway_motion_battery
@@ -76,6 +76,7 @@ recorder:
       - sensor.kitchen_leak_battery
       - sensor.loggia_sensor_battery
       - sensor.lounge_sensor_battery
+      - sensor.xiaomi_redmi_note_8t_battery
       - sensor.xiaomi_robot_battery
       # Разное
       - sensor.hallway_motion_illuminance

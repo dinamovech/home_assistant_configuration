@@ -2,6 +2,7 @@
 - platform: template
   sensors:
     home_sensor_temperature:
+      friendly_name: "Средняя температура в квартире"
       unit_of_measurement: "°C"
       value_template: >-
         {% set rooms_temperatures = 
@@ -27,6 +28,7 @@
 - platform: template
   sensors:
     home_sensor_humidity:
+      friendly_name: "Средняя влажность в квартире"
       unit_of_measurement: "%"
       value_template: >-
         {% set rooms_humidities = 

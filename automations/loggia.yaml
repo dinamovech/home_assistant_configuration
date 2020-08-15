@@ -10,3 +10,25 @@
       data_template:
         title: "Внимание!"
         message: "Радиационный фон превысил норму и составляет {{ trigger.to_state.state | int }} микрорентген в час!"
+
+# Включение света лоджии вместе со светом на кухне
+- alias: turnon_loggia_light_with_kitchen
+  trigger:
+    - platform: state
+      entity_id: light.kitchen
+      to: "on"
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.loggia
+
+# Отключение света лоджии вместе со светом на кухне
+- alias: turnoff_loggia_light_with_kitchen
+  trigger:
+    - platform: state
+      entity_id: light.kitchen
+      to: "off"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.loggia

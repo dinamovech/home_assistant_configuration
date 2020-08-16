@@ -3,7 +3,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.bedroom_airmon_co2
-      above: 800
+      above: 1000
   action:
     - service: notify.notify
       data_template:

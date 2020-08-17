@@ -14,7 +14,7 @@ light.loggia: # Лоджия
 light.bathroom: # Ванная
   friendly_name: "Освещение"
 
-# Подсветка ZigBee/Bluetooth шлюза
+# Подсветка ZigBee шлюза
 light.gateway:
   friendly_name: "Подсветка шлюза"
   assumed_state: false

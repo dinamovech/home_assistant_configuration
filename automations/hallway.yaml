@@ -1,3 +1,7 @@
+###########
+# КОРИДОР #
+###########
+
 # Управление подсветкой шлюза в ночном режиме
 - alias: turnon_gateway_light_when_hallway_motion_detected # Обнаружено движение в комнате
   trigger:

@@ -1,3 +1,7 @@
+#############
+# СЕРВЕР УД #
+#############
+
 # Size of history database
 - platform: filesize
   file_paths:

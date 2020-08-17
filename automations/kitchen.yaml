@@ -1,3 +1,7 @@
+#########
+# КУХНЯ #
+#########
+
 # Управление гигростатом в зависимости от ночного режима
 - alias: control_kitchen_climate_when_night_changed
   trigger:

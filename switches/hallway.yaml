@@ -1,4 +1,8 @@
-# Режим спаривания ZigBee/Bluetooth шлюза
+###########
+# КОРИДОР #
+###########
+
+# Режим спаривания ZigBee шлюза
 - platform: mqtt
   name: gateway_join
   icon: mdi:access-point-network
@@ -10,7 +14,6 @@
   command_topic: "/zigbee/bridge/config/permit_join"
   payload_on: "true"
   payload_off: "false"
-
 
 # Охранная система
 - platform: mqtt

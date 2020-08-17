@@ -1,4 +1,4 @@
-# Режим сопряжения ZigBee/Bluetooth шлюза
+# Режим сопряжения ZigBee шлюза
 switch.gateway_join:
   friendly_name: "Режим сопряжения"
   assumed_state: false

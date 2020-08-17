@@ -1,3 +1,7 @@
+####################
+# ЭЛЕКТРОСНАБЖЕНИЕ #
+####################
+
 # Электроэнергия за час
 energy_line_hourly_kwh:
   source: sensor.energy_line_reverse_active_energy
@@ -12,3 +16,5 @@ energy_line_daily_kwh:
 energy_line_monthly_kwh:
   source: sensor.energy_line_reverse_active_energy
   cycle: monthly
+  offset:
+    days: 20

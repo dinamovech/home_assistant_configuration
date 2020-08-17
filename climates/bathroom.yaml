@@ -1,3 +1,7 @@
+##################
+# ВАННАЯ КОМНАТА #
+##################
+
 # Вентиляция
 - platform: generic_hygrostat
   name: bathroom

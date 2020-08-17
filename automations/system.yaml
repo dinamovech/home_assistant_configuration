@@ -10,7 +10,6 @@
   action:
     - service: script.update_ssl_certificate
 
-
 # Отправка оповещений в web интерфей при каждом notify.notify
 - alias: notify_to_persistent_notification
   trigger:
@@ -24,7 +23,6 @@
       data_template:
         title: "{{ trigger.event.data.service_data.title }}"
         message: "{{ trigger.event.data.service_data.message }}"
-
 
 # Отправка оповещений на Яндекс.Станцию при каждом notify.notify
 - alias: notify_to_yandex_station
@@ -44,7 +42,6 @@
       data_template:
         media_content_id: "{{ trigger.event.data.service_data.title }} {{ trigger.event.data.service_data.message }}"
         media_content_type: dialog
-
 
 # Оповещение о необходимости замены батарейки в беспроводном датчике
 - alias: low_battery_triggering
@@ -73,7 +70,6 @@
         title: "Внимание!"
         message: '{{ trigger.from_state.attributes.friendly_name }} нуждается в замене элемента питания (текущий уровень заряда состовляет {{ trigger.to_state.state }}%).'
 
-
 # Обновление значений датчиков при загрузке системы для корректной работы climate-интеграций
 - alias: update_sensors_on_startup
   trigger:
@@ -92,7 +88,6 @@
     # Средняя температура в квартире
     - service: homeassistant.update_entity
       entity_id: sensor.home_sensor_temperature
-
 
 # Опрос состояния выходов MegaD
 - alias: update_megad_on_startup

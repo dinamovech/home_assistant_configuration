@@ -1,3 +1,7 @@
+###########
+# СИСТЕМА #
+###########
+
 # Обновление SSL сертификата
 update_ssl_certificate:
   alias: "Обновить SSL сертификат"
@@ -7,15 +11,15 @@ update_ssl_certificate:
       data:
         addon: core_letsencrypt
 
-# Перезагрузка ZigBee/Bluetooth шлюза
+# Перезагрузка ZigBee шлюза
 reboot_gateway:
   alias: "Перезагрузить шлюз"
   icon: mdi:zigbee
   sequence:
     - service: browser_mod.toast
       data:
-        message: "Выполняется перезагрузка ZigBee/BLE шлюза..."
+        message: "Выполняется перезагрузка ZigBee шлюза..."
     - service: mqtt.publish
       data:
-        topic: "/zigbee-ble/reboot"
+        topic: "/zigbee/reboot"
         payload: "true"

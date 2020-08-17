@@ -19,7 +19,6 @@
       data:
         entity_id: alarm_control_panel.home
 
-
 # Автоматическое отключение ночного режима
 - alias: disable_night_mode
   trigger:
@@ -37,7 +36,6 @@
       data:
         entity_id: alarm_control_panel.home
 
-
 # Действия после включения ночного режима
 - alias: night_mode_enabled_actions
   trigger:
@@ -47,7 +45,6 @@
   action:
     - service: script.anti_jamming_water_valve # Профилактика заклинивания водопроводного крана
 
-
 # Действия после отключения ночного режима
 - alias: night_mode_disabled_actions
   trigger:
@@ -55,7 +52,6 @@
       entity_id: alarm_control_panel.home
       from: "armed_night"
   action: []
-
 
 ################
 # РЕЖИМ ОХРАНЫ #
@@ -102,7 +98,6 @@
         media_content_id: "Охранная сигнализация включена!"
         media_content_type: text
 
-
 # Постановка квартиры на охрану (автоматически)
 - alias: auto_enable_away_mode
   trigger:
@@ -120,7 +115,6 @@
     - service: alarm_control_panel.alarm_arm_away
       data:
         entity_id: alarm_control_panel.home
-
 
 # Снятие квартиры с охраны (вручную)
 - alias: manual_disable_away_mode
@@ -170,7 +164,6 @@
         entity_id: climate.gas_boiler
         preset_mode: "none"
 
-
 # Снятие квартиры с охраны (автоматически)
 - alias: auto_disable_away_mode
   trigger:
@@ -216,7 +209,6 @@
         entity_id: light.gateway
         rgb_color: [255, 63, 0]
 
-
 # Действия после arming/pending-ожидания
 - alias: disable_arming_pending_away_mode
   trigger:
@@ -229,7 +221,6 @@
   action:
     - service: light.turn_off
       entity_id: light.gateway
-
 
 # Срабатывание охранной сигнализации (условия)
 - alias: conditions_triggered_away_mode
@@ -252,7 +243,6 @@
       data:
         entity_id: alarm_control_panel.home
 
-
 # Срабатывание охранной сигнализации (действия)
 - alias: enable_triggered_away_mode
   trigger:
@@ -273,7 +263,6 @@
       data:
         media_content_id: '<speaker audio="alice-sounds-things-siren-2.opus">'
         media_content_type: text
-
 
 # Окончание срабатывания охранной сигнализации (действия)
 - alias: disable_triggered_away_mode

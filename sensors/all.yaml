@@ -1,3 +1,7 @@
+#########
+# ОБЩЕЕ #
+#########
+
 # Средняя температура в квартире (для отопления)
 - platform: template
   sensors:
@@ -22,7 +26,6 @@
           {% endif %}
         {% endfor %}
         {{ (avg_temperatere.summ / avg_temperatere.count) | float | round(2) }}
-
 
 # Средняя влажность в квартире (для гигростатов)
 - platform: template

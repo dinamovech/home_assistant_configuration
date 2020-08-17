@@ -3,7 +3,6 @@
 filter:
   include_entities:
     # Коридор
-    - switch.security_system
     - light.hallway
     - light.gateway
     - sensor.hallway_sensor_temperature
@@ -39,9 +38,6 @@ filter:
 
 entity_config:
   # Коридор
-  switch.security_system:
-    name: "Охрана"
-    room: "Коридор"
   light.hallway:
     name: "Свет"
     room: "Коридор"

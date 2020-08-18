@@ -54,33 +54,6 @@
       data:
         entity_id: light.hallway
 
-# Таймаут для датчика движения в коридоре
-- alias: hallway_motion_off_delay
-  mode: restart
-  trigger:
-    - platform: mqtt
-      topic: "/zigbee/hallway_motion"
-  condition:
-    condition: template
-    value_template: '{{ trigger.payload_json.occupancy == true }}'
-  action:
-    - delay:
-        seconds: >
-          {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'occupancy_timeout') | int) }}
-    - service: mqtt.publish
-      data:
-        topic: "/zigbee/hallway_motion"
-        payload_template: >
-          {
-            "battery": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'battery') | int) }},
-            "illuminance": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'illuminance') | int) }},
-            "linkquality": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'linkquality') | int) }},
-            "occupancy": false,
-            "occupancy_timeout": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'occupancy_timeout') | int) }},
-            "voltage": {{ (state_attr('binary_sensor.hallway_motion_occupancy', 'voltage') | float) }}
-          }
-        retain: true
-
 # Кнопка дверного звонка (тестирование)
 - alias: hallway_doorbell_button_pushed
   trigger:

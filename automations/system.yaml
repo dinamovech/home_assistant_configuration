@@ -52,6 +52,7 @@
         - sensor.bathroom_leak_1_battery
         - sensor.bathroom_leak_2_battery
         - sensor.bathroom_button_battery
+        - sensor.bathroom_motion_battery
         - sensor.bedroom_sensor_battery
         - sensor.coolant_sensor_battery
         - sensor.doorbell_button_battery

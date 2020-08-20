@@ -229,6 +229,7 @@
       entity_id:
         - binary_sensor.hallway_door_contact # Открыта входная дверь
         - binary_sensor.hallway_motion_occupancy # Обнаружено движение в коридоре
+        - binary_sensor.bathroom_motion_occupancy # Обнаружено движение в ванной
       to: "on"
   condition:
     - condition: state

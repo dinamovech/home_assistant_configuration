@@ -211,6 +211,11 @@ views:
               top: 79%
               left: 75%
           # Ванная
+          - type: state-icon # Датчик движения
+            entity: binary_sensor.bathroom_motion_occupancy
+            style:
+              top: 76%
+              left: 36%
           - type: state-icon # Освещение
             tap_action:
               action: toggle
@@ -374,6 +379,9 @@ views:
             artwork: none
             hide:
               volume: true
+          - entity: binary_sensor.bathroom_motion_occupancy
+            secondary_info: last-changed
+            state_color: true
           - entity: binary_sensor.bathroom_leak_1_water_leak
             secondary_info: last-changed
             state_color: true

@@ -17,4 +17,4 @@ energy_line_monthly_kwh:
   source: sensor.energy_line_reverse_active_energy
   cycle: monthly
   offset:
-    days: 20
+    days: 25

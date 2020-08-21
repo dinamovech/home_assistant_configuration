@@ -10,8 +10,10 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.bathroom
-      state: "off"
+      entity_id: alarm_control_panel.home
+      state:
+        - disarmed
+        - armed_night
   action:
     - service: light.turn_on
       data:

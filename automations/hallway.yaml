@@ -65,8 +65,6 @@
       entity_id: alarm_control_panel.home
       state: "disarmed"
   action:
-    - service: media_player.play_media
-      entity_id: media_player.yandex_station_ff98f02956241bb6fce15af6
+    - service: shell_command.http_get_request
       data:
-        media_content_id: '<speaker audio="alice-sounds-game-8-bit-phone-1.opus">'
-        media_content_type: text
+        url: "http://192.168.1.11/audio?action=play&url=http://io-net.ru/home/doorbell.mp3"

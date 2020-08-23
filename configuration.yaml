@@ -126,6 +126,7 @@ automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/
 input_text: !include_dir_merge_named input_texts/
 alarm_control_panel: !include alarm_control_panel.yaml
+shell_command: !include shell_commands.yaml
 
 # Voice assistant
 yandex_smart_home: !include yandex_smart_home.yaml

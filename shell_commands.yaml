@@ -1,3 +1,3 @@
 # Выполнение HTTP запросов
-http_get_request: "curl {{ url }}"
-http_post_request: "curl -X POST -d '{{ data }}' {{ url }}"
+http_get_request: "curl -o /dev/null -s {{ url }}"
+http_post_request: "curl -o /dev/null -s -X POST -d '{{ data }}' {{ url }}"

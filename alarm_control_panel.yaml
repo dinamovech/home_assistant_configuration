@@ -4,7 +4,7 @@
   code_arm_required: false
   delay_time: 20
   arming_time: 20
-  trigger_time: 60
+  trigger_time: 30
   armed_night:
     delay_time: 0
     arming_time: 0

@@ -73,6 +73,9 @@
       data:
         entity_id: input_text.security_trigger_source
         value: ""
+    - service: shell_command.http_get_request # Звуковое уведомление
+      data:
+        url: "http://192.168.1.11/audio?action=play&url=http://io-net.ru/home/enabled.mp3"
     - service: alarm_control_panel.alarm_arm_away # Включаем охрану
       data:
         entity_id: alarm_control_panel.home
@@ -92,9 +95,6 @@
       data:
         entity_id: climate.gas_boiler
         preset_mode: "away"
-    - service: shell_command.http_get_request # Звуковое уведомление
-      data:
-        url: "http://192.168.1.11/audio?action=play&url=http://io-net.ru/home/enabled.mp3"
 
 # Постановка квартиры на охрану (автоматически)
 - alias: auto_enable_away_mode
@@ -142,15 +142,15 @@
       data:
         entity_id: input_text.security_trigger_source
         value: ""
+    - service: shell_command.http_get_request # Звуковое уведомление
+      data:
+        url: "http://192.168.1.11/audio?action=play&url=http://io-net.ru/home/disabled.mp3"
     - service: alarm_control_panel.alarm_disarm # Отключаем охрану
       data:
         entity_id: alarm_control_panel.home
     - service: switch.turn_off # Отключаем реле охранной системы
       data:
         entity_id: switch.security_system
-    - service: shell_command.http_get_request # Звуковое уведомление
-      data:
-        url: "http://192.168.1.11/audio?action=play&url=http://io-net.ru/home/disabled.mp3"
     - service: automation.trigger # Включаем ночной режим, если это необходимо
       data:
         entity_id: automation.enable_night_mode

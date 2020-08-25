@@ -147,3 +147,13 @@
         topic: "megad/cmd"
         payload: '{"port":7}'
     - delay: "00:00:01"
+
+# Установка громкости шлюза на максимальный уровень
+- alias: set_gateway_volume_on_startup
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: shell_command.http_get_request
+      data:
+        url: "http://192.168.1.11/audio?action=setvolume&value=255"

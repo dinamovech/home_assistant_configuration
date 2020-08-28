@@ -52,6 +52,7 @@ recorder:
       - input_boolean
     entities:
       - binary_sensor.doorbell_button_binary_input_1
+      - binary_sensor.hallway_door_contact
       - binary_sensor.hallway_motion_occupancy
   exclude: # Исключить из истории
     entities:

@@ -14,7 +14,7 @@ views:
             entity: alarm_control_panel.home
             style:
               top: 66%
-              left: 30.9%
+              left: 32%
           # Коридор
           - type: state-icon # Освещение
             tap_action:
@@ -49,7 +49,12 @@ views:
             entity: binary_sensor.hallway_door_contact
             style:
               top: 66%
-              left: 28.9%
+              left: 30%
+          - type: state-icon # Кнопка дверного звонка
+            entity: binary_sensor.doorbell_button_binary_input_1
+            style:
+              top: 66%
+              left: 28%
           # Спальня
           - type: state-icon # Освещение
             tap_action:
@@ -286,6 +291,9 @@ views:
             secondary_info: last-changed
             state_color: true
           - entity: binary_sensor.hallway_door_contact
+            secondary_info: last-changed
+            state_color: true
+          - entity: binary_sensor.doorbell_button_binary_input_1
             secondary_info: last-changed
             state_color: true
       - type: entities
